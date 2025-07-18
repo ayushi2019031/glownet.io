@@ -21,7 +21,7 @@
 title: Glownet 💡
 email: atallakshaya@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Glownet is a collection of technical explorations in machine learning, grounded in real-world projects and Kaggle competitions. Each article breaks down model architectures, training strategies, and experimental results with clarity and depth — making advanced AI concepts more accessible and transparent.From GANs to Transformers, and from tuning to deployment, glownet aims to shed light on the process behind building, understanding, and improving modern AI systems.
+  Glownet is a collection of technical explorations in machine learning, grounded in real-world projects and Kaggle competitions. Each article breaks down model architectures, training strategies, and experimental results with clarity and depth — making advanced AI concepts more accessible and transparent. From GANs to Transformers, and from tuning to deployment, glownet aims to shed light on the process behind building, understanding, and improving modern AI systems.
 baseurl: "/glownet.io" # the subpath of your site, e.g. /blog
 url: "https://ayushi2019031.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jekyllrb
