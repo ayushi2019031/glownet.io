@@ -4,3 +4,4 @@
 
 layout: home
 ---
+<img src = "images/profile.jpeg" style="width: 50%; height: 40%; float: right;">
