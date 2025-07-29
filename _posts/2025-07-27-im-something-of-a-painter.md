@@ -6,6 +6,7 @@ permalink: /im-something-of-a-painter/
 
 A technical deep dive into training GANs for artistic image generation, inspired by the Kaggle competition “I’m Something of a Painter Myself.”
 
+Link to the competition: [I'm Something of a Painter Myself](https://www.kaggle.com/competitions/gan-getting-started)  
 Find all the code here: [GitHub repo](#https://github.com/ayushi2019031/Kaggle-GANS-to-create-monet-paintings)
 
 ## 1. Introduction
