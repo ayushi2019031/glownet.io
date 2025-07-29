@@ -277,8 +277,9 @@ Kaggle is full of amazing work — and honestly, going through public notebooks 
 Here are a few that I found super helpful:
 
 - [CycleGAN (with UNet generator)](https://www.kaggle.com/code/codenamezero6876/simple-pytorch-cyclegan-unet-based-generator)  
-- [CUT GAN implementation](https://www.kaggle.com/code/awsaf49/cut-pytorch-contrastive-unpaired-translation)  
-- [Understanding FID and M-FID](https://www.kaggle.com/code/iafoss/fid-implementation-and-visualization)
+- [CUT GAN implementation](https://www.kaggle.com/code/alexandersamarin/cut-gan)  
+- [Does Cycle GAN need identity loss?](https://www.kaggle.com/code/unfriendlyai/cyclegan-without-identity-loss)
+- [DiffAugment Approach - (I didn't try this but seemed amazing)](https://www.kaggle.com/code/unfriendlyai/diffaugment-is-all-you-need)
 
 > Don’t hesitate to fork, adapt, and experiment — these are great starting points.
 
