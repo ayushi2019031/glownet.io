@@ -4,7 +4,9 @@ title: "From DCGAN to CUT: My Journey in the ‘I'm Something of a Painter Mysel
 permalink: /im-something-of-a-painter/
 ---
 
-_A technical deep dive into training GANs for artistic image generation, inspired by the Kaggle competition “I’m Something of a Painter Myself.”
+A technical deep dive into training GANs for artistic image generation, inspired by the Kaggle competition “I’m Something of a Painter Myself.”
+
+Find all the code here: [GitHub repo](#https://github.com/ayushi2019031/Kaggle-GANS-to-create-monet-paintings)
 
 ## 1. Introduction
 
@@ -135,6 +137,21 @@ Unlike CycleGAN, which requires two generators and two discriminators, CUT uses 
 
 This streamlined setup makes CUT more **computationally efficient**, while still achieving high-quality style transfer with strong content preservation.
 
+However, CUT does **not rely on PatchNCE alone**. It still incorporates a standard **adversarial loss** via a discriminator to ensure the generated images resemble real Monet paintings. The combination of **adversarial loss (for realism)** and **PatchNCE loss (for content preservation)** makes CUT both effective and efficient for unpaired translation.
+
+### 🔁 Skip Connections and Feature Layer Choice in CUT
+
+A subtle but important architectural detail in the CUT model is the use of **skip connections** in the generator. These help the model preserve spatial details from early layers, which is especially important when translating fine-grained structures from input to output.
+
+Because of these skip connections, **choosing the right feature layer for computing PatchNCE loss becomes crucial**. 
+
+- If the feature is taken from a *very shallow layer*, the representations are mostly local — focusing on textures or edges.
+- If it’s from a *very deep layer*, the model captures high-level semantics but may lose spatial resolution.
+
+👉 **The ideal layer is somewhere in the middle**, balancing semantic richness with spatial precision. This trade-off is central to CUT’s contrastive learning mechanism.
+
+
+
 **Key characteristics:**
 - ⚡ Single generator-discriminator architecture (one-way mapping only)  
 - 🧠 Uses PatchNCE contrastive loss to preserve content  
@@ -186,11 +203,13 @@ All models were trained on Kaggle’s cloud environments, which offer multiple r
 
 ### Model Training Times
 
-| Model     | Epochs | Avg. Time per Epoch | Total Time (approx.) |
-|-----------|--------|----------------------|-----------------------|
-| DCGAN     | 50     | ~3 min               | ~2.5 hours            |
-| CycleGAN  | 50     | ~50–60 min           | ~40–45 hours          |
-| CUT       | 50     | ~20 min              | ~16–17 hours          |
+| Model                      | Epochs | Avg. Time per Epoch | Total Time (approx.) | FID Score | Type of Images Generated                              | Notebook Link       |
+|---------------------------|--------|----------------------|-----------------------|-----------|--------------------------------------------------------|----------------------|
+| DCGAN                     | 100    | ~1 min               | ~1.5 hours            | 300+      | Noisy, blurry, and lacking clear Monet style           | [View Notebook](#https://www.kaggle.com/code/fuzzycoder3794/dcgan-approach-for-monet-styled-paintings)   |
+| CycleGAN                  | 10     | ~4 min               | ~40 min               | ~75       | Stylized outputs with good structure and brushwork     | [View Notebook](https://www.kaggle.com/code/fuzzycoder3794/unetbased-cycle-gan)   |
+| CUT (without adversarial) | 15     | ~40 sec              | ~10 min               | >300      | Fails to stylize; generated paintings are tv static noise, which barely capture structure of photo through contours  | [View Notebook](#)   |
+| CUT (with adversarial)    | 15     | ~40 sec              | ~10 min               | ~65       | Clean Monet-style textures with good structural fidelity | [View Notebook](https://www.kaggle.com/code/fuzzycoder3794/monet-cut)   |
+
 
 > While both CycleGAN and CUT were trained for 50 epochs, CUT consistently reached competitive FID scores much earlier (within 15–20 epochs).
 This setup allowed consistent evaluation across models while staying within Kaggle's free GPU compute quotas.
@@ -238,3 +257,71 @@ M-FID is a **memorization penalty** that discourages models from simply copying 
 | M-FID  | Memorization penalty           | Also low (but not identical to FID) |
 
 These metrics were used both during offline experimentation and for official Kaggle submissions. Final scores were based on the combined effectiveness across these two axes.
+
+---
+
+## ✨ Takeaways
+
+A few lessons (and mistakes) from running multiple GANs on this competition:
+
+
+### 🧪 Try a Few Architectures First  
+Don't jump straight into training your final model.  
+Trying out **DCGAN**, **CycleGAN**, and **CUT** helped me understand what each architecture assumes — whether it needs paired data, whether it supports unpaired translation, and how it handles content preservation.  
+Sometimes, seeing how a "bad" model performs teaches you more than just tuning a good one.
+
+
+### 🔍 Learn from Other Notebooks  
+Kaggle is full of amazing work — and honestly, going through public notebooks helped me a lot.  
+Here are a few that I found super helpful:
+
+- [CycleGAN (with UNet generator)](https://www.kaggle.com/code/codenamezero6876/simple-pytorch-cyclegan-unet-based-generator)  
+- [CUT GAN implementation](https://www.kaggle.com/code/awsaf49/cut-pytorch-contrastive-unpaired-translation)  
+- [Understanding FID and M-FID](https://www.kaggle.com/code/iafoss/fid-implementation-and-visualization)
+
+> Don’t hesitate to fork, adapt, and experiment — these are great starting points.
+
+
+### ⚙️ Use Kaggle Compute Wisely  
+You get a limited number of hours per week, and not all runtimes are equal.  
+T4 GPUs are great for PyTorch. TPUs? A bit tricky with GANs — but powerful if you get them right.
+
+> In upcoming posts, I’ll explore how TPUs compare to GPUs for training GANs like CUT.
+
+
+### 😅 A Small Mistake I Made  
+At first, I was training on **7,000+ photos** thinking that would help — but then I realized...  
+👉 The competition only evaluates on **Monet-style images**.  
+👉 There are just **300 Monet paintings** in the training data.  
+So effectively, the size of your **training dataset is 300**, not 7,000.  
+
+> Don't let a large photo domain distract you — align your training with what’s being evaluated.
+
+
+This whole process was a lot of trial-and-error — but also a fun way to explore how modern GANs work in practice. More in the next one!
+
+---
+
+## 📚 Appendix & Resources
+
+A collection of references that helped during this project — useful for anyone exploring GANs or working on similar image translation tasks.
+
+
+### 📝 Research Papers
+- [DCGAN: Unsupervised Representation Learning with Deep Convolutional GANs](https://arxiv.org/abs/1511.06434) — Radford et al., 2016  
+- [CycleGAN: Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks](https://arxiv.org/abs/1703.10593) — Zhu et al., 2017  
+- [CUT: Contrastive Learning for Unpaired Image-to-Image Translation](https://arxiv.org/abs/2007.15651) — Park et al., 2020  
+- [Understanding FID: Frechet Inception Distance](https://www.researchgate.net/publication/354269184_Frechet_Inception_Distance_FID_for_Evaluating_GANs) — Heusel et al., 2017  
+
+
+### 📖 Blog Posts & Kaggle Notebooks
+- [Simple CycleGAN with UNet Generator (Kaggle)](https://www.kaggle.com/code/codenamezero6876/simple-pytorch-cyclegan-unet-based-generator)  
+- [CUT PyTorch Implementation (Kaggle)](https://www.kaggle.com/code/awsaf49/cut-pytorch-contrastive-unpaired-translation)  
+- [FID Score Calculation and Visualization (Kaggle)](https://www.kaggle.com/code/iafoss/fid-implementation-and-visualization)  
+- [Kaggle: GANs Getting Started Dataset](https://www.kaggle.com/datasets/gan-getting-started)  
+- [Official CUT GitHub Repository](https://github.com/taesungp/contrastive-unpaired-translation)  
+- [GitHub Repository for implementation of Cycle GANs](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix)
+
+### 💡 Other Tools
+- [TPU setup in Kaggle for PyTorch](https://www.kaggle.com/code/vbookshelf/pytorch-on-tpus-quick-start-guide)
+- [PyTorch FID implementation](https://github.com/mseitzer/pytorch-fid)
