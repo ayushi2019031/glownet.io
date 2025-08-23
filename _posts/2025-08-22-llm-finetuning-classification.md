@@ -23,9 +23,6 @@ This blog is my attempt to document that journey. I’ll cover the **core concep
 
 ---
 
-
-# Background: LLMs and Classification  
-
 ## Architectures: Encoder-only, Decoder-only, and Encoder–Decoder
 
 At a high level, Transformer models come in three flavors. Knowing which one you’re holding helps you decide **how** to turn it into a classifier.
@@ -53,9 +50,26 @@ At a high level, Transformer models come in three flavors. Knowing which one you
 - **Pros:** Clean task formulation; strong few-shot behavior after instruction tuning.
 - **Cons:** Two-pass compute (encode + decode); can be slower than encoder-only for pure classification.
 
----
+<div class = "mermaid" style="max-width: 1000px; margin: auto;">
+flowchart LR
+  subgraph Encoder
+    E1[Self-Attention + Add & Norm]
+    E2[Feed-Forward + Add & Norm]
+  end
+  subgraph Decoder
+    D1[Masked Self-Attention + Add & Norm]
+    D2[Cross-Attention + Add & Norm]
+    D3[Feed-Forward + Add & Norm]
+    LS[Linear + Softmax]
+  end
 
-### Quick chooser
+  InputTokens --> E1 --> E2 --> EncOutput
+  EncOutput --> D1
+  D1 --> D2
+  D2 --> D3 --> LS --> OutputTokens
+</div>
+
+Here is a table to quickly choose which architecture would make more sense to use, depending on the type of problem you are dealing with. 
 
 | Situation | Good default |
 |---|---|
@@ -74,28 +88,32 @@ At a high level, Transformer models come in three flavors. Knowing which one you
 ---
 
 ### Tiny mental model (why they feel different)
+<div class="mermaid" style="display: flex; justify-content: center;">
+flowchart TB
 
-```mermaid
-flowchart LR
-  subgraph Enc[Encoder-only]
-    A[Input text] --> E[Encoder]
-    E --> H[CLS / pooled vec]
-    H --> Y[Classifier head]
+  %% ---------- Encoder-only ----------
+  subgraph Enc[Encoder only]
+    enc_in[Input text] --> enc_enc[Encoder]
+    enc_enc --> enc_vec[CLS or pooled vector]
+    enc_vec --> enc_cls[Classification head]
   end
 
-  subgraph Dec[Decoder-only]
-    X[Prompt + Input] --> D[Decoder (causal LM)]
-    D --> T[Next tokens]
-    T -->|map tokens→labels or head on states| Y2[Class]
+  %% ---------- Decoder-only ----------
+  subgraph Dec[Decoder only]
+    dec_in[Prompt + Input] --> dec_dec[Decoder causal LM]
+    dec_dec --> dec_tokens[Next tokens]
+    dec_tokens -->|map tokens->labels OR head on hidden states| dec_cls[Class]
   end
 
-  subgraph EnDe[Encoder–Decoder]
-    A2[Input text] --> E2[Encoder]
-    E2 --> D2[Decoder]
-    D2 --> T2[Label tokens]
-    T2 --> Y3[Class]
+  %% ---------- Encoder-Decoder ----------
+  subgraph EnDe[Encoder-Decoder]
+    ende_in[Input text] --> ende_enc[Encoder]
+    ende_enc --> ende_dec[Decoder]
+    ende_dec --> ende_tokens[Label tokens]
+    ende_tokens --> ende_cls[Class]
   end
 
+</div>
 --- 
 
 # Finetuning Approaches for Classification  
