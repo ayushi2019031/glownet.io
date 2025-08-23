@@ -2,6 +2,7 @@
 layout: page
 title: "From DCGAN to CUT: My Journey in the ‘I'm Something of a Painter Myself’ Kaggle Competition"
 permalink: /im-something-of-a-painter/
+description: "This is a technical deep dive into the Kaggle competition - 'I'm Something Of a Painter Myself'. This uses GANs, and discusses the results from every architecture I have attempted. Additionally, tips for efficient training. "
 ---
 
 A technical deep dive into training GANs for artistic image generation, inspired by the Kaggle competition “I’m Something of a Painter Myself.”
@@ -9,7 +10,7 @@ A technical deep dive into training GANs for artistic image generation, inspired
 Link to the competition: [I'm Something of a Painter Myself](https://www.kaggle.com/competitions/gan-getting-started)  
 Find all the code here: [GitHub repo](#https://github.com/ayushi2019031/Kaggle-GANS-to-create-monet-paintings)
 
-## 1. Introduction
+---
 
 The Kaggle competition *"I'm Something of a Painter Myself"* focuses on a classic problem in computer vision: translating natural photographs into Monet-style paintings. The challenge is made more interesting by the absence of paired training data — meaning the model has to learn the mapping between domains without explicit photo-painting pairs.
 

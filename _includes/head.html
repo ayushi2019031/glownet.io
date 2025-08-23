@@ -1,0 +1,40 @@
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Page title -->
+  <title>{{ page.title | escape }} | {{ site.title | escape }}</title>
+
+  <!-- SEO Description -->
+  <meta name="description" content="{{ page.description | default: site.description | strip_html | normalize_whitespace | truncate: 160 }}">
+
+  <!-- Open Graph (Facebook, LinkedIn, etc.) -->
+  <meta property="og:title" content="{{ page.title | default: site.title | escape }}">
+  <meta property="og:description" content="{{ page.description | default: site.description | strip_html | normalize_whitespace | truncate: 160 }}">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:site_name" content="{{ site.title | escape }}">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ page.title | default: site.title | escape }}">
+  <meta name="twitter:description" content="{{ page.description | default: site.description | strip_html | normalize_whitespace | truncate: 160 }}">
+
+  <!-- Optional: Twitter handle -->
+  {% if site.twitter_username %}
+    <meta name="twitter:site" content="@{{ site.twitter_username }}">
+  {% endif %}
+
+  <!-- Canonical link -->
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+
+  <!-- Styles & Jekyll assets -->
+  <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
+  {%- if site.favicon -%}
+    <link rel="icon" href="{{ site.favicon | relative_url }}" type="image/x-icon">
+  {%- endif -%}
+
+  <!-- Jekyll SEO Tag plugin fallback (if enabled in _config.yml) -->
+  {% seo %}
+</head>

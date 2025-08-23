@@ -2,9 +2,8 @@
 layout: page
 title: "Different flavours of GANS"
 permalink: /types-of-gans/
+description: "This blog is about different types of GANs, what are the commonalities in their architectures at the conceptual level."
 ---
-
-## 🔅 Basic Idea
 
 Imagine an artist so skilled they can create fake paintings that are nearly indistinguishable from real ones. Now imagine that artist is an algorithm—and they’re in a constant game against a detective whose only job is to spot the fakes. This is the fundamental idea behind **Generative Adversarial Networks**, or **GANs**.
 

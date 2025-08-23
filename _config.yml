@@ -26,12 +26,19 @@ baseurl: "/glownet.io" # the subpath of your site, e.g. /blog
 url: "https://ayushi2019031.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 # twitter_username: jekyllrb
 github_username:  ayushi2019031
+default_image: /images/preview-image.png
 
 # Build settings
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
 
+# Good defaults for modern Markdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  
 future: true
 
 # Exclude from processing.
