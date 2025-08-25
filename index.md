@@ -4,5 +4,5 @@
 
 layout: home
 ---
-<img src = "images/profile.webp" style="width: 50%; height: 40%; float: right;">
+<img src = "images/profile.webp" style="width:150px; float:right; margin:0 0 1rem 1rem;">
 
