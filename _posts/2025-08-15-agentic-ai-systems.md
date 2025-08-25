@@ -66,7 +66,7 @@ At their core, AI agents combine **intelligence** (reasoning and decision-making
 
 Here is a diagram showing the backbone of a single AI Agent system
 
-![E2E flow for a system using a single agent](../images/Agentic-AI-Systems/SingleAgentE2EFlow.png)
+![E2E flow for a system using a single agent](../images/2025-08-15-agentic-ai-systems/single-agent-e2e-flow.webp)
 
 ### 1. **Reasoning Engine (Brain)**
 - **Purpose**: Processes user goals, breaks them into steps, and decides the best course of action.
@@ -124,7 +124,7 @@ This modular design means developers can **swap components**—using a different
 
 Using all the above components, we now have a diagram for multiple AI Agents in a system. 
 
-![Multiple AI Agents System](../images/Agentic-AI-Systems/MultipleAgentFlow.png)
+![Multiple AI Agents System](../images/2025-08-15-agentic-ai-systems/multi-agent-flow.webp)
 
 ### Types of AI Agents
 
