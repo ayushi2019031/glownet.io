@@ -4,4 +4,5 @@
 
 layout: home
 ---
-<img src = "images/profile.jpeg" style="width: 50%; height: 40%; float: right;">
+<img src = "images/profile.webp" alt= "image of the creator of blog" style="width:150px; float:right; margin:0 0 1rem 1rem;">
+

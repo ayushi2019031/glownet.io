@@ -1,9 +1,13 @@
 ---
-layout: page
+layout: post
 title: "AI Agents Explained: Smarter, Faster, and More Independent Than Ever"
 permalink: /ai-agents-explained/
+tags: [Agentic AI, Multi-Agentic AI flows, Production Systems]
+image: "../images/post-cards/global-glownet-card.webp"
 ---
-
+* Table of Contents
+{:toc}
+---
 Imagine having a personal assistant who never sleeps, learns on the fly, and can book your flights, summarize your emails, debug your code, and even negotiate deals—without you lifting a finger. That’s not science fiction anymore. Welcome to the world of **AI agents**.
 
 AI agents are more than just chatbots. They’re autonomous systems powered by large language models (LLMs) that can **reason, plan, and take action** using a variety of tools. Unlike traditional software that follows fixed rules, AI agents can adapt to new situations, make decisions in real time, and collaborate with other agents to tackle complex tasks.
@@ -66,7 +70,7 @@ At their core, AI agents combine **intelligence** (reasoning and decision-making
 
 Here is a diagram showing the backbone of a single AI Agent system
 
-![E2E flow for a system using a single agent](../images/Agentic-AI-Systems/SingleAgentE2EFlow.png)
+![E2E flow for a system using a single agent](../images/2025-08-15-agentic-ai-systems/single-agent-e2e-flow.webp)
 
 ### 1. **Reasoning Engine (Brain)**
 - **Purpose**: Processes user goals, breaks them into steps, and decides the best course of action.
@@ -124,7 +128,7 @@ This modular design means developers can **swap components**—using a different
 
 Using all the above components, we now have a diagram for multiple AI Agents in a system. 
 
-![Multiple AI Agents System](../images/Agentic-AI-Systems/MultipleAgentFlow.png)
+![Multiple AI Agents System](../images/2025-08-15-agentic-ai-systems/multi-agent-flow.webp)
 
 ### Types of AI Agents
 
@@ -139,7 +143,7 @@ Not all AI agents are created equal. Depending on their **scope**, **level of au
 | **Multi-Agent Systems** | Networks of agents with specific roles collaborating towards a goal. | Scalable via specialization, built-in error-checking through collaboration. | Complex coordination, risk of communication breakdown. | - Software factory (coding, testing, deploying)<br>- Research teams (analysis, summarization, drafting) |
 | **Domain-Specific Agents** | Optimized for a narrow vertical or industry, fine-tuned on specialized data. | Deep expertise in their domain. | Limited transferability to other contexts. | - Healthcare diagnosis agents<br>- Legal document review bots |
 
-
+---
 
 ## Challenges & Limitations of AI Agents
 
@@ -163,3 +167,4 @@ While AI agents can unlock huge productivity gains, they require **careful desig
 
 The upcoming article (soon to be linked here) will discuss about how Microsoft products adopt and encourage building Agentic AI systems, along with other open source tools. 
 
+---

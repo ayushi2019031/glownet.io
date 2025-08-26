@@ -1,9 +1,13 @@
 ---
-layout: page
+layout: post
 title: "Different flavours of GANS"
 permalink: /types-of-gans/
+tags: [GAN Architecture, Kaggle, Deep Learning, CUT]
+image: "../images/post-cards/global-glownet-card.webp"
 ---
-
+* Table of Contents
+{:toc}
+---
 ## 🔅 Basic Idea
 
 Imagine an artist so skilled they can create fake paintings that are nearly indistinguishable from real ones. Now imagine that artist is an algorithm—and they’re in a constant game against a detective whose only job is to spot the fakes. This is the fundamental idea behind **Generative Adversarial Networks**, or **GANs**.

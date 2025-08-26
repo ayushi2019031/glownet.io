@@ -1,0 +1,17 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Title fallback -->
+  <title>{{ page.title | escape }} | {{ site.title | escape }}</title>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
+
+  <!-- SEO tags -->
+  {% seo %}
+
+  <!-- Favicons (optional, but good for branding) -->
+  <link rel="icon" href="{{ '/images/favicon.ico' | relative_url }}">
+  <link rel="apple-touch-icon" href="{{ '/images/apple-touch-icon.png' | relative_url }}">
+</head>

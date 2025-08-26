@@ -1,0 +1,30 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+@import "minima";
+
+body {
+  line-height: 1.6;   // good for readability
+}
+
+h1, h2, h3 {
+  line-height: 1.2;   // tighter for headers
+}
+
+p {
+  margin-bottom: 1em; // extra space between paragraphs
+}
+
+hr {
+  border: none;          /* remove default border */
+  border-top: 2px solid #ddd;  /* custom line */
+  margin: 2rem 0;        /* vertical spacing */
+}
+
+hr.fancy {
+  border: none;
+  border-top: 3px dashed #888;   /* dashed line */
+  margin: 3rem auto;
+  width: 80%;                   /* shorter width */
+}

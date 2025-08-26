@@ -1,7 +1,14 @@
 ---
-layout: page
+layout: post
 title: "From DCGAN to CUT: My Journey in the ‘I'm Something of a Painter Myself’ Kaggle Competition"
 permalink: /im-something-of-a-painter/
+tags: [GANs, Kaggle, DCGAN, CycleGAN, CUT]
+image: "../images/post-cards/global-glownet-card.webp"
+---
+
+* Table of Contents
+{:toc}
+
 ---
 
 A technical deep dive into training GANs for artistic image generation, inspired by the Kaggle competition “I’m Something of a Painter Myself.”
@@ -47,6 +54,7 @@ When I first looked at the data, I noticed a few things:
 
 This setup pushed me to think carefully about which GAN architectures can generalize well with minimal supervision — and what kind of inductive biases each model brings to the table.
 
+---
 
 ## Architectures Explored
 
@@ -327,3 +335,5 @@ A collection of references that helped during this project — useful for anyone
 ### 💡 Other Tools
 - [TPU setup in Kaggle for PyTorch](https://www.kaggle.com/code/vbookshelf/pytorch-on-tpus-quick-start-guide)
 - [PyTorch FID implementation](https://github.com/mseitzer/pytorch-fid)
+
+---
