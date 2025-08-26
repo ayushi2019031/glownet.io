@@ -2,6 +2,8 @@
 layout: page
 title: "From DCGAN to CUT: My Journey in the ‘I'm Something of a Painter Myself’ Kaggle Competition"
 permalink: /im-something-of-a-painter/
+tags: [GANs, Kaggle, DCGAN, CycleGAN, CUT]
+image: "../images/post-cards/global-glownet-card.webp"
 ---
 
 A technical deep dive into training GANs for artistic image generation, inspired by the Kaggle competition “I’m Something of a Painter Myself.”

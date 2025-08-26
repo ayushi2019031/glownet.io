@@ -27,10 +27,13 @@ url: "https://glownet.io" # the base hostname & protocol for your site, e.g. htt
 # twitter_username: jekyllrb
 github_username:  ayushi2019031
 
+logo: images/post-cards/global-glownet-card.webp
 # Build settings
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
 
 future: true
 

@@ -42,7 +42,7 @@ This site is powered by curiosity and the belief that knowledge grows when share
 💻 [GitHub](https://github.com/ayushi2019031)  
 📇 [LinkedIn](https://linkedin.com/in/ayushi31)  
 📬 [Email](mailto:atallakshaya@gmail.com)  
-📄 [Resume](https://drive.google.com/file/d/1PQTa4VyE0c_gKYXfpbjV1FRRRo0Pm-4m/view?usp=sharing)  
+📄 [Resume](/public-files/Ayushi_Jain_Resume.pdf)  
 
 
 ---

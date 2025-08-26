@@ -2,6 +2,8 @@
 layout: page
 title: "Different flavours of GANS"
 permalink: /types-of-gans/
+tags: [GAN Architecture, Kaggle, Deep Learning, CUT]
+image: "../images/post-cards/global-glownet-card.webp"
 ---
 
 ## 🔅 Basic Idea
