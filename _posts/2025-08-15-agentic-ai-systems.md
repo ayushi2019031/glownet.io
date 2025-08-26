@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: "AI Agents Explained: Smarter, Faster, and More Independent Than Ever"
 permalink: /ai-agents-explained/
 tags: [Agentic AI, Multi-Agentic AI flows, Production Systems]
@@ -141,7 +141,7 @@ Not all AI agents are created equal. Depending on their **scope**, **level of au
 | **Multi-Agent Systems** | Networks of agents with specific roles collaborating towards a goal. | Scalable via specialization, built-in error-checking through collaboration. | Complex coordination, risk of communication breakdown. | - Software factory (coding, testing, deploying)<br>- Research teams (analysis, summarization, drafting) |
 | **Domain-Specific Agents** | Optimized for a narrow vertical or industry, fine-tuned on specialized data. | Deep expertise in their domain. | Limited transferability to other contexts. | - Healthcare diagnosis agents<br>- Legal document review bots |
 
-
+---
 
 ## Challenges & Limitations of AI Agents
 
@@ -165,3 +165,4 @@ While AI agents can unlock huge productivity gains, they require **careful desig
 
 The upcoming article (soon to be linked here) will discuss about how Microsoft products adopt and encourage building Agentic AI systems, along with other open source tools. 
 
+---

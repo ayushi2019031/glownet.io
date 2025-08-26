@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: "From DCGAN to CUT: My Journey in the ‘I'm Something of a Painter Myself’ Kaggle Competition"
 permalink: /im-something-of-a-painter/
 tags: [GANs, Kaggle, DCGAN, CycleGAN, CUT]
@@ -329,3 +329,5 @@ A collection of references that helped during this project — useful for anyone
 ### 💡 Other Tools
 - [TPU setup in Kaggle for PyTorch](https://www.kaggle.com/code/vbookshelf/pytorch-on-tpus-quick-start-guide)
 - [PyTorch FID implementation](https://github.com/mseitzer/pytorch-fid)
+
+---

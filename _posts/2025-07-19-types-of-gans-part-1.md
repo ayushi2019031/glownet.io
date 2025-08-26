@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: "Different flavours of GANS"
 permalink: /types-of-gans/
 tags: [GAN Architecture, Kaggle, Deep Learning, CUT]
