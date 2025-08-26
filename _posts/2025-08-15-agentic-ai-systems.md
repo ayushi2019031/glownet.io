@@ -5,7 +5,9 @@ permalink: /ai-agents-explained/
 tags: [Agentic AI, Multi-Agentic AI flows, Production Systems]
 image: "../images/post-cards/global-glownet-card.webp"
 ---
-
+* Table of Contents
+{:toc}
+---
 Imagine having a personal assistant who never sleeps, learns on the fly, and can book your flights, summarize your emails, debug your code, and even negotiate deals—without you lifting a finger. That’s not science fiction anymore. Welcome to the world of **AI agents**.
 
 AI agents are more than just chatbots. They’re autonomous systems powered by large language models (LLMs) that can **reason, plan, and take action** using a variety of tools. Unlike traditional software that follows fixed rules, AI agents can adapt to new situations, make decisions in real time, and collaborate with other agents to tackle complex tasks.

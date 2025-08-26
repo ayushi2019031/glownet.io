@@ -6,6 +6,11 @@ tags: [GANs, Kaggle, DCGAN, CycleGAN, CUT]
 image: "../images/post-cards/global-glownet-card.webp"
 ---
 
+* Table of Contents
+{:toc}
+
+---
+
 A technical deep dive into training GANs for artistic image generation, inspired by the Kaggle competition “I’m Something of a Painter Myself.”
 
 Link to the competition: [I'm Something of a Painter Myself](https://www.kaggle.com/competitions/gan-getting-started)  
@@ -49,6 +54,7 @@ When I first looked at the data, I noticed a few things:
 
 This setup pushed me to think carefully about which GAN architectures can generalize well with minimal supervision — and what kind of inductive biases each model brings to the table.
 
+---
 
 ## Architectures Explored
 
