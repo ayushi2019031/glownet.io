@@ -74,7 +74,7 @@ flowchart TD
 
 ## Methods to adapt LLMs for classification
 
-### 1. Encoder-Only Models (BERT, RoBERTa, DeBERTa)
+### Encoder-Only Models (BERT, RoBERTa, DeBERTa)
 
 **Architecture**
 Transformer encoders process the input sequence bidirectionally and output contextual token embeddings.
@@ -93,7 +93,7 @@ Transformer encoders process the input sequence bidirectionally and output conte
 **Example**
 Fine-tuning *DeBERTa-v3* with a small feed-forward head for sentiment analysis.
 
-### 2. Decoder-Only Models (GPT, LLaMA, Mistral)
+### Decoder-Only Models (GPT, LLaMA, Mistral)
 
 **Architecture**
 Causal language models trained for left-to-right generation.
@@ -121,7 +121,7 @@ Causal language models trained for left-to-right generation.
 **Example**
 Fine-tuning *LLaMA-2-7B* with QLoRA for toxicity classification.
 
-### 4. Preference-Based & Pairwise Approaches
+### Preference-Based & Pairwise Approaches
 
 **Overview**
 These methods are useful when classification is framed not as predicting a single categorical label, but as deciding **which option is preferred** between alternatives.
@@ -136,7 +136,7 @@ These methods are useful when classification is framed not as predicting a singl
 - Particularly effective for tasks where human judgment matters.
 - Example: *Kaggle LLM Classification Fine-Tuning competition* (predicting which response a user would prefer).
 
-### 5. Zero-Shot & Few-Shot Prompting
+### Zero-Shot & Few-Shot Prompting
 
 **Overview**
 Instead of fine-tuning, these approaches rely on **prompt engineering** to guide the model.
@@ -156,7 +156,7 @@ Instead of fine-tuning, these approaches rely on **prompt engineering** to guide
 - Performance can be unstable and sensitive to exact prompt wording.  
 - Generally underperforms fine-tuned models on benchmarks.
 
-### 6. Retrieval-Augmented Classification
+### Retrieval-Augmented Classification
 
 **Overview**
 For tasks requiring **external context or knowledge grounding**, models can incorporate retrieved documents into the classification pipeline.
@@ -352,7 +352,7 @@ flowchart LR
 
 When I entered the **LLM Classification Fine-Tuning** competition, I wanted to explore how different approaches beyond “just fine-tune a transformer” could help in practice. Over the course of the competition, I tried three distinct strategies:
 
-### 1. Test-Time Inference Tricks
+### Test-Time Inference Tricks
 📓 **Notebook:** [Link to notebook](#)  
 📊 **Score:** *1.101*
 
@@ -360,7 +360,7 @@ I first experimented with **test-time inference adjustments**, where I modified 
 - Methods included temperature scaling, probability smoothing, and different ways of combining logits.  
 - These tweaks gave marginal improvements, but couldn’t outperform stronger training-time strategies.
 
-### 2. Teacher–Student Distillation
+### Teacher–Student Distillation
 📓 **Notebook:** [Link to notebook](# https://www.kaggle.com/code/fuzzycoder3794/distillation-model-to-generate-predictions)  
 📊 **Score:** *1.09*
 
@@ -369,7 +369,7 @@ My next attempt was to **distill a larger teacher model into a smaller student**
 - The student model trained faster and was more lightweight, but suffered a drop in accuracy compared to directly fine-tuning a strong base model.  
 - Still, it offered insights into trade-offs between efficiency and leaderboard performance.
 
-### 3. Hybrid: XGBoost + TF–IDF Ranking
+### Hybrid: XGBoost + TF–IDF Ranking
 📓 **Notebook:** [Link to notebook](#https://www.kaggle.com/code/fuzzycoder3794/xgboost-sentenceembedding?scriptVersionId=253924896)  
 📊 **Score:** *1.07228*
 
@@ -400,6 +400,4 @@ Here is a table for quick comparison:
 ---
 
 ✨ *In the end, this competition wasn’t just about climbing the leaderboard for me, it was about experimenting with different paradigms of model training and seeing how they compared. Each approach taught me something unique about trade-offs in LLM fine-tuning, and those lessons are what I carry forward.* 
-
-
 

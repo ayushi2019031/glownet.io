@@ -1,6 +1,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/images/profile.webp" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="{{ page.title | default: site.title }}" />
+  <meta property="og:description" content="{{ page.excerpt | strip_html | truncate: 160 | default: site.description }}" />
+
 
   <!-- Title fallback -->
   <title>{{ page.title | escape }} | {{ site.title | escape }}</title>

@@ -10,7 +10,8 @@ layout: default
   {{ content }}
 
   {%- if site.posts.size > 0 -%}
-    <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>
+    <h2 class="post-list-heading">{{ page.list_title | default: "Explorations and Concept Breakdowns" }}</h2>
+
     <ul class="post-list">
       {%- for post in site.posts -%}
       <li>
@@ -21,14 +22,26 @@ layout: default
             {{ post.title | escape }}
           </a>
         </h3>
-        {%- if site.show_excerpts -%}
-          {{ post.excerpt }}
-        {%- endif -%}
       </li>
       {%- endfor -%}
     </ul>
-
-    <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
   {%- endif -%}
+  <hr style="margin: 2rem 0; border: 0; height: 1px; background: #e0e0e0;">
+
+  <h2 class="post-list-heading">Thinking in Papers</h2>
+<ul class="post-list">
+  {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+  {%- for item in site.research | sort: "date" | reverse -%}
+  <li>
+    <span class="post-meta">
+      {%- if item.date -%}{{ item.date | date: date_format }}{%- endif -%}
+    </span>
+    <h3><a class="post-link" href="{{ item.url | relative_url }}">{{ item.title | escape }}</a></h3>
+  </li>
+  {%- endfor -%}
+</ul>
+
+   <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
+</ul>
 
 </div>
