@@ -39,7 +39,7 @@ The competition provides two separate sets of images:
 - `photo_jpg/`: Real-world landscape photographs
 - `monet_jpg/`: Digitized Monet-style paintings
 
-The objective is to build a model that can translate a given photograph into a Monet-style painting. Since the dataset is **unpaired**, there are no direct mappings between a photo and a corresponding painting — which makes this a good testbed for unpaired image-to-image translation techniques like CycleGAN and CUT.
+The objective is to build a model that can translate a given photograph into a Monet-style painting. Since the dataset is **unpaired**, there are no direct mappings between a photo and a corresponding painting which makes this a good testbed for unpaired image-to-image translation techniques like CycleGAN and CUT.
 
 When I first looked at the data, I noticed a few things:
 - The photographs vary a lot in content and lighting, while the Monet paintings have a consistent stylistic theme.
@@ -148,7 +148,7 @@ This streamlined setup makes CUT more **computationally efficient**, while still
 
 However, CUT does **not rely on PatchNCE alone**. It still incorporates a standard **adversarial loss** via a discriminator to ensure the generated images resemble real Monet paintings. The combination of **adversarial loss (for realism)** and **PatchNCE loss (for content preservation)** makes CUT both effective and efficient for unpaired translation.
 
-### 🔁 Skip Connections and Feature Layer Choice in CUT
+#### 🔁 Skip Connections and Feature Layer Choice in CUT
 
 A subtle but important architectural detail in the CUT model is the use of **skip connections** in the generator. These help the model preserve spatial details from early layers, which is especially important when translating fine-grained structures from input to output.
 
@@ -281,7 +281,7 @@ Sometimes, seeing how a "bad" model performs teaches you more than just tuning a
 
 
 ### 🔍 Learn from Other Notebooks  
-Kaggle is full of amazing work — and honestly, going through public notebooks helped me a lot.  
+Kaggle is full of amazing work and going through public notebooks helped me a lot.  
 Here are a few that I found super helpful:
 
 - [CycleGAN (with UNet generator)](https://www.kaggle.com/code/codenamezero6876/simple-pytorch-cyclegan-unet-based-generator)  

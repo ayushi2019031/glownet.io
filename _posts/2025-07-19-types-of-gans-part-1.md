@@ -12,13 +12,14 @@ image: "../images/post-cards/global-glownet-card.webp"
 
 Imagine an artist so skilled they can create fake paintings that are nearly indistinguishable from real ones. Now imagine that artist is an algorithm—and they’re in a constant game against a detective whose only job is to spot the fakes. This is the fundamental idea behind **Generative Adversarial Networks**, or **GANs**.
 
-First introduced by Ian Goodfellow and his colleagues in 2014, GANs are a type of neural network architecture designed for **generative modeling**—that is, learning to create new data samples that resemble a given dataset. They're made up of two core components:
+First introduced by Ian Goodfellow and his colleagues in 2014, GANs are a type of neural network architecture designed for **generative modeling**, that is, learning to create new data samples that resemble a given dataset. They're made up of two core components:
 
 - 🎨 **The Generator**: This network takes in random noise and learns to generate data (like images) that looks as close to the real data as possible.
 - 🔍 **The Discriminator**: This network evaluates the data and tries to distinguish between real samples (from the dataset) and fake ones (from the generator).
 
 These two networks are trained in a **zero-sum game** where the generator is constantly trying to fool the discriminator, and the discriminator is constantly trying to get better at detecting fakes. Over time, this adversarial process leads to the generator producing impressively realistic outputs.  
 
+---
 
 ## 🎶 Diversity amongst different GAN Architectures
 
@@ -30,7 +31,7 @@ This is one of the most common areas where GANs differ. The loss function determ
 
 Here we discuss about some common GAN Loss functions. 
 
-### 🎯 Summary Table: GAN Loss Functions
+###  Summary Table: GAN Loss Functions
 
 | **Type of Loss**             | **Description**                                                                 | **Pros**                                                           | **Cons**                                                          |
 |-----------------------------|---------------------------------------------------------------------------------|--------------------------------------------------------------------|-------------------------------------------------------------------|
