@@ -39,7 +39,28 @@ plugins:
 markdown: kramdown
 kramdown:
   toc_levels: 2..4
-  
+
+collections:
+  research:
+    output: true
+    permalink: /research/:name/
+
+# optional, to make Minima show excerpts when you ask it to
+show_excerpts: true
+
+# defaults so your research entries render like posts (or use a custom layout)
+defaults:
+  - scope:
+      path: ""
+      type: research
+    values:
+      layout: post   # or "research" if you make a custom layout
+      excerpt_separator: "<!--more-->"  # optional for manual excerpts
+
+
+header_pages:
+  - research.md
+
 future: true
 
 # Exclude from processing.
