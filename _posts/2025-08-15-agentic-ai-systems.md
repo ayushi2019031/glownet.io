@@ -72,8 +72,8 @@ Here is a diagram showing the backbone of a single AI Agent system
 
 ![E2E flow for a system using a single agent](../images/2025-08-15-agentic-ai-systems/single-agent-e2e-flow.webp)
 
-### 1. **Reasoning Engine (Brain)**
-- **Purpose**: Processes user goals, breaks them into steps, and decides the best course of action.
+### Worker Agent (Brain)
+- **Purpose**: Processes specific user goal/task, breaks them into steps, and decides the best course of action.
 - **Typical Tech**: Large Language Models (LLMs) like GPT-4, Claude, or Gemini.
 - **Example**: Given “Find the latest stock prices and summarize trends,” the reasoning engine decides to:
   1. Call a financial API.
@@ -81,14 +81,14 @@ Here is a diagram showing the backbone of a single AI Agent system
   3. Generate a summary in plain English.
 
 
-### 2. **Memory**
+### Memory
 - **Short-Term Memory**: Keeps track of context within an ongoing interaction (like the current conversation thread).
 - **Long-Term Memory**: Stores past interactions, facts, or preferences for retrieval later.
 - **Implementation**: Vector databases (Pinecone, Weaviate, FAISS) for semantic search.
 - **Benefit**: Enables personalization and continuity across multiple sessions.
 
 
-### 3. **Tools & Actions (Hands)**
+### Tools & Actions (Hands)
 - **Purpose**: Let the agent interact with the outside world beyond generating text.
 - **Examples**:
   - Web search
@@ -99,13 +99,13 @@ Here is a diagram showing the backbone of a single AI Agent system
 - **Framework Role**: LangChain, Semantic Kernel, and similar frameworks define these tool interfaces.
 
 
-### 4. **Orchestrator (Planning and Control) **
+### Orchestrator (Planning and Control)
 - **Planner**: Breaks a complex task into smaller subtasks and sequences them logically.
 - **Controller**: Executes steps, monitors outcomes, and adapts if something goes wrong.
 - **Example**: If a web search fails, the agent retries with a different query or switches data sources.
 
 
-### 5. **Feedback Loop (Self-Reflection)**
+### Feedback Loop (Self-Reflection)
 - **Purpose**: Evaluates outputs and decides whether to refine them before returning results.
 - **Techniques**:
   - Chain-of-thought reasoning
@@ -114,7 +114,7 @@ Here is a diagram showing the backbone of a single AI Agent system
 - **Benefit**: Improves reliability and reduces hallucinations.
 
 
-### 6. **Interface (Face)**
+### Interface (Face)
 - **What Users See**: The medium through which humans interact with the agent.
 - **Forms**:
   - Chat interfaces
@@ -130,21 +130,122 @@ Using all the above components, we now have a diagram for multiple AI Agents in 
 
 ![Multiple AI Agents System](../images/2025-08-15-agentic-ai-systems/multi-agent-flow.webp)
 
-### Types of AI Agents
 
-Not all AI agents are created equal. Depending on their **scope**, **level of autonomy**, and **domain focus**, agents can take many forms. Here are the main categories you’ll encounter. 
+## Designing Agentic AI Systems in Production
 
+Prototypes of agentic AI often rely on a notebook + a LangChain-style loop. In production, that breaks down. You need distributed systems design, explicit state handling, monitoring pipelines, and fault-tolerant orchestration.  
 
-| Type | Description | Strengths | Weaknesses | Examples |
-|------|-------------|-----------|------------|----------|
-| **Single-Task Agents** | Designed for one specific job or workflow. | Simple to build, fast to deploy, highly reliable within scope. | Useless outside their predefined task. | - Customer support bot handling refunds<br>- Email summarizer for daily digests |
-| **Multi-Task Agents** | Can perform a variety of tasks within a general domain. | Versatile, can handle related requests without retraining. | Less specialized, may underperform on niche tasks. | - Personal productivity assistant (schedule meetings, draft emails)<br>- Office AI for reports, data viz, Q&A |
-| **Autonomous Agents** | Given a goal, they plan and execute without step-by-step human input. | Operate for long periods, adapt mid-process, handle unexpected scenarios. | Harder to control, higher risk of unintended behavior. | - Auto-GPT-style research bots<br>- Automated trading bots |
-| **Multi-Agent Systems** | Networks of agents with specific roles collaborating towards a goal. | Scalable via specialization, built-in error-checking through collaboration. | Complex coordination, risk of communication breakdown. | - Software factory (coding, testing, deploying)<br>- Research teams (analysis, summarization, drafting) |
-| **Domain-Specific Agents** | Optimized for a narrow vertical or industry, fine-tuned on specialized data. | Deep expertise in their domain. | Limited transferability to other contexts. | - Healthcare diagnosis agents<br>- Legal document review bots |
+<div class = 'mermaid'>
+flowchart TD
+  U[User Request] --> GO[Graph Orchestrator]
+
+  %% Planning
+  GO --> P[Planner Agent]
+  P -- Plan (tasks/DAG) --> GO
+
+  %% Control-plane state
+  GO --- SS[Checkpoint Store]
+
+  %% Queues between orchestrator and workers
+  subgraph MQ[Message Bus]
+    QA[Tasks Queue]
+    QR[Results Queue]
+  end
+
+  %% Orchestrator ↔ queues
+  GO -- publish tasks --> QA
+  QR -- consume results --> GO
+
+  %% Scalable worker pool
+  subgraph WP[Worker Agents]
+    W1[Worker A]
+    W2[Worker B]
+    W3[Worker C]
+  end
+
+  %% Workers pull tasks & push results
+  QA -- pull --> W1
+  QA -- pull --> W2
+  QA -- pull --> W3
+  W1 -- push result --> QR
+  W2 -- push result --> QR
+  W3 -- push result --> QR
+
+  %% Final response
+  GO --> R[Final Response]
+
+  %% Observability
+  subgraph OBS[Monitoring + Logs]
+    M[Traces • Metrics • Logs]
+  end
+
+  %% Telemetry fan-out
+  P -. telemetry .-> M
+  GO -. telemetry .-> M
+  W1 -. telemetry .-> M
+  W2 -. telemetry .-> M
+  W3 -. telemetry .-> M
+  QA -. queue metrics .-> M
+  QR -. queue metrics .-> M
+  SS -. storage metrics .-> M
+
+</div>
+
+### Orchestration & Control Plane  
+- **Execution Graphs**: Instead of `while True: agent.step()`, define DAGs or state machines. Tools:  
+  - **LangGraph** for LLM-driven graphs with persistence.  
+  - **Temporal.io / Durable Functions** for deterministic, replayable workflows.  
+- **Control Plane Responsibilities**:  
+  - Step scheduling (event-loop vs. async tasks).  
+  - State checkpointing (Redis, Postgres, S3).  
+  - Backpressure handling (via Kafka partitions or Pub/Sub topics).  
+- **Failure Modes**: Detect infinite loops (`max_turns`), cascading retries, and stale state locks.  
+
+### Agent Runtime Environment
+
+- **Isolation**: Run each agent in its own container/sandbox (Firecracker microVMs or gVisor) to avoid side-effects.  
+- **Concurrency**: For CPU-bound agents, use async IO + thread pools; for GPU-bound ones, batch calls through Triton Inference Server.  
+- **Inter-agent Messaging**:  
+  - **Synchronous**: gRPC with deadlines + retries.  
+  - **Asynchronous**: Kafka topics with schema contracts (Avro/Protobuf).  
+- **State Serialization**: Normalize agent state into JSON schema + embeddings; version schema to prevent drift.  
+
+### Data Plane & Memory Systems
+
+- **Short-term Memory**: Redis/KeyDB with TTL eviction for transient context.  
+- **Long-term Memory**: Vector DB (Weaviate, Milvus, FAISS) with namespace partitioning per agent.  
+- **Cross-Agent Memory**: Avoid global memory pools; use scoped “capability stores” → each agent queries only embeddings relevant to its role.  
+- **Caching**: Response caching via Cloudflare KV or DynamoDB to cut repeated LLM calls.  
+
+### Monitoring, Tracing, & Debugging
+
+- **Structured Logging**: Emit JSON logs with `trace_id`, `agent_id`, `session_id`, `latency_ms`, `token_count`.  
+- **Distributed Tracing**: OpenTelemetry spans for every LLM call + external API call. Attach vector-db hits as baggage.  
+- **Cost Attribution**: Meter GPU/LLM invocations per request; aggregate by user → needed for billing and abuse detection.  
+- **Debug Replay**: Persist full trajectories (inputs, model configs, decisions) → enable offline replay & regression testing.  
+
+### Hardening & Guardrails
+
+- **Static Constraints**:  
+  - JSON schema validation for outputs.  
+  - Prompt templates with deterministic slots instead of raw free-form text.  
+
+- **Dynamic Controls**:  
+  - Rate-limit agent → external API calls via Envoy filters.  
+  - Kill-switch per agent (e.g., set `enabled=false` in config → propagate via feature flags).  
+
+- **Security**:  
+  - JWT-scoped credentials per agent.  
+  - Never give all agents RW DB access → enforce least privilege.  
+
+### CI/CD & Evaluation Loops
+
+- **Offline Evaluation**: Maintain golden test suites of user prompts + expected JSON/action outputs.  
+- **Canary Releases**: Route ~1% of traffic to new agent policies; rollback if metrics regress.  
+- **Shadow Mode**: Run new policies in parallel → log differences without user exposure.  
+- **Telemetry-driven Improvement**: Continuous fine-tuning using production traces (after redaction & differential privacy).  
 
 ---
-
 ## Challenges & Limitations of AI Agents
 
 AI agents may be powerful, but they’re far from perfect. Understanding their limitations helps set realistic expectations and design safer, more reliable systems.
