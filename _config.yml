@@ -57,9 +57,6 @@ defaults:
       layout: post   # or "research" if you make a custom layout
       excerpt_separator: "<!--more-->"  # optional for manual excerpts
 
-header_pages:
-  - research.md
-
 future: true
 
 # Exclude from processing.
