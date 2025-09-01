@@ -10,7 +10,8 @@ layout: default
   {{ content }}
 
   {%- if site.posts.size > 0 -%}
-    <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>
+    <h2 class="post-list-heading">{{ page.list_title | default: "Explorations and Concept Breakdowns" }}</h2>
+
     <ul class="post-list">
       {%- for post in site.posts -%}
       <li>
@@ -25,8 +26,9 @@ layout: default
       {%- endfor -%}
     </ul>
   {%- endif -%}
-  
-  <h2 class="post-list-heading">Research</h2>
+  <hr style="margin: 2rem 0; border: 0; height: 1px; background: #e0e0e0;">
+
+  <h2 class="post-list-heading">Thinking in Papers</h2>
 <ul class="post-list">
   {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
   {%- for item in site.research | sort: "date" | reverse -%}
