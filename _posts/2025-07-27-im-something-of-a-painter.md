@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "From DCGAN to CUT: My Journey in the ‘I'm Something of a Painter Myself’ Kaggle Competition"
+title: "I'm Something of a Painter Myself"
 permalink: /im-something-of-a-painter/
 tags: [GANs, Kaggle, DCGAN, CycleGAN, CUT]
 image: "../images/post-cards/global-glownet-card.webp"
