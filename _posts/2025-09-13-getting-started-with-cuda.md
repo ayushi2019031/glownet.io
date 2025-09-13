@@ -336,20 +336,6 @@ This means the same code can behave differently across platforms if you rely on 
 
 👉 **Best practice:** use fixed-width types like `int32_t`, `uint64_t`, or `float32` from `<stdint.h>` to ensure consistency.  
 
-### Data Type Consistency
-
-In principle, there should be no difference between **host datatypes** and **device datatypes**.  
-
-However, in practice the size of built-in types (e.g., `long`) can differ across platforms:
-
-- On CUDA, `long` is typically **32-bit**  
-- On Windows, `long` is often **64-bit**  
-- On Linux, `long` may default to **32-bit** on some compilers  
-
-This means the same code can behave differently across platforms if you rely on ambiguous types.  
-
-👉 **Best practice:** use fixed-width types like `int32_t`, `uint64_t`, or `float32` from `<stdint.h>` to ensure consistency.  
-
 ### Compiler and Environment Differences
 
 - CUDA programs are compiled with **`nvcc`**, which wraps around host compilers (e.g., MSVC on Windows, GCC/Clang on Linux).  
