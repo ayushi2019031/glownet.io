@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Getting Started With CUDA"
+title: "Introduction to GPU Computing with CUDA"
 permalink: /getting-started-with-cuda/
-description: "This blog talks about getting started with CUDA. "
+description: "This blog gives an introduction to GPU computing with CUDA, NVIDIA's programming framework. We learn about blocks, threads, and how they map to array indices, along with a walkthrough of a basic code end to end. "
 ---
 
 <script type="module">
@@ -276,6 +276,7 @@ So, when you launch `N` blocks, CUDA runs `N` copies of the kernel, each with a 
 
 ### Global Indexing
 
+![Indexing arrays with blocks and threads](../images/2025-09-13-getting-started-with-cuda/indexing-arrays-blocks-and-threads.webp)
 To calculate which element a thread should work on, we use **global indexing**. In the 1D case:
 
 ```cpp
@@ -367,7 +368,7 @@ This means the same code can behave differently across platforms if you rely on 
 ---
 ## Conclusion
 
-This post is part of my ongoing learning journey through the **[OLCF (Oak Ridge Leadership Computing Facility) CUDA Training Series by NVIDIA](https://www.olcf.ornl.gov/cuda-training-series/)**. Link to the code examples are present on [GitHub](https://github.com/olcf/cuda-training-series/tree/master)  
+This post is part of my ongoing learning journey through the **[OLCF (Oak Ridge Leadership Computing Facility) CUDA Training Series by NVIDIA](https://www.olcf.ornl.gov/cuda-training-series/)**. Link to the code examples are present on [GitHub](https://github.com/olcf/cuda-training-series/tree/master). 
 
 The explanations are based on what I understood from the lectures, and all images/figures used here are borrowed from the official OLCF materials.  
 
