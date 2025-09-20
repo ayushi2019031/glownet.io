@@ -25,29 +25,34 @@ A key idea behind CUDA programming is the concept of **heterogeneous computing**
 
 ## Heterogeneous Computing  
 
-![Heterogeneous Computing](../images/2025-09-13-getting-started-with-cuda/hetereogeneous_programming.webp)
-
 
 In CUDA programming, computation is divided between two main components:  
 
 - **Host** → the CPU and its memory  
 - **Device** → the GPU and its memory  
 
+![Heterogeneous Computing](../images/2025-09-13-getting-started-with-cuda/hetereogeneous_programming.webp)
+
+
 Each is optimized for a different role. The **host** manages tasks such as scheduling, control flow, and lighter operations (e.g., I/O, networking). The **device**, on the other hand, excels at **heavy computations** that can benefit from massive parallelism.  
+
+![Difference in architectures of CPU and GPU](../images/2025-09-13-getting-started-with-cuda/gpu-vs-cpu-arch.webp)
 
 The key idea is to **offload compute-intensive workloads** from the CPU to the GPU, while letting the CPU handle orchestration and tasks that don’t require parallel execution.  
 
+
 ---
 ## Simple Processing Flow  
-
-![CPU-GPU Processing Flow](../images/2025-09-13-getting-started-with-cuda/cpu-gpu-link.webp)
-
 
 A typical CUDA program follows three main steps:  
 
 1. **Copy input data** from CPU (host) memory to GPU (device) memory.  
 2. **Execute the kernel** on the GPU — this is where the heavy lifting happens, with data loaded onto the GPU’s fast on-chip memory for maximum performance.  
 3. **Copy the results back** from GPU memory to CPU memory for further use or output.  
+
+![CPU-GPU Processing Flow](../images/2025-09-13-getting-started-with-cuda/cpu-gpu-link.webp)
+
+![Link between CPU and GPU](../images/2025-09-13-getting-started-with-cuda/cpu-gpu-link.webp)
 
 This flow illustrates the core idea of **heterogeneous computing**: the CPU manages orchestration, while the GPU accelerates data-parallel workloads.  
 
