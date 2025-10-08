@@ -219,7 +219,43 @@ Azure AI Foundry provides a **serverless-style runtime** for AI Agents — combi
 
 ---
 
+# Resources to learn about Azure AI Foundry
+
+
+**Public Documentation**: These are official **Microsoft**'s documentation, along with sample codes which you can try out. 
+
+- [Azure's comprehensive documentation on AI Foundry](https://ai.azure.com/doc/azure/ai-foundry/what-is-azure-ai-foundry)
+
+- [Sample Codes on Microsoft's Official Github Repository](https://github.com/azure-ai-foundry/foundry-samples/tree/main/samples)
+
+**Starter Projects**: These are ideas by developers and Microsoft for anyone to get started building. I will update this list as I find more interesting blogs. 
+
+- [Awesome Agentic AI Use Cases](https://github.com/ashishpatel26/500-AI-Agents-Projects)
+- [Microsoft's beginner course on building AI Agents in 12 lessons!](https://github.com/microsoft/ai-agents-for-beginners)
+- [Building a multi-agent system using Microsoft's AI Agent service](https://devblogs.microsoft.com/semantic-kernel/guest-blog-build-a-multi-agent-system-using-microsoft-azure-ai-agent-service-and-semantic-kernel-in-3-simple-steps/)
+
+
+**Certifications to Learn About Agentic AI**: Certifications from verified sources are a good way to learn from ground up and enhance your resume. 
+
+- [AI-102 Azure AI Engineer Associate AI](https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-engineer/?practice-assessment-type=certification)
+
+- [Andrew NG's course on Agentic AI](https://www.deeplearning.ai/courses/agentic-ai/?utm_campaign=agentic-ai-launch&utm_medium=hero-takeover&utm_source=dlai-homepage)
+
+- [Short courses on latest development in AI](deeplearning.ai)
+
+- [Free Microsoft Learn Resources](https://learn.microsoft.com/en-us/training/modules/)
+
+**Stay Up-To-Date On Latest Developments in Microsoft**: Staying on top of latest developments in tech - you can refer to the material of latest conferences by Microsoft, developer blogs and even official documentation of AI Foundry!
+
+- [Latest updates in Azure AI Foundry](https://ai.azure.com/doc/azure/ai-foundry/whats-nxew-azure-ai-foundry)
+
+- [Microsoft Ignite](https://ignite.microsoft.com/en-US/home)
+
+- [Microsoft Developer Blogs](https://devblogs.microsoft.com/)
 
 
 # Conclusion
-And with this blog you learnt ....
+And with this blog, we have got a quick understanding on building AI agents on Azure, and the list of resources to go through. 
+
+In the next part of this blog series - we will take a use case of how to evaluate a multi-agentic AI flow on AI foundry, which is a project I have personally worked on as a part of Microsoft's Global Hackathon. 
+
