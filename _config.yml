@@ -38,7 +38,7 @@ plugins:
 
 markdown: kramdown
 kramdown:
-  toc_levels: 2..4
+  toc_levels: 1..6
 
 collections:
   research:

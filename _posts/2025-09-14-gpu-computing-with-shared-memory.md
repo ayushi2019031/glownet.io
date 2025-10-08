@@ -2,7 +2,7 @@
 layout: post
 title: "GPU Computing with CUDA: Shared memory"
 permalink: /cuda-shared-memory/
-description: ""
+description: "This blog talks about GPU computing with CUDA, specifically focusing on shared memory and coordination amongst multiple threads. It walks through code for 1D stencil problem. "
 ---
 
 <script type="module">
