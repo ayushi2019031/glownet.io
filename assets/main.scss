@@ -4,27 +4,97 @@
 
 @import "minima";
 
+/* --- Global Readability Tweaks --- */
 body {
-  line-height: 1.6;   // good for readability
+  line-height: 1.6; // good for readability
 }
 
 h1, h2, h3 {
-  line-height: 1.2;   // tighter for headers
+  line-height: 1.2; // tighter for headers
 }
 
+/* --- Enhanced Header Hierarchy --- */
+h1 {
+  font-size: 2.2em;         // standout main title
+  font-weight: 700;         // bold emphasis
+  color: #222;              // darkest tone
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  border-bottom: 3px solid #3851cf;  // subtle accent line
+  padding-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.6em;         // clear step down from h1
+  font-weight: 600;
+  color: #333;              // slightly lighter tone
+  margin-top: 2.5rem;
+  margin-bottom: 0.8rem;
+}
+
+h3 {
+  font-size: 1.25em;
+  font-weight: 500;
+  color: #444;              // lighter again for tertiary sections
+  margin-top: 2rem;
+  margin-bottom: 0.6rem;
+  text-transform: uppercase;  // optional for visual distinction
+  letter-spacing: 0.04em;     // subtle spacing for subhead
+}
+
+/* --- Paragraphs & Horizontal Rules --- */
 p {
   margin-bottom: 1em; // extra space between paragraphs
 }
 
 hr {
-  border: none;          /* remove default border */
-  border-top: 2px solid #ddd;  /* custom line */
-  margin: 2rem 0;        /* vertical spacing */
+  border: none;          
+  border-top: 2px solid #ddd;  
+  margin: 2rem 0;        
 }
 
 hr.fancy {
   border: none;
-  border-top: 3px dashed #888;   /* dashed line */
+  border-top: 3px dashed #888;
   margin: 3rem auto;
-  width: 80%;                   /* shorter width */
+  width: 80%;
+}
+
+
+/* tighten post list layout */
+.post-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.post-list li {
+  margin-bottom: 1.2rem;
+}
+
+/* make date sit closer to title */
+.post-meta {
+  display: block;
+  font-size: 0.85em;
+  color: #666;
+  margin-bottom: 0.1rem;   // was likely 0.5–1rem before
+}
+
+/* make title and date feel like a single visual unit */
+.post-list h3 {
+  margin-top: 0;          // remove default gap
+  margin-bottom: 0.2rem;
+  line-height: 1.3;
+  text-transform: none;
+}
+
+.post-link {
+  color: #222;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.post-link:hover {
+  color: #3851cf;
+  text-decoration: underline;
 }
