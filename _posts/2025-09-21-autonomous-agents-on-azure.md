@@ -11,6 +11,8 @@ description: "In this blog post we discuss how to build and evaluate agents usin
 ---
 In this blog, we discuss about the concepts behind building agents on Azure, with main focus around Azure AI foundry. 
 
+To get a beginner friendly understanding of agents, check my previous blog - [AI Agents Explained](https://glownet.io/ai-agents-explained/)
+
 Keep reading to get a quick understanding of concepts and all resources you can use to start building on AI foundry!
 
 ---
