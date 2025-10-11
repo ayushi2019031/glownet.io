@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Building autonomous AI Agents with Azure (Part - 1)"
+title: "Building AI Agents on Azure"
 permalink: /ai-agents-on-azure/
 description: "In this blog post we discuss how to build and evaluate agents using Azure AI foundry SDK and Azure ML Studio."
 ---
