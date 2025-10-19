@@ -613,7 +613,7 @@ This section outlines how to set up the pipeline, integrate it into CI/CD workfl
 
 ## ⚙️ Prerequisites
 
-### 1. Setup of AI Foundry Agents
+### Setup of AI Foundry Agents
 
 1. Create a new project within **Azure AI Foundry**.  
 2. Inside this project, define one or more **agents**.  
@@ -628,7 +628,7 @@ These will be required by the evaluation and GitHub workflow scripts.
 
 ---
 
-### 2. Setup of OIDC Authentication with GitHub Actions
+### Setup of OIDC Authentication with GitHub Actions
 
 1. Register a new application in **Azure Entra ID**.  
 2. Assign it **RBAC permissions** such as “Cognitive Services OpenAI User” and “Azure OpenAI User” to the AI Foundry project.  
@@ -642,7 +642,7 @@ This configuration allows your workflows to authenticate securely to Azure using
 
 ---
 
-### 3. Setup of GitHub Actions
+### Setup of GitHub Actions
 
 1. Store all sensitive information (keys, endpoints, model names, etc.) in **repository secrets**.  
 2. Create a **GitHub Actions YAML workflow** to trigger the evaluation pipeline.  
