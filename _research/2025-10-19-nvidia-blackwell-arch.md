@@ -18,7 +18,7 @@ Link to the technical whitepaper: [NVIDIA Blackwell Architecture Technical Brief
   <strong><em>A single Blackwell GPU chip</em></strong>
 </p>
 
-# Why the Name “Blackwell”?
+# The Legacy Behind the Name
 
 NVIDIA’s architectures have long carried the names of pioneering thinkers — **Hopper** after Grace Hopper, **Lovelace** after Ada Lovelace, **Kepler**, **Turing**, and now **Blackwell**.  
 The tradition honors those whose ideas reshaped science and computation itself.
