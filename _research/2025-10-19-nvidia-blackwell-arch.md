@@ -13,6 +13,11 @@ image: "../images/post-cards/global-glownet-card.webp"
 
 Link to the technical whitepaper: [NVIDIA Blackwell Architecture Technical Brief](https://resources.nvidia.com/en-us-blackwell-architecture?ncid=no-ncid)
 
+![Blackwell GPU Chip](../images/research/2025-10-19-nvidia-blackwell-arch/blackwell-gpu-chip.webp)
+<p style="text-align:center; margin-top:0.5rem;">
+  <strong><em>A single Blackwell GPU chip</em></strong>
+</p>
+
 # Why the Name “Blackwell”?
 
 NVIDIA’s architectures have long carried the names of pioneering thinkers — **Hopper** after Grace Hopper, **Lovelace** after Ada Lovelace, **Kepler**, **Turing**, and now **Blackwell**.  
@@ -20,6 +25,13 @@ The tradition honors those whose ideas reshaped science and computation itself.
 
 **Dr. David Harold Blackwell (1919–2010)** was a trailblazing mathematician and statistician whose work bridged probability, game theory, and information theory.  
 He co-authored *Theory of Games and Statistical Decisions*, published more than 80 papers, and co-developed the **Rao–Blackwell Theorem**, a cornerstone of modern statistical inference.
+
+![Dr. David H. Blackwell](../images/research/2025-10-19-nvidia-blackwell-arch/blackwell.webp)
+<p style="text-align:center; margin-top:0.5rem;">
+  <strong><em>Dr. David H. Blackwell</em></strong>
+</p>
+
+
 
 Blackwell was also a historic first — the **first Black scholar elected to the U.S. National Academy of Sciences**, and later honored posthumously with the **National Medal of Science (2012)**.  
 His legacy lives at the intersection of mathematics and intelligence — the same space NVIDIA’s new architecture now explores.
@@ -51,6 +63,11 @@ Where traditional scaling ended with training, Blackwell extends it into thought
 # From Hopper to Blackwell: Quantifying the Leap
 
 So how much of a leap is Blackwell? In NVIDIA’s own benchmarks and partner systems you’ll see up to 30× inference performance over Hopper in large-scale LLM clusters, ~2.5× raw compute in certain AI formats, and ~30 % gains in traditional FP64 workloads. The key gains come from boosted interconnect, massive memory and new low-precision formats — but as always, real-world gains will vary by workload.
+
+![Hopper GPU Chip](../images/research/2025-10-19-nvidia-blackwell-arch/hopper-gpu-chip.webp)
+<p style="text-align:center; margin-top:0.5rem;">
+  <strong><em>A single Hopper GPU chip</em></strong>
+</p>
 
 | Feature / Metric                      | **Hopper (H100)**             | **Blackwell (B100 / GB200)**                                     | **Improvement**              |
 | ------------------------------------- | ----------------------------- | ---------------------------------------------------------------- | ---------------------------- |
@@ -131,6 +148,11 @@ This engine ensures that even compressed data streams can feed the tensor cores 
 
 The decompression path integrates with **NVIDIA’s SPARKS / RAPIDS libraries**, allowing developers to leverage GPU-accelerated data pipelines directly within AI workloads.  
 This combination ensures that models, datasets, and tensors remain GPU-resident — dramatically reducing CPU round-trips and I/O overhead.
+
+![NVIDIA's RAPID library](../images/research/2025-10-19-nvidia-blackwell-arch/nvidia-rapids-lib.webp)
+<p style="text-align:center; margin-top:0.5rem;">
+  <strong><em>NVIDIA's RAPID library</em></strong>
+</p>
 
 ## NVIDIA Confidential Computing
 
