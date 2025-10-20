@@ -27,9 +27,9 @@ image: "../images/post-cards/global-glownet-card.webp"
 
 ---
 
-In this blog post, I walk through the 2023 survey paper on various RAG techniques for efficient knowledge retrieval. 
+In this post, I explore the 2023 survey paper on Retrieval-Augmented Generation (RAG) techniques — a comprehensive study on how modern systems perform efficient knowledge retrieval and integration.
 
-I loved reading this paper, and felt that it is worth posting on glownet because of the amazing amount of research that can be done a topic that seems so simple as "RAG". The illustrations and diagrams are amazing - easy to understand and something I would love to learn from if I ever write my own research paper. 
+*Please note that the content and images have been taken from the research paper, unless otherwise mentioned.*
 
 # Paper at a Glance
 
@@ -70,6 +70,8 @@ LLMs often hallucinate or generate outdated information because their knowledge 
 
 Instead of relying solely on their pre-trained knowledge, RAG models dynamically pull facts or context from external databases or document.
 
+![Introduction to RAG](../images/research/2025-10-20-rag-survey-paper/intro-to-rag.webp)
+
 **Core Idea**  
 It integrates two components:
 1. **Retriever** → Finds relevant documents/passages from a knowledge base.  
@@ -91,6 +93,8 @@ RAG has become very common in the world of AI.
 
 ---
 # RAG Paradigms: Naive, Advanced, and Modular
+
+![Different RAG Paradigms](../images/research/2025-10-20-rag-survey-paper/naive-advcd-modular-rag.webp)
 
 ## Naive RAG
 
@@ -290,6 +294,8 @@ Traditional RAG systems perform retrieval just once — fetching a few relevant 
 However, real-world questions often require deeper reasoning, clarification, or contextual refinement.  
 Modern RAG frameworks extend this process through **iterative**, **recursive**, and **adaptive retrieval**, making LLMs progressively smarter, more reflective, and self-guided during generation.
 
+![Augmentations in Retrieval - Iterative, Recursive, Adaptive](../images/research/2025-10-20-rag-survey-paper/types-of-retrieval.webp)
+
 ### Iterative Retrieval
 
 In standard RAG, retrieval is static — a one-time lookup. But complex or multi-part questions often need *ongoing context updates*.  
@@ -480,6 +486,11 @@ Although not always foregrounded in the 2023 survey, multi-modal RAG (MM-RAG) is
 ---
 
 #  Summary Takeaways for Researchers & Practitioners  
+
+The following image shows the summary of the survey paper. 
+
+![Summary of the paper](../images/research/2025-10-20-rag-survey-paper/summary.webp)
+
 - **Don’t assume retrieval is obsolete** just because LLMs support longer context windows — retrieval still offers cost, update, and domain-adaptation advantages.  
 - **Focus on robustness** — real-world RAG systems must detect when they don’t know, avoid hallucination, and reason across evidence.  
 - **Budget intelligently** — retrieval + generation budgets (tokens, compute, storage) matter more than raw scale alone.  
@@ -487,4 +498,11 @@ Although not always foregrounded in the 2023 survey, multi-modal RAG (MM-RAG) is
 - **Embrace modalities** — text-only RAG is no longer sufficient. In 2025, expect portfolio systems that seamlessly handle images, tables, audio, video, and heterogeneous sources.
 
 In short, the 2023 survey remains a useful **foundational map**, but the terrain is rapidly evolving in 2025 — and the next waves of research and deployment will centre on **scale**, **multi-modality**, **robustness** and **operational excellence**.
+
+---
+
+# Conclusion
+
+I genuinely enjoyed reading this paper and felt it deserved a place on Glownet because it shows just how much depth and innovation exist in something that seems as straightforward as “RAG.” The authors have done an exceptional job with their illustrations and explanations — clear, insightful, and inspiring. If I ever write a research paper of my own, this is exactly the kind of clarity and visual storytelling I’d aspire to achieve.
+
 
