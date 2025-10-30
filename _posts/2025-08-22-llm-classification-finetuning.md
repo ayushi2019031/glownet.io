@@ -3,6 +3,8 @@ layout: post
 title: "Finetuning LLMS for classification"
 permalink: /llm-finetuning-classification/
 description: "This blog talks about various techniques to finetune LLMs for classification, tools and platforms for LLM training. Also, comparative analysis amongst different kinds of LLMs, with Kaggle competition notebooks. Additionally, good resources to learn about LLMs"
+tags: [LLMs, Fine-tuning, Classification, LoRA, Kaggle]
+image: "../images/post-cards/global-glownet-card.webp"
 ---
 
 <script type="module">

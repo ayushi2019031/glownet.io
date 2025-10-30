@@ -4,6 +4,7 @@ title: "Evaluating AI Agents on Azure with AI Foundry"
 permalink: /ai-agents-azure-evals/
 tags: [Azure AI Foundry, AI Agents, Evaluation, GitHub Actions, OIDC]
 description: "In this blog post we discuss how to build and evaluate agents using Azure AI foundry SDK and Azure ML Studio."
+image: "../images/post-cards/global-glownet-card.webp"
 ---
 
 * Table of Contents
