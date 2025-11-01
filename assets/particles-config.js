@@ -64,7 +64,7 @@ particlesJS('particles-js', {
     "events": {
       "onhover": {
         "enable": true,
-        "mode": "grab"
+        "mode": "repulse"
       },
       "onclick": {
         "enable": true,
@@ -73,14 +73,18 @@ particlesJS('particles-js', {
       "resize": true
     },
     "modes": {
-      "grab": {
-        "distance": 140,
-        "line_linked": {
-          "opacity": 1
-        }
+      "repulse": {
+        "distance": 100,
+        "duration": 0.2
       },
       "push": {
         "particles_nb": 4
+      },
+      "bubble": {
+        "distance": 200,
+        "size": 6,
+        "duration": 0.3,
+        "opacity": 1
       }
     }
   },
