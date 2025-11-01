@@ -26,6 +26,11 @@ These two networks are trained in a **zero-sum game** where the generator is con
 
 All GANs are built on the same foundational idea: a Generator that learns to produce data and a Discriminator that learns to detect fake data. But different GANs vary significantly across **five key dimensions**, each tailored to solve specific challenges or expand capabilities.
 
+- Loss Function 
+- Variations in Architectures
+- Training Stability and Regularization
+- Latent Space Design and Manipulation  
+
 ## Loss Function
 
 This is one of the most common areas where GANs differ. The loss function determines how the Generator and Discriminator learn.
