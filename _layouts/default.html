@@ -4,6 +4,7 @@
   {%- include head.html -%}
 
   <body>
+    <div id="particles-js"></div>
 
     {%- include header.html -%}
 
@@ -16,6 +17,10 @@
     {%- include footer.html -%}
     <!-- 100% privacy-first analytics -->
     <script data-collect-dnt="true" async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+    
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="{{ "/assets/particles-config.js" | relative_url }}"></script>
 
   </body>
 
