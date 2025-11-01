@@ -4,6 +4,9 @@ title: "I'm Something of a Painter Myself"
 permalink: /im-something-of-a-painter/
 tags: [GANs, Kaggle, DCGAN, CycleGAN, CUT]
 image: "../images/post-cards/global-glownet-card.webp"
+description: "A deep dive into training GANs for artistic image translation using DCGAN, CycleGAN, and CUT on Kaggle’s Monet competition. Learn architectures, FID comparisons, and key lessons from real experiments."
+excerpt: "Exploring DCGAN, CycleGAN, and CUT for Monet-style image translation: results, metrics, and lessons."
+
 ---
 
 * Table of Contents
