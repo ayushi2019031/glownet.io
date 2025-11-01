@@ -2,36 +2,37 @@
 layout: post
 title: "Different flavours of GANS"
 permalink: /types-of-gans/
-tags: [GAN Architecture, Kaggle, Deep Learning, CUT]
+tags: [GANs, Kaggle, Deep Learning]
 image: "../images/post-cards/global-glownet-card.webp"
 ---
 * Table of Contents
 {:toc}
 ---
-## 🔅 Basic Idea
+# Fundamental Idea that powers all GANs
 
-Imagine an artist so skilled they can create fake paintings that are nearly indistinguishable from real ones. Now imagine that artist is an algorithm—and they’re in a constant game against a detective whose only job is to spot the fakes. This is the fundamental idea behind **Generative Adversarial Networks**, or **GANs**.
+Imagine an artist so skilled they can create fake paintings that are nearly indistinguishable from real ones. Now imagine that artist is an algorithm and they’re in a constant game against a detective whose only job is to spot the fakes. This is the fundamental idea behind **Generative Adversarial Networks**, or **GANs**.
 
 First introduced by Ian Goodfellow and his colleagues in 2014, GANs are a type of neural network architecture designed for **generative modeling**, that is, learning to create new data samples that resemble a given dataset. They're made up of two core components:
 
-- 🎨 **The Generator**: This network takes in random noise and learns to generate data (like images) that looks as close to the real data as possible.
-- 🔍 **The Discriminator**: This network evaluates the data and tries to distinguish between real samples (from the dataset) and fake ones (from the generator).
+- **The Generator**: This network takes in random noise and learns to generate data (like images) that looks as close to the real data as possible.
+
+- **The Discriminator**: This network evaluates the data and tries to distinguish between real samples (from the dataset) and fake ones (from the generator).
 
 These two networks are trained in a **zero-sum game** where the generator is constantly trying to fool the discriminator, and the discriminator is constantly trying to get better at detecting fakes. Over time, this adversarial process leads to the generator producing impressively realistic outputs.  
 
 ---
 
-## 🎶 Diversity amongst different GAN Architectures
+# Diversity amongst different GAN Architectures
 
 All GANs are built on the same foundational idea: a Generator that learns to produce data and a Discriminator that learns to detect fake data. But different GANs vary significantly across **five key dimensions**, each tailored to solve specific challenges or expand capabilities.
 
-### 1. 🎯 Loss Function
+## Loss Function
 
 This is one of the most common areas where GANs differ. The loss function determines how the Generator and Discriminator learn.
 
 Here we discuss about some common GAN Loss functions. 
 
-###  Summary Table: GAN Loss Functions
+##  Summary Table: GAN Loss Functions
 
 | **Type of Loss**             | **Description**                                                                 | **Pros**                                                           | **Cons**                                                          |
 |-----------------------------|---------------------------------------------------------------------------------|--------------------------------------------------------------------|-------------------------------------------------------------------|
@@ -44,7 +45,7 @@ Here we discuss about some common GAN Loss functions.
 | **Perceptual Loss**         | Compares high-level features from a pre-trained network instead of pixels.     | Produces high-quality, realistic outputs.                          | Computationally expensive; requires pre-trained networks.         |
 | **Mutual Information Loss** | Maximizes shared information between latent codes and outputs.                 | Encourages disentangled, interpretable latent representations.     | Adds complexity; hard to balance with adversarial loss.           |
 
-### 2. 🧱 Architectural Variants
+## Architectural Variants
 
 The internal design of the Generator and Discriminator varies to suit different tasks and data types.
 
@@ -60,7 +61,7 @@ The internal design of the Generator and Discriminator varies to suit different 
 
 
 
-### 3. 🧠 Architectures Based on Input/Conditioning
+## Architectures Based on Input/Conditioning
 
 GANs vary in the level and type of supervision and input conditioning.
 
@@ -75,7 +76,7 @@ GANs vary in the level and type of supervision and input conditioning.
 
 > This axis defines how much *control* we have over the output generation.
 
-### 4. 🧠 Training Stability & Regularization
+## Training Stability & Regularization
 
 Training a GAN is like walking a tightrope. The generator wants to fool the discriminator, and the discriminator wants to catch every fake—but if one gets too good too fast, the other collapses. That’s why researchers have developed clever techniques to balance this adversarial game and prevent instability, mode collapse, or dead gradients.
 <style>
@@ -214,7 +215,7 @@ Training a GAN is like walking a tightrope. The generator wants to fool the disc
 > These techniques improve convergence and reduce common training pitfalls.
 
 
-### 5. 🎨 Latent Space Design & Manipulation
+## Latent Space Design & Manipulation
 
 Some GANs are designed to give interpretable and editable latent representations.
 
@@ -257,7 +258,7 @@ Some GANs are designed to give interpretable and editable latent representations
 
 
 
-### 🎨 GANs Based on Latent Space Design
+## GANs Based on Latent Space Design
 
 | **Name of GAN** | **Trick**                             | **What It Enables**                      | **Show More** |
 |------------------|----------------------------------------|-------------------------------------------|---------------|
@@ -271,7 +272,7 @@ Some GANs are designed to give interpretable and editable latent representations
 ---
 > These approaches enhance semantic control and interpolation in the latent space.
 
-## 🧾 Final Thoughts
+# Final Thoughts
 
 GANs have completely changed the way we think about creativity in AI. At their core, they’re a fascinating game between two networks — one trying to create, the other trying to critique. But the real magic lies in the details: how we design the loss functions, structure the architectures, and most intriguingly, how we shape the latent space.
 

@@ -231,7 +231,7 @@ Working in Azure Specialized org building Agentic AI systems
   - **[CS234: Reinforcement Learning](https://digitalcredential.stanford.edu/check/3EA90D2274EE4BB33FFFBB2C93091C16880FBA58DF11119933D828B32AF3868DVzFTOEJtVitJN2ROWlZqS3RXeit6V0FVeDltUWFselVQUTI1UjNWNHllSDdrbTQv)** (*Winter 2024*) — Covered foundational and advanced RL techniques including policy gradients, Q-learning, and bandit algorithms, with a focus on sequential decision-making under uncertainty.
   - **[CS236: Deep Generative Models](https://digitalcredential.stanford.edu/check/A94BC56E7F6F1330A926CCD1833998FCEE640CCC8DF13D041DF7A1AC42E69AEDLzk3aWt0b0tUNy9HdmJ3aDE4ejNZS0IyUHF5ZHVVQW5DRzRtTjI0cjR0R0lHcXIz)** (*Summer 2024*) — Explored generative modeling techniques such as VAEs, GANs, Normalizing Flows, and Diffusion Models, emphasizing both theory and implementation.
 
-- **SWE Intern @Microsoft** — *Microsoft, Summer 2022*
+- **SWE Intern @Microsoft** — *Microsoft, May 2022 - July 2022*
   - **Optimization of Microsoft's internal Machine learning library**: written using deep learning libraries and algorithms in python based on paper written by MSFT Research leading to reduction in memory usage by 75% on 100+ GB datasets using time profiling, vectorization and reduction in logging.
   - Built a **distributed ML PoC using PySpark and Databricks** demonstrating scalable pre-processing and training on large-scale datasets.
   - Secured a return offer from Microsoft 😊
@@ -240,7 +240,7 @@ Working in Azure Specialized org building Agentic AI systems
   - Received appreciation for mentoring 400+ students of junior batches in IIIT Delhi in DSA
   - As a part of TAship, prepared assignments, took tutorials and office hours for students.
 
-- **Machine Learning Engineer** — *Wunderman Thompson Salmon, 2021*
+- **Machine Learning Engineer** — *Wunderman Thompson Salmon, May 2021 - July 2021*
   - Implemented a recommendation system to predict customers' next baskets based on the paper using PyTorch.
 
 - **Research Publication** — *ACM Hypertext Conference, 2022*
