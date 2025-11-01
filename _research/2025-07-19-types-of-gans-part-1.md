@@ -2,7 +2,7 @@
 layout: post
 title: "Different flavours of GANS"
 permalink: /types-of-gans/
-tags: [GANs, Kaggle, Deep Learning]
+tags: [GANs, Deep Learning, Image Generation]
 image: "../images/post-cards/global-glownet-card.webp"
 description: "An in-depth guide to understanding how different GAN architectures work from loss functions and training tricks to latent space control in InfoGAN, StyleGAN, and BigGAN. Learn how architectural and mathematical choices shape the creativity of modern generative models."
 excerpt: "An in-depth guide to understanding how different GAN architectures work from loss functions and training tricks to latent space control in InfoGAN, StyleGAN, and BigGAN."
