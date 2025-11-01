@@ -3,8 +3,23 @@ layout: post
 title: "Introduction to GPU Computing with CUDA"
 permalink: /getting-started-with-cuda/
 description: "This blog gives an introduction to GPU computing with CUDA, NVIDIA's programming framework. We learn about blocks, threads, and how they map to array indices, along with a walkthrough of a basic code end to end. "
-tags: [CUDA, GPU Computing, Parallel Programming, NVIDIA]
+tags: [
+  CUDA,
+  GPU Computing,
+  Parallel Programming,
+  NVIDIA,
+  Heterogeneous Computing,
+  GPU Architecture,
+  CUDA Kernels,
+  GPU Threads and Blocks,
+  nvcc Compiler,
+  Vector Addition,
+  High Performance Computing,
+  CUDA Basics
+]
+
 image: "../images/post-cards/global-glownet-card.webp"
+excerpt: "A beginner’s guide to GPU computing with CUDA to learn about threads, blocks, memory management, and vector addition with clear code examples."
 ---
 
 <script type="module">
@@ -25,7 +40,7 @@ A key idea behind CUDA programming is the concept of **heterogeneous computing**
 
 ---
 
-## Heterogeneous Computing  
+# Heterogeneous Computing  
 
 
 In CUDA programming, computation is divided between two main components:  
@@ -44,7 +59,7 @@ The key idea is to **offload compute-intensive workloads** from the CPU to the G
 
 
 ---
-## Simple Processing Flow  
+# Simple Processing Flow  
 
 A typical CUDA program follows three main steps:  
 
@@ -65,7 +80,7 @@ This flow illustrates the core idea of **heterogeneous computing**: the CPU mana
 To write a CUDA program, you need to understand a few **special components** that make GPU programming different from regular C/C++.  
 
 
-### Marking functions to run on GPU 
+## Marking functions to run on GPU 
 
 By default, functions in C/C++ run on the **host (CPU)**. To make a function run on the **device (GPU)**, CUDA introduces special keywords.  
 
@@ -83,7 +98,7 @@ __global__ void helloGPU() {
 
 As you can see, without `__global__`, the function would run on the CPU only, but with this keyword, it can run on the GPU instead, if called with kernel launch configuration (explained below). 
 
-### Compilation of Code  
+## Compilation of Code  
 
 CUDA programs are compiled using the **NVIDIA CUDA Compiler (`nvcc`)**:  
 
@@ -95,7 +110,7 @@ This separation is what allows a single `.cu` file to contain both CPU and GPU c
 
 Link to learning more about NVCC: [NVCC Compiler](https://docs.nvidia.com/cuda/cuda-compiler-driver-nvcc/)
 
-### ⚙️ Kernel Launch Configuration  
+## Kernel Launch Configuration  
 
 Calling a GPU kernel requires **launch configuration parameters**, which specify how many threads and blocks to use:  
 
@@ -109,7 +124,7 @@ myKernel<<<numBlocks, threadsPerBlock>>>(arguments);
 Without these configuration parameters, the function would just behave like a normal C function and run on the CPU.  
 
 
-### 💾 Memory Management  
+## Memory Management  
 
 Just like C uses `malloc` and `free`, CUDA provides its own functions for GPU memory management:  
 
@@ -117,7 +132,7 @@ Just like C uses `malloc` and `free`, CUDA provides its own functions for GPU me
 - **`cudaFree()`** → Frees GPU memory.  
 - **`cudaMemcpy()`** → Copies data between host and device.  
 
-⚠️ **Important rule:**  
+**Important rule:**  
 - Host pointers (from `malloc`) and device pointers (from `cudaMalloc`) are **not interchangeable**.  
 - Never try to dereference a device pointer on the CPU!  
 
@@ -187,7 +202,7 @@ Let’s walk through this CUDA program step by step. At a high level, GPU progra
 
 Now let’s map that to the code.
 
-#### 1. Copying Data from CPU to GPU
+### Copying Data from CPU to GPU
 
 ```cpp
 cudaMalloc(&d_A, DSIZE * sizeof(float));
@@ -204,7 +219,7 @@ cudaMemcpy(..., cudaMemcpyHostToDevice) copies arrays from CPU → GPU so the ke
 
 👉 Think of this as “packing your data into the GPU’s backpack before it starts work.”
 
-#### 2. Launching the GPU Kernel
+### Launching the GPU Kernel
 
 ```cpp
 vadd<<< (DSIZE + block_size - 1) / block_size, block_size >>>(d_A, d_B, d_C, DSIZE);
@@ -219,7 +234,7 @@ vadd<<< (DSIZE + block_size - 1) / block_size, block_size >>>(d_A, d_B, d_C, DSI
 
 👉 You can think of this as: *“Divide the work into blocks, and within each block, spawn multiple workers (threads) who each handle one element of the arrays.”*
 
-#### 3. Copying Results Back to CPU
+### Copying Results Back to CPU
 
 ```cpp
 cudaMemcpy(h_C, d_C, DSIZE * sizeof(float), cudaMemcpyDeviceToHost);
@@ -232,7 +247,7 @@ cudaMemcpy(h_C, d_C, DSIZE * sizeof(float), cudaMemcpyDeviceToHost);
 
 ---
 
-## Threads, blocks and grids: The CUDA hierarchy
+# Threads, blocks and grids: The CUDA hierarchy
 
 In CUDA, **threads** are the smallest units of execution — think of them as individual workers.
 
@@ -271,7 +286,7 @@ flowchart LR
 
 Each thread is supposed to work on a different element of the problem. Blocks help organize these threads, and the grid brings all the blocks together.
 
-### Built-In Variables
+## Built-In Variables
 
 CUDA provides special built-in variables that let you identify where a thread is running:
 
@@ -281,7 +296,7 @@ CUDA provides special built-in variables that let you identify where a thread is
 
 So, when you launch `N` blocks, CUDA runs `N` copies of the kernel, each with a different `blockIdx`.
 
-### Global Indexing
+## Global Indexing
 
 ![Indexing arrays with blocks and threads](../images/2025-09-13-getting-started-with-cuda/indexing-arrays-blocks-and-threads.webp)
 To calculate which element a thread should work on, we use **global indexing**. In the 1D case:
@@ -294,7 +309,7 @@ int idx = threadIdx.x + blockDim.x * blockIdx.x;
 - `blockDim.x * blockIdx.x` → offset based on which block the thread belongs to  
 - The result: each thread gets a **unique global index** (`idx`) across the whole grid  
 
-### Example: 1D Vector Addition
+## Example: 1D Vector Addition
 
 Suppose you launch the kernel as:
 
@@ -317,11 +332,11 @@ Here:
 
 ---
 
-## Compliance and Standards
+# Compliance and Standards
 
 When writing CUDA programs, it’s important to be aware of a few **compliance and portability considerations**. CUDA code looks like C/C++, but not every feature from standard libraries is supported on the GPU. Kernels are often restricted in what functions and objects they can use.
 
-### Data Transfer Model
+## Data Transfer Model
 
 - Objects can be **passed by value** between host (CPU) memory and device (GPU) memory.  
 
@@ -329,7 +344,7 @@ When writing CUDA programs, it’s important to be aware of a few **compliance a
 
 - While this bus is fast, it’s still a **bottleneck compared to on-device memory bandwidth** — which is why minimizing host ↔ device transfers is a key optimization strategy.  
 
-### Data Type Consistency
+## Data Type Consistency
 
 In principle, there should be no difference between **host datatypes** and **device datatypes**.  
 
@@ -343,7 +358,7 @@ This means the same code can behave differently across platforms if you rely on 
 
 👉 **Best practice:** use fixed-width types like `int32_t`, `uint64_t`, or `float32` from `<stdint.h>` to ensure consistency.  
 
-### Compiler and Environment Differences
+## Compiler and Environment Differences
 
 - CUDA programs are compiled with **`nvcc`**, which wraps around host compilers (e.g., MSVC on Windows, GCC/Clang on Linux).  
 
@@ -359,7 +374,7 @@ This means the same code can behave differently across platforms if you rely on 
 > - Remember: not all **standard C/C++ libraries** are supported inside CUDA kernels.  
 
 ---
-## Conclusion
+# Conclusion
 
 This post is part of my ongoing learning journey through the **[OLCF (Oak Ridge Leadership Computing Facility) CUDA Training Series by NVIDIA](https://www.olcf.ornl.gov/cuda-training-series/)**. Link to the code examples are present on [GitHub](https://github.com/olcf/cuda-training-series/tree/master). 
 
