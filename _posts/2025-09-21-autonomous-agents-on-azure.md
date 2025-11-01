@@ -2,7 +2,10 @@
 layout: post
 title: "Building AI Agents on Azure with AI Foundry"
 permalink: /ai-agents-on-azure/
-description: "In this blog post we discuss how to build and evaluate agents using Azure AI foundry SDK and Azure ML Studio."
+tags: [Azure AI Foundry, Agentic AI, Azure, CI/CD, Authentication Techniques]
+description: "Learn how to build, deploy, and evaluate AI Agents on Azure using Azure AI Foundry, Copilot Studio, and the Microsoft 365 Agents SDK. This guide explains agent architecture, threads, runs, deployment, and evaluation best practices for creating secure, scalable, multi-agent systems."
+excerpt: "A practical guide to building and scaling AI Agents on Azure using AI Foundry, while briefly touching upon Copilot Studio."
+image: "../images/post-cards/global-glownet-card.webp"
 ---
 
 * Table of Contents
@@ -17,7 +20,7 @@ Keep reading to get a quick understanding of concepts and all resources you can 
 
 ---
 
-# 🧠 What Are AI Agents?
+# What Are AI Agents?
 
 **In simple terms:**  
 > **AI Agents = LLM Model + Action + Knowledge Base**
@@ -26,7 +29,7 @@ That’s the most concise way to define an AI Agent.
 
 An **AI Agent** uses a **Large Language Model (LLM)** to understand natural language, can **perform actions** through tools or APIs, and relies on a **knowledge base** to make its responses contextually accurate and grounded.
 
-## 💡 Example: Multi-Agent System in a Company
+## Example: Multi-Agent System in a Company
 
 Imagine a company building an internal solution that automatically detects and fixes issues in its software systems.  
 Because the system is complex, the company employs **multiple specialized AI Agents**, each responsible for a particular task — such as diagnosis, remediation, documentation, or communication.
@@ -34,45 +37,47 @@ Because the system is complex, the company employs **multiple specialized AI Age
 A central **orchestrator agent** coordinates all of them, deciding which agent should act based on the user’s request.
 
 These agents draw knowledge from:
-- 🧾 Tech support manuals and public documentation  
-- 📚 Internal company documents and configuration data  
-- 💬 Historical issue logs and user feedback  
+- Tech support manuals and public documentation  
+- Internal company documents and configuration data  
+- Historical issue logs and user feedback  
 
-Before taking any critical action (like system restarts or data deletions), the system **asks the end user for explicit permission** — ensuring safety and accountability.
+Before taking any critical action (like system restarts or data deletions), the system **asks the end user for explicit permission**, thus ensuring safety and accountability.
 
 
-## 🧩 Evaluation and Safety of Agents
+## Evaluation and Safety of Agents
 
 As part of the company’s internal audit process, every Agentic AI system must pass automated evaluations for:  
-- **Safety** – ensuring no harmful or destructive behavior  
-- **Coherence** – producing logically consistent and relevant responses  
-- **Grounding** – staying factual and aligned with verified knowledge sources  
-- **Reliability** – maintaining consistent tool accuracy (e.g., **Tool Call Accuracy**)
+- **Safety**:  ensuring no harmful or destructive behavior  
+- **Coherence**:  producing logically consistent and relevant responses  
+- **Grounding**:  staying factual and aligned with verified knowledge sources  
+- **Reliability**:  maintaining consistent tool accuracy (e.g., **Tool Call Accuracy**)
 
 These evaluations ensure that the agents operate responsibly and can be trusted in production environments.
 
 ---
 
-# ⚙️ Platforms to Build AI Agents on Azure
+# Platforms to Build AI Agents on Azure
 
 Azure offers a complete ecosystem for building AI Agents — from **no-code** tools for business users to **developer-centric frameworks** for advanced multi-agent systems.  
 All you need is an **idea** and the **drive to build**.
 
+| Use Case | Recommended Platform | Key User Type |
+|-----------|----------------------|----------------|
+| Simple task automation in Microsoft 365 | **Copilot Studio** | Business users |
+| Custom logic and integrations with Copilot | **Microsoft 365 Agents SDK** | Professional developers |
+| Advanced, scalable, multi-agent systems | **Azure AI Foundry + Semantic Kernel** | AI/ML engineers and developers |
 
-## Copilot Studio — For Business Users
+## Copilot Studio For Business Users
 
 For business users with little or no coding experience, **Copilot Studio** provides an intuitive, no-code way to build agents directly within **Microsoft 365 Copilot Chat**.  
 These **declarative agents** can automate everyday tasks, streamline workflows, and boost productivity — all with minimal IT involvement.
 
 When users are comfortable with **low-code tools** like **Microsoft Power Platform**, Copilot Studio enables them to combine their technical skills with deep **business domain knowledge** to create richer, more powerful agents.
 
-Such agents can extend the capabilities of Microsoft 365 Copilot or bring AI-powered automation into channels like:
-- 💬 **Microsoft Teams**
-- 🧵 **Slack**
-- 💡 **Messenger**
+Such agents can extend the capabilities of Microsoft 365 Copilot or bring AI-powered automation into channels like **Microsoft Teams**, **Slack**, **Messenger**.
 
 
-## 💻 2. Microsoft 365 Agents SDK — For Professional Developers
+## Microsoft 365 Agents SDK For Professional Developers
 
 When organizations need **advanced custom extensions** to Microsoft 365 Copilot, developers can use the **Microsoft 365 Agents SDK**.  
 This SDK offers programmatic control, allowing professional developers to:
@@ -83,24 +88,15 @@ This SDK offers programmatic control, allowing professional developers to:
 This is ideal for scenarios requiring fine-grained control, external integrations, or custom business workflows.
 
 
-## ☁️ 3. Azure AI Foundry — For Complex, Scalable Agents
+## Azure AI Foundry For Complex, Scalable Agents
 
 For full-stack agentic development, Azure provides the **Foundry Agent Service**, a developer-first platform that allows integration with:
-- ⚙️ **Azure AI Services** (for language, vision, and speech)
-- 🧠 **Custom model endpoints** (OpenAI, OSS, or fine-tuned models)
-- 📦 **Custom storage and search systems** (like Azure Cognitive Search, Cosmos DB, or Blob Storage)
+- **Azure AI Services** (for language, vision, and speech)
+- **Custom model endpoints** (OpenAI, OSS, or fine-tuned models)
+- **Custom storage and search systems** (like Azure Cognitive Search, Cosmos DB, or Blob Storage)
 
 Start with the **Foundry Agent Service** to develop single, standalone agents.  
 Then, when you’re ready to scale up and orchestrate multiple agents working together, use **Semantic Kernel** to build **multi-agent systems** that collaborate intelligently.
-
-
-Hence, in summary: 
-
-| Use Case | Recommended Platform | Key User Type |
-|-----------|----------------------|----------------|
-| Simple task automation in Microsoft 365 | **Copilot Studio** | Business users |
-| Custom logic and integrations with Copilot | **Microsoft 365 Agents SDK** | Professional developers |
-| Advanced, scalable, multi-agent systems | **Azure AI Foundry + Semantic Kernel** | AI/ML engineers and developers |
 
 Azure’s agentic ecosystem ensures there’s a path for everyone — from **citizen developers** to **AI professionals** — to bring intelligent automation to life.
 
@@ -112,13 +108,22 @@ In this blog, we will cover the overall concepts and architecture, and for step 
 
 ## An Overview on Agents 
 
+An *agent* isn’t just a chat interface, it’s a **modular system** that combines reasoning, memory, and action into a single programmable entity. You can think of an agent as a **microservice powered by intelligence**:  
+it listens, reasons, takes actions, and learns from its environment,  all within a controlled runtime that integrates seamlessly with other Azure services.
+
+
 ### Key Concepts
 
-Agent has three components - LLM Model, tool, knowledge base. 
+An **Agent** in Azure AI Foundry is composed of three main building blocks: the **LLM Model**, **Tools**, and a **Knowledge Base**. Together, they define the agent’s reasoning, capabilities, and contextual awareness.
 
-1. LLM Model: the reasoning and language backbone
-2. Tools: Knowledge / grounding tools — e.g. Bing Search, Azure AI Search, File Search, Microsoft Fabric, and domain-specific licensed data sources; Action / execution tools — e.g. OpenAPI tool (wrap existing APIs), Azure Functions, Logic Apps,; MCP integration
-3. Multi-Agent Support: Foundry supports Connected Agents, allowing you to build multi-agent systems without needing to handcraft orchestration logic. The main agent can delegate tasks to specialized agents naturally.
+1. **LLM Model** – The core reasoning and language backbone that interprets user input, plans actions, and generates responses.  
+2. **Tools** – Extend the agent’s capabilities beyond text:
+   - **Knowledge / Grounding Tools** – Such as Bing Search, Azure AI Search, File Search, Microsoft Fabric, or domain-specific licensed data sources.  
+   - **Action / Execution Tools** – Such as OpenAPI tools (to wrap existing APIs), Azure Functions, and Logic Apps.  
+   - **MCP Integration** – Enables inter-agent communication and tool interoperability across different systems.  
+3. **Knowledge Base** – The contextual layer that stores domain data, documents, and historical interactions, allowing the agent to ground its reasoning in verified information.  
+
+Azure AI Foundry also supports **Connected Agents**, enabling multi-agent architectures without custom orchestration code, where the main agent can delegate tasks to specialized agents dynamically.
 
 ### Agent Identity & API Access
 
@@ -131,7 +136,7 @@ This **Agent ID** can be used programmatically to:
 
 ## What are Threads and Runs? 
 In Azure AI Foundry, **threads** represent the *conversational or execution context* of an agent.  
-Every interaction — whether it’s a user query, a tool invocation, or a multi-turn conversation — happens inside a **thread**.
+Every interaction, whether it’s a user query, a tool invocation, or a multi-turn conversation happens inside a **thread**.
 
 You can think of a thread as the **stateful container** that holds all messages, metadata, and context for a particular run of an agent.
 
@@ -143,7 +148,7 @@ A **thread** is a persistent object that maintains:
 
 Each thread can contain multiple **runs**, and each run represents a single execution attempt or response generation within that thread.
 
-This structure lets developers resume, inspect, or replay an agent’s reasoning — making debugging and evaluation much easier.
+This structure lets developers resume, inspect, or replay an agent’s reasoning, hence making debugging and evaluation much easier.
 
 
 ### Utility of Threads in Multi-Agent Systems and Production
@@ -165,22 +170,20 @@ These are features of threads in **Production**.
 - Lightweight state – Bring-your-own storage (e.g., Cosmos DB) for persistence
 - Integration – Threads can be monitored and visualized in the Foundry Studio UI
 
-### 🔑 Thread Identity & Access
-
 Just like agents, each thread in Foundry has a **unique Thread ID**, which can be used programmatically to fetch or update its state.
 
 ## How do Threads, Runs and Messages come together?
 
 A **message** is the fundamental communication unit inside a thread.  
 Messages can come from:
-- 🧑 **User** – asking a question, submitting a command, or giving feedback  
-- 🤖 **Agent** – replying, calling a tool, or returning a result  
-- ⚙️ **Tool** – providing data or an action result back to the agent  
+- **User** – asking a question, submitting a command, or giving feedback  
+- **Agent** – replying, calling a tool, or returning a result  
+- **Tool** – providing data or an action result back to the agent  
 
 Each message is stored chronologically inside its parent thread, maintaining the conversational flow and memory.
 
 A **run** represents one *execution cycle* of the agent inside a thread.  
-When a new message is received, the agent starts a **run** to process that input — which may involve:
+When a new message is received, the agent starts a **run** to process that input which may involve:
 1. Reading the message and prior context  
 2. Reasoning using the LLM  
 3. Calling external tools or APIs  
@@ -188,7 +191,7 @@ When a new message is received, the agent starts a **run** to process that input
 
 Each run is tracked individually for **traceability** and **evaluation**, making it easy to inspect how a particular response was generated.
 
-### 🔗 Putting It All Together
+### Putting It All Together
 
 Here’s how these components interact during a typical user request:
 
@@ -220,6 +223,53 @@ Here’s how these components interact during a typical user request:
 Azure AI Foundry provides a **serverless-style runtime** for AI Agents — combining **managed compute**, **elastic scaling**, **observability**, and **secure deployment pipelines** so you can move seamlessly from prototype to enterprise-scale production.
 
 ---
+# AI Foundry Specific Concepts To Explore
+
+Once you understand how agents work conceptually, it’s important to get familiar with the key building blocks of **Azure AI Foundry’s infrastructure** — these define *where* your agents live, *who* can access them, and *how* they interact with deployed models.
+
+## Hub vs. Project
+
+- **Hub** – Think of it as the *root workspace* or *organizational boundary* in Azure AI Foundry.  
+  A hub can host multiple projects and serves as the central governance layer for access control, resource sharing, and model management.  
+  Each hub can also connect to shared compute, data sources, and model registries.  
+
+- **Project** – A project lives inside a hub and contains your **agents, models, datasets, and evaluation workflows**.  
+  It’s a focused environment where a specific team or experiment can be managed independently.  
+  Each project inherits policies and settings from its parent hub but can have its own isolated configuration for testing and deployment.
+
+This separation of *hub* and *project* allows you to structure large-scale deployments — one hub per organization or business unit, and projects per product, feature, or use case.
+
+## Role-Based Access Control (RBAC)
+
+Azure AI Foundry integrates tightly with **Azure RBAC** to manage permissions and enforce data security.  
+You can define who has access to view, edit, or deploy agents across hubs and projects.
+
+Common roles include:
+- **Reader** – Can view projects, agents, and evaluation results but cannot modify anything.  
+- **Contributor** – Can create, edit, and test agents within assigned projects.  
+- **Owner / Admin** – Full permissions to manage access policies, model connections, and compute resources.  
+
+## Model Deployment and Connections
+
+Agents in Foundry can use models hosted on:
+- **Azure OpenAI Service** – For GPT-based reasoning, embeddings, and completions.  
+- **Custom Endpoints** – Bring your own model hosted on Azure Machine Learning, OSS frameworks, or external APIs.  
+- **Connected Registries** – Access fine-tuned or organization-approved models via Azure Model Catalog.
+
+We can fine-tune existing models as well.  
+
+When deploying, Foundry handles:
+- **Versioning** – Each model and agent can be version-tagged for rollback or A/B testing.  
+- **Scaling** – Compute autoscaling is managed by Azure, so your deployments stay responsive under load.  
+- **Networking** – Agents and model endpoints can be secured using **Private Endpoints**, **VNETs**, and **Microsoft Entra ID** for authentication.
+
+## Evaluation Integration
+
+Every deployed agent can be linked with **evaluation pipelines** to monitor *Groundedness, Coherence, Tool Call Accuracy, Latency and response quality.
+
+This continuous evaluation loop helps maintain agent reliability as you iterate on prompts, models, or tools.
+
+---
 
 # Resources to learn about Azure AI Foundry
 
@@ -227,7 +277,6 @@ Azure AI Foundry provides a **serverless-style runtime** for AI Agents — combi
 **Public Documentation**: These are official **Microsoft**'s documentation, along with sample codes which you can try out. 
 
 - [Azure's comprehensive documentation on AI Foundry](https://ai.azure.com/doc/azure/ai-foundry/what-is-azure-ai-foundry)
-
 - [Sample Codes on Microsoft's Official Github Repository](https://github.com/azure-ai-foundry/foundry-samples/tree/main/samples)
 
 **Starter Projects**: These are ideas by developers and Microsoft for anyone to get started building. I will update this list as I find more interesting blogs. 
@@ -240,19 +289,14 @@ Azure AI Foundry provides a **serverless-style runtime** for AI Agents — combi
 **Certifications to Learn About Agentic AI**: Certifications from verified sources are a good way to learn from ground up and enhance your resume. 
 
 - [AI-102 Azure AI Engineer Associate AI](https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-engineer/?practice-assessment-type=certification)
-
 - [Andrew NG's course on Agentic AI](https://www.deeplearning.ai/courses/agentic-ai/?utm_campaign=agentic-ai-launch&utm_medium=hero-takeover&utm_source=dlai-homepage)
-
 - [Short courses on latest development in AI](deeplearning.ai)
-
 - [Free Microsoft Learn Resources](https://learn.microsoft.com/en-us/training/modules/)
 
 **Stay Up-To-Date On Latest Developments in Microsoft**: Staying on top of latest developments in tech - you can refer to the material of latest conferences by Microsoft, developer blogs and even official documentation of AI Foundry!
 
 - [Latest updates in Azure AI Foundry](https://ai.azure.com/doc/azure/ai-foundry/whats-nxew-azure-ai-foundry)
-
 - [Microsoft Ignite](https://ignite.microsoft.com/en-US/home)
-
 - [Microsoft Developer Blogs](https://devblogs.microsoft.com/)
 
 

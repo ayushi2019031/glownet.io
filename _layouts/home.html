@@ -10,38 +10,237 @@ layout: default
   {{ content }}
 
   {%- if site.posts.size > 0 -%}
-    <h2 class="post-list-heading">{{ page.list_title | default: "Explorations and Concept Breakdowns" }}</h2>
+    
+    <!-- Tag Filter Section -->
+    <div class="tag-filter-section">
+      <h2 class="filter-heading">{{ page.list_title | default: "Explorations and Concept Breakdowns" }}</h2>
+      <div class="tag-filters" id="tagFilters">
+        <button class="tag-button active" data-tag="all">All Posts</button>
+        {%- assign all_tags = "" | split: "" -%}
+        {%- for post in site.posts -%}
+          {%- if post.tags -%}
+            {%- for tag in post.tags -%}
+              {%- unless all_tags contains tag -%}
+                {%- assign all_tags = all_tags | push: tag -%}
+              {%- endunless -%}
+            {%- endfor -%}
+          {%- endif -%}
+        {%- endfor -%}
+        {%- assign sorted_tags = all_tags | sort -%}
+        {%- for tag in sorted_tags -%}
+          <button class="tag-button" data-tag="{{ tag }}">{{ tag }}</button>
+        {%- endfor -%}
+      </div>
+    </div>
 
-    <ul class="post-list">
+    <!-- Blog Posts Grid -->
+    <div class="blog-grid">
       {%- for post in site.posts -%}
-      <li>
-        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-        <span class="post-meta">{{ post.date | date: date_format }}</span>
-        <h3>
-          <a class="post-link" href="{{ post.url | relative_url }}">
-            {{ post.title | escape }}
-          </a>
-        </h3>
-      </li>
+        <article class="blog-tile" data-tags="{{ post.tags | join: ',' }}">
+          <div class="tile-content">
+            {%- if post.image -%}
+              <div class="tile-image">
+                <img src="{{ post.image | relative_url }}" alt="{{ post.title | escape }}">
+              </div>
+            {%- endif -%}
+            <div class="tile-body">
+              <h3 class="tile-title">
+                <a href="{{ post.url | relative_url }}">
+                  {{ post.title | escape }}
+                </a>
+              </h3>
+              {%- if post.date -%}
+                {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+                <p class="tile-date">{{ post.date | date: date_format }}</p>
+              {%- endif -%}
+              {%- if post.excerpt -%}
+                <p class="tile-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+              {%- endif -%}
+              {%- if post.tags -%}
+                <div class="tile-tags">
+                  {%- for tag in post.tags -%}
+                    <span class="tile-tag">{{ tag }}</span>
+                  {%- endfor -%}
+                </div>
+              {%- endif -%}
+            </div>
+          </div>
+        </article>
       {%- endfor -%}
-    </ul>
+    </div>
+
   {%- endif -%}
+  
   <hr style="margin: 2rem 0; border: 0; height: 1px; background: #e0e0e0;">
 
-  <h2 class="post-list-heading">Thinking in Papers</h2>
-<ul class="post-list">
-  {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-  {%- for item in site.research | sort: "date" | reverse -%}
-  <li>
-    <span class="post-meta">
-      {%- if item.date -%}{{ item.date | date: date_format }}{%- endif -%}
-    </span>
-    <h3><a class="post-link" href="{{ item.url | relative_url }}">{{ item.title | escape }}</a></h3>
-  </li>
-  {%- endfor -%}
-</ul>
+  {%- if site.research.size > 0 -%}
+    
+    <!-- Research Tag Filter Section -->
+    <div class="tag-filter-section">
+      <h2 class="filter-heading">Thinking in Papers</h2>
+      <div class="tag-filters" id="researchTagFilters">
+        <button class="tag-button research-tag-button active" data-tag="all">All Papers</button>
+        {%- assign all_research_tags = "" | split: "" -%}
+        {%- for paper in site.research -%}
+          {%- if paper.tags -%}
+            {%- for tag in paper.tags -%}
+              {%- unless all_research_tags contains tag -%}
+                {%- assign all_research_tags = all_research_tags | push: tag -%}
+              {%- endunless -%}
+            {%- endfor -%}
+          {%- endif -%}
+        {%- endfor -%}
+        {%- assign sorted_research_tags = all_research_tags | sort -%}
+        {%- for tag in sorted_research_tags -%}
+          <button class="tag-button research-tag-button" data-tag="{{ tag }}">{{ tag }}</button>
+        {%- endfor -%}
+      </div>
+    </div>
 
-   <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
-</ul>
+    <!-- Research Papers Grid -->
+    <div class="blog-grid">
+      {%- assign sorted_research = site.research | sort: "date" | reverse -%}
+      {%- for paper in sorted_research -%}
+        <article class="blog-tile research-tile" data-tags="{{ paper.tags | join: ',' }}">
+          <div class="tile-content">
+            {%- if paper.image -%}
+              <div class="tile-image">
+                <img src="{{ paper.image | relative_url }}" alt="{{ paper.title | escape }}">
+              </div>
+            {%- endif -%}
+            <div class="tile-body">
+              <h3 class="tile-title">
+                <a href="{{ paper.url | relative_url }}">
+                  {{ paper.title | escape }}
+                </a>
+              </h3>
+              {%- if paper.date -%}
+                {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+                <p class="tile-date">{{ paper.date | date: date_format }}</p>
+              {%- endif -%}
+              {%- if paper.excerpt -%}
+                <p class="tile-excerpt">{{ paper.excerpt | strip_html | truncatewords: 30 }}</p>
+              {%- endif -%}
+              {%- if paper.tags -%}
+                <div class="tile-tags">
+                  {%- for tag in paper.tags -%}
+                    <span class="tile-tag">{{ tag }}</span>
+                  {%- endfor -%}
+                </div>
+              {%- endif -%}
+            </div>
+          </div>
+        </article>
+      {%- endfor -%}
+    </div>
+
+  {%- endif -%}
+
+  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
 
 </div>
+
+<script>
+  // Tag filtering functionality with multiple selection support for blog posts
+  document.addEventListener('DOMContentLoaded', function() {
+    // Blog posts filtering
+    const tagButtons = document.querySelectorAll('.tag-button:not(.research-tag-button)');
+    const blogTiles = document.querySelectorAll('.blog-tile:not(.research-tile)');
+    const allButton = document.querySelector('.tag-button[data-tag="all"]:not(.research-tag-button)');
+    
+    tagButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const selectedTag = this.getAttribute('data-tag');
+        
+        if (selectedTag === 'all') {
+          // Deselect all other tags and show all posts
+          tagButtons.forEach(btn => btn.classList.remove('active'));
+          this.classList.add('active');
+          blogTiles.forEach(tile => {
+            tile.style.display = 'block';
+          });
+        } else {
+          // Remove active state from "All Posts" button
+          allButton.classList.remove('active');
+          
+          // Toggle the clicked tag
+          this.classList.toggle('active');
+          
+          // Get all active tags (excluding "All Posts")
+          const activeTags = Array.from(document.querySelectorAll('.tag-button.active:not(.research-tag-button)'))
+            .filter(btn => btn.getAttribute('data-tag') !== 'all')
+            .map(btn => btn.getAttribute('data-tag'));
+          
+          // If no tags are selected, activate "All Posts" and show everything
+          if (activeTags.length === 0) {
+            allButton.classList.add('active');
+            blogTiles.forEach(tile => {
+              tile.style.display = 'block';
+            });
+          } else {
+            // Filter blog tiles - show if tile has ANY of the selected tags
+            blogTiles.forEach(tile => {
+              const tileTags = tile.getAttribute('data-tags');
+              const tileTagArray = tileTags ? tileTags.split(',').map(t => t.trim()) : [];
+              
+              // Check if tile has at least one of the active tags
+              const hasMatchingTag = activeTags.some(tag => tileTagArray.includes(tag));
+              
+              tile.style.display = hasMatchingTag ? 'block' : 'none';
+            });
+          }
+        }
+      });
+    });
+    
+    // Research papers filtering
+    const researchTagButtons = document.querySelectorAll('.research-tag-button');
+    const researchTiles = document.querySelectorAll('.research-tile');
+    const researchAllButton = document.querySelector('.research-tag-button[data-tag="all"]');
+    
+    researchTagButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const selectedTag = this.getAttribute('data-tag');
+        
+        if (selectedTag === 'all') {
+          // Deselect all other tags and show all papers
+          researchTagButtons.forEach(btn => btn.classList.remove('active'));
+          this.classList.add('active');
+          researchTiles.forEach(tile => {
+            tile.style.display = 'block';
+          });
+        } else {
+          // Remove active state from "All Papers" button
+          researchAllButton.classList.remove('active');
+          
+          // Toggle the clicked tag
+          this.classList.toggle('active');
+          
+          // Get all active tags (excluding "All Papers")
+          const activeTags = Array.from(document.querySelectorAll('.research-tag-button.active'))
+            .filter(btn => btn.getAttribute('data-tag') !== 'all')
+            .map(btn => btn.getAttribute('data-tag'));
+          
+          // If no tags are selected, activate "All Papers" and show everything
+          if (activeTags.length === 0) {
+            researchAllButton.classList.add('active');
+            researchTiles.forEach(tile => {
+              tile.style.display = 'block';
+            });
+          } else {
+            // Filter research tiles - show if tile has ANY of the selected tags
+            researchTiles.forEach(tile => {
+              const tileTags = tile.getAttribute('data-tags');
+              const tileTagArray = tileTags ? tileTags.split(',').map(t => t.trim()) : [];
+              
+              // Check if tile has at least one of the active tags
+              const hasMatchingTag = activeTags.some(tag => tileTagArray.includes(tag));
+              
+              tile.style.display = hasMatchingTag ? 'block' : 'none';
+            });
+          }
+        }
+      });
+    });
+  });
+</script>

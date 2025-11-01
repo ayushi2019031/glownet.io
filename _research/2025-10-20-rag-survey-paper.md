@@ -4,22 +4,15 @@ title: "Thinking Through RAG: My Notes on the Retrieval-Augmented Generation Sur
 permalink: /rag-survey-research-paper-review/
 tags: [
   RAG,
-  Retrieval-Augmented Generation,
-  Large Language Models,
   LLMs,
-  AI Research,
   Knowledge Retrieval,
-  Generative AI,
-  Machine Learning,
-  Information Retrieval,
   Hallucination Mitigation,
-  Knowledge Integration,
-  Model Evaluation,
-  Survey Paper,
-  Deep Learning,
-  NLP
+  Survey Paper
 ]
 image: "../images/post-cards/global-glownet-card.webp"
+description: "A deep-dive into the 2023 Retrieval-Augmented Generation (RAG) survey paper exploring how LLMs combine retrieval and generation to reduce hallucinations, improve factual grounding, and evolve toward modular, multi-modal intelligence."
+excerpt: "Exploring how Retrieval-Augmented Generation reshapes knowledge and creativity in LLMs."
+
 ---
 
 * Table of Contents
