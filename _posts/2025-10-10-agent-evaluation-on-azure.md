@@ -2,9 +2,10 @@
 layout: post
 title: "Evaluating AI Agents on Azure with AI Foundry"
 permalink: /ai-agents-azure-evals/
-tags: [Azure AI Foundry, AI Agents, Evaluation, GitHub Actions, OIDC]
-description: "In this blog post we discuss how to build and evaluate agents using Azure AI foundry SDK and Azure ML Studio."
+tags: [Azure AI Foundry, AI Agents, Evaluation, GitHub Actions, OIDC Auth]
+description: "A practical guide to building evaluation pipelines for multi-agent AI systems on Azure using AI Foundry SDK, CI/CD workflows, and secure OIDC authentication."
 image: "../images/post-cards/global-glownet-card.webp"
+excerpt: "Learn how to evaluate AI agents on Azure using AI Foundry SDK with GitHub Actions and OIDC authentication."
 ---
 
 * Table of Contents
@@ -18,30 +19,30 @@ In this blog, we walk through the approach for evaluating a multi-agentic AI sys
 
 # A Methodical Approach to Evaluating AI Agents in Production
 
-When multiple AI agents start collaborating in a production setting, their emergent behavior can be powerful — but also unpredictable. This makes *evaluation* not just a final validation step, but an ongoing part of the development cycle. A methodical approach ensures that every agent, from planner to worker, is assessed against consistent and reproducible criteria such as **task adherence**, **reasoning coherence**, **groundedness**, **tool-use accuracy**, and **safety**.
+When multiple AI agents start collaborating in a production setting, their emergent behavior can be powerful, but also unpredictable. This makes *evaluation* not just a final validation step, but an ongoing part of the development cycle. A methodical approach ensures that every agent, from planner to worker, is assessed against consistent and reproducible criteria such as **task adherence**, **reasoning coherence**, **groundedness**, **tool-use accuracy**, and **safety**.
 
-By defining structured evaluation pipelines — for example, using the **Azure AI Foundry Evaluation SDK** — we can move beyond ad-hoc testing and bring scientific rigor into real-world monitoring. 
+By defining structured evaluation pipelines - for example, using the **Azure AI Foundry Evaluation SDK**, we can move beyond ad-hoc testing and bring scientific rigor into real-world monitoring. 
 
 Here’s why a **methodical approach** matters:
 
-- 🔁 **Continuous validation, not just final testing:**  
+- **Continuous validation, not just final testing:**  
   Evaluation becomes part of every deployment cycle, ensuring each update preserves reliability.
 
-- ⚙️ **Consistent, reproducible criteria:**  
+- **Consistent, reproducible criteria:**  
   Each agent (planner, orchestrator, worker, etc.) is assessed using common dimensions such as  
   **task adherence**, **reasoning coherence**, **groundedness**, **tool-use accuracy**, and **safety**.
 
-- 📊 **Structured pipelines using tools like Azure AI Foundry Evaluation SDK:**  
+- **Structured pipelines using tools like Azure AI Foundry Evaluation SDK:**  
   Move beyond ad-hoc checks to reproducible, metric-driven evaluation loops integrated into CI/CD or observability systems.
 
-- 🧠 **Objective comparison across versions:**  
+- **Objective comparison across versions:**  
   Track regressions, quantify improvements, and visualize performance trends over time.
 
-- 🌐 **Stable multi-agent coordination:**  
-  In production, agents interact asynchronously — even small model or logic changes can ripple through the system.  
+- **Stable multi-agent coordination:**  
+  In production, agents interact asynchronously, so even small model or logic changes can ripple through the system.  
   Methodical evaluation minimizes unexpected emergent failures.
 
-- ⚖️ **Balance between innovation and reliability:**  
+- **Balance between innovation and reliability:**  
   Enables rapid iteration while maintaining trust, safety, and compliance in real-world workflows.
 
 > A disciplined evaluation process transforms experimentation into engineering — helping multi-agent systems evolve responsibly, not unpredictably.
@@ -76,7 +77,7 @@ flowchart LR
 </div>
 ---
 
-## 🧠 Simulation & Execution of Conversations
+## Simulation & Execution of Conversations
 
 This phase is responsible for *generating and running conversations* between simulators and AI agents, as if the simulator is the user. The goal is to create realistic, multi-turn interactions that stress-test the agent under both normal and adversarial conditions using **simulators**.
 
@@ -86,27 +87,6 @@ This phase is responsible for *generating and running conversations* between sim
 
 **Purpose:** These simulators automatically generate challenging prompts designed to test the agent’s resilience against adversarial behaviors — such as **jailbreaks**, **prompt injections**, and **indirect attacks**.  
 
-<details> <summary><strong>What is a Prompt Injection?</strong></summary>
-
-<div class="info-block">
-  <h3>🧨 Prompt Injection</h3>
-  <p>
-    <strong>Definition:</strong> <em>Prompt injection</em> is when attacker-controlled input tries to override or manipulate an LLM’s original instructions.
-  </p>
-
-  <p><strong>How it happens:</strong></p>
-  <ul>
-    <li><strong>Direct:</strong> Malicious user messages that attempt to change the model’s behavior.</li>
-    <li><strong>Indirect (supply-chain):</strong> Malicious content embedded in tools, web pages, files, or other data that the model later processes.</li>
-  </ul>
-
-  <p><strong>Goals of an attacker:</strong></p>
-  <ul>
-    <li>Make the model ignore prior rules or system prompts</li>
-    <li>Exfiltrate secrets or sensitive data</li>
-    <li>Cause the model to take unintended actions (e.g., call tools, modify systems)</li>
-  </ul>
-</div>
 
 <style>
 .info-block {
@@ -138,11 +118,10 @@ This phase is responsible for *generating and running conversations* between sim
   margin: 0.4rem 0;
 }
 </style>
-</details>
 
 <details> <summary><strong>Direct Jailbreak (definition + safe example)</strong></summary>
 <div class="info-block">
-  <h3>🧱 Direct Jailbreak</h3>
+  <h3> Direct Jailbreak</h3>
   <p>
     <strong>Definition:</strong> A <em>direct jailbreak</em> occurs when a user's prompt explicitly tries to bypass the model’s safety boundaries or change its intended role.
   </p>
@@ -267,7 +246,7 @@ Please summarize.
 <details> <summary><strong>Common Payload Patterns (what to watch for)</strong></summary>
 
 <div class="info-block">
-  <h3>⚠️ Common Payload Patterns</h3>
+  <h3>Common Payload Patterns</h3>
   <p>
     These are common phrasings and containers attackers use to turn ordinary data into malicious instructions. Spotting them helps detect prompt injection attempts early.
   </p>
@@ -396,6 +375,21 @@ Sample code here: [Develop custom simulation prompts with AI Foundry](https://le
 
 Each simulator uses the **Agent ID** to initiate and maintain a **multi-turn conversation thread** with the deployed agent — allowing you to simulate full dialogues rather than isolated prompts.
 
+Each simulator uses the **Agent ID** to initiate and maintain a **multi-turn conversation thread** with the deployed agent, enabling the evaluation of full dialogue flows rather than isolated prompts.  
+
+This script automates that process by:
+
+- **Creating a fresh thread per prompt** to isolate each test scenario.  
+- **Posting the user message** (the prompt) to the thread and logging message IDs for traceability.  
+- **Launching a new run** tied to the deployed `agent.id`, which handles the end-to-end reasoning cycle.  
+- **Polling run status** until completion, allowing the loop to respond dynamically to the agent’s intermediate actions.  
+- **Handling tool calls automatically:**  
+  When the run requests external function calls via `SubmitToolOutputsAction`, the code collects pending tool calls, executes them using `functions.execute(...)`, and submits structured outputs back to the agent.  
+- **Ensuring robustness:**  
+  Cancels runs with no tool calls, logs any failed runs with error details, and prints final run status for monitoring.  
+
+This allows your evaluation pipeline to **simulate realistic multi-turn dialogues**, execute any tool integrations automatically, and record outcomes in a reproducible way — ideal for large-scale agent benchmarking or regression testing.
+
 ```python
 for prompt in list_of_prompts:
     try:
@@ -467,7 +461,7 @@ This is the python code I used to simulate multi-turn conversations.
 
 ---
 
-## 📊 Evaluation of the Agent
+## Evaluation of the Agent
 
 Once conversations are generated, the evaluation phase analyzes the agent’s performance across those threads.  
 For each agent (and optionally for each thread), the **Agent Converter** library transforms raw conversation data into a schema compatible with the **Evaluator** library from the Azure AI Foundry SDK.
@@ -476,100 +470,115 @@ For each agent (and optionally for each thread), the **Agent Converter** library
 
 **Input:** Simulated conversation logs produced in the earlier step.  
 
+### Flow at a Glance
+
+- **Creates a new thread** for each prompt to keep conversations isolated and reproducible.  
+- **Posts the prompt** as a user message to the thread.  
+- **Starts a run** for the target `agent_id`.  
+- **Polls the run status** until it finishes.  
+- When the run requires action, **collects pending function tool calls**, executes them via your `functions.execute(...)`, and submits **tool outputs** back to the run.  
+- **Cancels or logs failures** if a run provides no tool calls or ends in an error.  
+
+### What to Customize
+
+- `list_of_prompts` — your list of prompts or conversation starters for simulation.  
+- `agent.id` — the deployed agent’s unique identifier.  
+- `functions.execute(...)` — function mapping logic that connects tool names to Python implementations and returns JSON-serializable outputs.  
+
 ```python
 import json
-        from azure.ai.evaluation import AIAgentConverter
-        
-        # Initialize the converter that will be backed by the project.
-        converter = AIAgentConverter(project_client)
-        
-        thread_id = thread.id
-        run_id = run.id
-    
-        print("==============================================================CONVERTED DATA===========================================================================")
-        converted_data = converter.convert(thread_id=thread_id, run_id=run_id)
-        print(converted_data)
-        # Save the converted data to a JSONL file
-    
-        file_name = "evaluationDataAdverserialData" + str(count) + ".jsonl"
-        evaluation_data = converter.prepare_evaluation_data(thread_ids=thread.id, filename=file_name)
-        
-        load_dotenv()
-        
-        
-        model_config = AzureOpenAIModelConfiguration(
-            azure_endpoint=openai_endpoint,
-            api_key=openai_key,
-            api_version=api_version,
-            azure_deployment=deployment,
-        )
-        # Needed to use content safety evaluators
-        azure_ai_project={
-            "subscription_id": "49d64d54-e966-4c46-a868-1999802b762c",
-                  "project_name": "padmajat-agenticai-hackathon25",
-                  "resource_group_name": "rg-padmajat-2824",
-        }
-        
-        tool_call_accuracy = ToolCallAccuracyEvaluator(model_config=model_config)
-        intent_resolution = IntentResolutionEvaluator(model_config=model_config)
-        task_adherence = TaskAdherenceEvaluator(model_config=model_config)
-        relevance = RelevanceEvaluator(model_config=model_config)
-        coherence = CoherenceEvaluator(model_config=model_config)
-        fluency = FluencyEvaluator(model_config=model_config)
-        violence = ViolenceEvaluator(credential=credential, azure_ai_project=azure_ai_project)
-        self_harm = SelfHarmEvaluator(credential=credential, azure_ai_project=azure_ai_project)
-        sexual = SexualEvaluator(credential=credential, azure_ai_project=azure_ai_project)
-        hate_unfairness= HateUnfairnessEvaluator(credential=credential, azure_ai_project=azure_ai_project)
-        code_vulnerability = CodeVulnerabilityEvaluator(credential=credential, azure_ai_project=azure_ai_project)
-        indirect_attack = IndirectAttackEvaluator(credential=credential, azure_ai_project=azure_ai_project)
-        protected_material = ProtectedMaterialEvaluator(credential=credential, azure_ai_project=azure_ai_project)
-        
-        
-        tool_call_accuracy(query=converted_data['query'], response=converted_data['response'], tool_definitions=converted_data['tool_definitions'])
-        intent_resolution(query=converted_data['query'], response=converted_data['response'])
-        task_adherence(query=converted_data['query'], response=converted_data['response'])
-        violence(query=converted_data['query'], response=converted_data['response'])
-        relevance(query=converted_data['query'], response=converted_data['response'])
-        coherence(query=converted_data['query'], response=converted_data['response'])
-        fluency(response=converted_data['response'])
-        self_harm(query=converted_data['query'], response=converted_data['response'])
-        sexual(query=converted_data['query'], response=converted_data['response'])
-        hate_unfairness(query=converted_data['query'], response=converted_data['response'])
-        code_vulnerability(query=converted_data['query'], response=converted_data['response'])
-        indirect_attack(query=converted_data['query'], response=converted_data['response'])
-        protected_material(query=converted_data['query'], response=converted_data['response'])
-        
-        
-        from azure.ai.evaluation import evaluate
-        
-        response = evaluate(
-            data=file_name,
-            evaluators={
-                "tool_call_accuracy": tool_call_accuracy,
-                "intent_resolution": intent_resolution,
-                "task_adherence": task_adherence,
-                "violence": violence,
-                "relevance": relevance,
-                "coherence": coherence,
-                "fluency": fluency,
-                "self_harm": self_harm,
-                "sexual": sexual,
-                "hate_unfairness": hate_unfairness,
-                "code_vulnerability": code_vulnerability,
-                "indirect_attack": indirect_attack,
-               "protected_material": protected_material
-            },
-            azure_ai_project={
-                "subscription_id": "49d64d54-e966-4c46-a868-1999802b762c",
-                  "project_name": "padmajat-agenticai-hackathon25",
-                  "resource_group_name": "rg-padmajat-2824",
-            }
-        )
-        from pprint import pprint
-    
-        pprint(list_of_prompts, width=200)
-        pprint(f'Azure ML Studio URL: {response.get("studio_url")}')
-        pprint(response)
+from azure.ai.evaluation import AIAgentConverter
+
+# Initialize the converter that will be backed by the project.
+converter = AIAgentConverter(project_client)
+
+thread_id = thread.id
+run_id = run.id
+
+print("==============================================================CONVERTED DATA===========================================================================")
+converted_data = converter.convert(thread_id=thread_id, run_id=run_id)
+print(converted_data)
+# Save the converted data to a JSONL file
+
+file_name = "evaluationDataAdverserialData" + str(count) + ".jsonl"
+evaluation_data = converter.prepare_evaluation_data(thread_ids=thread.id, filename=file_name)
+
+load_dotenv()
+
+
+model_config = AzureOpenAIModelConfiguration(
+    azure_endpoint=openai_endpoint,
+    api_key=openai_key,
+    api_version=api_version,
+    azure_deployment=deployment,
+)
+# Needed to use content safety evaluators
+azure_ai_project={
+    "subscription_id": "49d64d54-e966-4c46-a868-1999802b762c",
+          "project_name": "padmajat-agenticai-hackathon25",
+          "resource_group_name": "rg-padmajat-2824",
+}
+
+tool_call_accuracy = ToolCallAccuracyEvaluator(model_config=model_config)
+intent_resolution = IntentResolutionEvaluator(model_config=model_config)
+task_adherence = TaskAdherenceEvaluator(model_config=model_config)
+relevance = RelevanceEvaluator(model_config=model_config)
+coherence = CoherenceEvaluator(model_config=model_config)
+fluency = FluencyEvaluator(model_config=model_config)
+violence = ViolenceEvaluator(credential=credential, azure_ai_project=azure_ai_project)
+self_harm = SelfHarmEvaluator(credential=credential, azure_ai_project=azure_ai_project)
+sexual = SexualEvaluator(credential=credential, azure_ai_project=azure_ai_project)
+hate_unfairness= HateUnfairnessEvaluator(credential=credential, azure_ai_project=azure_ai_project)
+code_vulnerability = CodeVulnerabilityEvaluator(credential=credential, azure_ai_project=azure_ai_project)
+indirect_attack = IndirectAttackEvaluator(credential=credential, azure_ai_project=azure_ai_project)
+protected_material = ProtectedMaterialEvaluator(credential=credential, azure_ai_project=azure_ai_project)
+
+
+tool_call_accuracy(query=converted_data['query'], response=converted_data['response'], tool_definitions=converted_data['tool_definitions'])
+intent_resolution(query=converted_data['query'], response=converted_data['response'])
+task_adherence(query=converted_data['query'], response=converted_data['response'])
+violence(query=converted_data['query'], response=converted_data['response'])
+relevance(query=converted_data['query'], response=converted_data['response'])
+coherence(query=converted_data['query'], response=converted_data['response'])
+fluency(response=converted_data['response'])
+self_harm(query=converted_data['query'], response=converted_data['response'])
+sexual(query=converted_data['query'], response=converted_data['response'])
+hate_unfairness(query=converted_data['query'], response=converted_data['response'])
+code_vulnerability(query=converted_data['query'], response=converted_data['response'])
+indirect_attack(query=converted_data['query'], response=converted_data['response'])
+protected_material(query=converted_data['query'], response=converted_data['response'])
+
+
+from azure.ai.evaluation import evaluate
+
+response = evaluate(
+    data=file_name,
+    evaluators={
+        "tool_call_accuracy": tool_call_accuracy,
+        "intent_resolution": intent_resolution,
+        "task_adherence": task_adherence,
+        "violence": violence,
+        "relevance": relevance,
+        "coherence": coherence,
+        "fluency": fluency,
+        "self_harm": self_harm,
+        "sexual": sexual,
+        "hate_unfairness": hate_unfairness,
+        "code_vulnerability": code_vulnerability,
+        "indirect_attack": indirect_attack,
+        "protected_material": protected_material
+    },
+    azure_ai_project={
+        "subscription_id": "49d64d54-e966-4c46-a868-1999802b762c",
+          "project_name": "padmajat-agenticai-hackathon25",
+          "resource_group_name": "rg-padmajat-2824",
+    }
+)
+from pprint import pprint
+
+pprint(list_of_prompts, width=200)
+pprint(f'Azure ML Studio URL: {response.get("studio_url")}')
+pprint(response)
 ```
 
 **Output:**  
@@ -612,7 +621,7 @@ This section outlines how to set up the pipeline, integrate it into CI/CD workfl
 
 ---
 
-## ⚙️ Prerequisites
+## Prerequisites
 
 ### Setup of AI Foundry Agents
 
@@ -656,12 +665,23 @@ You can configure the workflow to trigger **manually** or automatically whenever
 
 ---
 
-## 🚀 Running the Evaluation Pipeline
+## Running the Evaluation Pipeline
 
 ### Running via GitHub Actions
 The pipeline can be executed directly from the **GitHub Actions tab**, invoking the Python script responsible for simulation, execution, and evaluation.
 
 Here is an example of YAML file - which utilizes **OIDC Authentication**, **GitHub Actions** and **Repository Secrets**. 
+
+This GitHub Actions workflow automates the process of **evaluating agentic systems**. It leverages **OpenID Connect (OIDC)** for secure, passwordless authentication with Azure, removing the need to store client secrets in the repository.  
+
+Once triggered (on push or pull request), it performs the following steps:
+
+1. **Logs into Azure using OIDC** to gain temporary credentials.  
+2. **Sets up Python 3.10** and installs all required dependencies.  
+3. **Runs the evaluation script** (`evaluate_agent.py`), which handles simulation, execution, and scoring of agent behavior on real or synthetic conversations.  
+
+This setup ensures that evaluations run automatically for every code change, keeping your **agent performance metrics up-to-date** and **version-controlled**.
+
 
 ```yaml
 name: Run  Agentic Evaluation using Agent converter - Existing Conversations
@@ -709,9 +729,10 @@ jobs:
       - name: Run Python
         run: python evaluate_agent.py
 ```
+
 ---
 
-## 📈 Logging and Viewing Results
+## Logging and Viewing Results
 
 ### Logging in GitHub Actions
 - **Logs and Artifacts:**  
