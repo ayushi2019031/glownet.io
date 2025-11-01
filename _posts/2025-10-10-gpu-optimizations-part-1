@@ -1,0 +1,109 @@
+---
+layout: post
+title: "GPU Optimizations"
+permalink: /gpu-optimization-techniques/
+description: "In this blog post we discuss various optimization concepts on GPUs with CUDA."
+---
+
+# GPU Architecture
+
+## Kepler Architecture
+
+- A GPU can be largely defined by SM (Streaming Multiprocessor). 
+Size of GPU is directly proportional to the number of SMs. 
+
+Kepler GPUs have 192 cores - SP units.  Number of cores is proportional to the number of SMs. 
+
+A GPU core is like an ALU for a CPU. It only does floating point, multiply, add and fused add-multiply operations. For 64 bit floating point operations, different functional unit called DP unit. 
+
+SM has different number of DP units compares to SP units. 
+
+SM is like a load store architecture. GPU is very much like a load store architecture. 
+SM also has a warp scheduler - is instruction dispatch unit in SM. Warp scheduler decides when and which instruction will be executed. 
+In Kepler - warp scheduler is dual issue capable (sometimes 2 instructions in a single clock cycle).
+
+
+## Maxwell/Pascal Architecture
+
+- Pascal architectrure similar to Maxwell architecture, but very small number of DP units (32:1) as compared to Kepler (3:1). 
+
+- It has int 8 computation capability. 
+
+- It has 4 warp schedulers
+
+## Pascal/Volta
+
+- 64 SM units, 32 DP units, LD/ST units
+- FP 16 @ 2x SP rate - 16 bit floating point in one clock cycle, and either 32 bit FP in one core o 2 16 bit FPs in one core. 
+
+- Introduction to Tensor Core - separate functional unit - every matrix - matrix operation highly valuable and primarily for DL and AI computing. Tensor core evolved into Turing. 
+
+## Other GPUs
+
+P100 - 56 SMs, 16 GB and V100 - 80 SMs, 16/32 GB
+
+## Summary from above
+- SP units highly useful
+- DP ratio is not too important because double precision usually not required too much in graphics
+- DP, SP , Load units can be used simultaneously in single clock cycle
+- A thread runs on a scalar processor, and threads are executed by scalar processor. 
+On multiprocessor, we can have several thread blocks. M
+
+# Warps
+
+Warps is a collection of 32 threads. Hence one thread block with x thread will have x/32 warps. 
+First 32 threads will be part of the first warp. 
+
+Why so important - GPU always issues instructions warp wise in the same clock cycle. All threads in warp receive instructions in same clock cycle - they follow same set of steps and then retire in the same cycle. 
+
+
+# Kernel Launch Configuration 
+
+GPU is a fire and forget architecture. Thread pertains to a single context. A thread stalls if the next operand is not ready, Output goes into the register. Hence, memory reads can never stall an operation. 
+Machine has almost infinite capacity for in-flight read instructions. 
+Latency is hidden by switching threads. Running only on a single thread causes huge latency due to waiting. 
+
+Latency is associated with A. retrieval of data from memory and B. Arithmetic Latency. 
+For retrieval of data from memory - Global memory latency is the longest that we will be dealing with. 
+Arithmetic latency is latency associated with say 10ish clock cycles.It depends on the instruction. 
+
+Objective: launch enough threads to hide latency
+
+# GPU Latency Hiding
+
+CUDA Machine code is called SASS (Streaming Assembler). - Code thate xecutes on the hardware
+
+PTX: Not executable - intermediate code between C and SASS.
+
+Objective of optimization: Keep the machine busy. Schedule warp on the instruction units. 
+
+We should give the machine ability to fill its memory pope, We can fill the memory pipe with smaller number of threads, if every thread works on a alrge amount of data. 
+We want as many threads as possible to save for memory latency (due to global memory access). 
+
+# Occupancy 
+
+Actual thread loads in an SM vs peak theoretical peak available. Primary limiters - registers per thread, thread per thread block and 
+shared memory usage. 
+
+# Global Memory Access
+
+Load granularity is 128 byte line. 
+While coding, we need to take advantage of only GMEM as L1 & L2 cache are not upto us. 
+
+Load granularity for a cache is 128 byte line. For store operation.- invalidate the cache line for L1 and then write back for L2.
+
+Load can be done in non-caching mode as well. Compilation with: "_xptxas_dlcm=cg". Useful for inter block thread communication. You do not want the thread to be reading data from the L1 cache because that L2 has not been updated. 
+
+# Load operation
+
+- Issued warp wide - just like othe rinstructions 
+- Every thread may be retrieving data from different locations - say all 32 addresses. 
+- From DRAM we ask for a segment which is 32 bytes.
+
+# Caching load
+
+- Say addresses from the warp are adjacent and sequential. Every thread in warp will have sequential index. Addresses fall within memory within segment boundary. 
+- All 128 bytes can be requested from a single cache line - no byte wasted - 100% bus utilization. Concept of coalescing. 
+
+
+# Organization of Shared Memory
