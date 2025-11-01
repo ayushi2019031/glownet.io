@@ -206,7 +206,7 @@ At **Azure**, my work spans across **A2A and MCP protocol integrations**, large-
 
 I began my journey at Microsoft as an intern, where I optimized machine learning libraries on single machine, and built PoCs for distributed ML using **PySpark** and **Databricks**, and since then, my curiosity for scalable and intelligent systems has only grown stronger.
 
-Before joining Microsoft, I earned my **B.Tech. in Computer Science Engineering** from **IIIT Delhi** (CGPA: 8.34), where I developed a deep interest in **distributed systems**, **machine learning**, and **deep learning**. I continue to explore these areas through courses like **Stanford's CS234 (Reinforcement Learning)** and **XCS236 (Deep Generative Models)**, **Azure certifications**, **Kaggle competitions** and **independent exploration**.
+Before joining Microsoft, I earned my **B.Tech. in Computer Science Engineering** from **IIIT Delhi** (CGPA: 8.34), where I developed a deep interest in **distributed systems**, **machine learning**, and **deep learning**. I continue to explore these areas through courses like **Stanford's XCS234 (Reinforcement Learning)** and **XCS236 (Deep Generative Models)**, **Azure certifications**, **Kaggle competitions** and **independent exploration**.
 
 Outside of work, I enjoy reading fiction and non-fiction, and experimenting with side projects that combine **AI, systems design, and creativity**.  
 This blog is my space to document what I learn and build, not just as a record of progress but as a way to make **AI and engineering more approachable** for others.
