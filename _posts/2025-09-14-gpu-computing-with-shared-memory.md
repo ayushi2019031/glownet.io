@@ -2,8 +2,21 @@
 layout: post
 title: "GPU Computing with CUDA: Shared memory"
 permalink: /cuda-shared-memory/
-description: "This blog talks about GPU computing with CUDA, specifically focusing on shared memory and coordination amongst multiple threads. It walks through code for 1D stencil problem. "
-tags: [CUDA, GPU Computing, Shared Memory, Parallel Programming]
+description: "Learn about GPU computing with CUDA, focusing on how shared memory enables fast inter-thread communication and performance optimization. This post explains the CUDA memory hierarchy, walks through a 1D stencil example, and covers concepts like synchronization, caching, and bank conflicts. "
+excerpt: "Understand CUDA shared memory, synchronization, and caching with a 1D stencil example to optimize GPU performance and thread coordination."
+tags: [CUDA,
+  GPU Computing,
+  Shared Memory,
+  Parallel Programming,
+  NVIDIA,
+  GPU Architecture,
+  CUDA Memory Hierarchy,
+  Stencil Computation,
+  High Performance Computing,
+  CUDA Optimization,
+  Thread Synchronization,
+  Bank Conflicts,
+  GPGPU]
 image: "../images/post-cards/global-glownet-card.webp"
 ---
 
@@ -19,11 +32,11 @@ image: "../images/post-cards/global-glownet-card.webp"
 
 As we have seen in the previous [blog](../getting-started-with-cuda/), CUDA programming uses a hierarchal breakdown of workers. Threads are grouped into blocks which are further grouped into grids. 
 
-## Memory Hierarchy in CUDA
+# Memory Hierarchy in CUDA
 
 GPUs are designed with a **hierarchical memory system**.  
 Unlike CPUs, which have deep cache hierarchies, GPUs expose more memory types directly to programmers.  
-This gives developers more control—but also more responsibility—to manage performance.
+This gives developers more control, but also more responsibility to manage performance.
 
 ![Memory Hierarchy in CUDA (NVIDIA Official Docs)](../images/2025-09-14-gpu-computing-with-shared-memory/memory-hierarchy.webp)
 <br><br>
@@ -44,7 +57,7 @@ This often makes the difference between a **slow CUDA kernel** and a **highly op
 
 ---
 
-## ⚡ What makes shared memory special?
+# What makes shared memory special?
 
 1. **On-chip, high-performance memory**  
    - Physically implemented *inside the GPU chip* (unlike global memory, which sits in DRAM).  
@@ -63,9 +76,9 @@ This often makes the difference between a **slow CUDA kernel** and a **highly op
 
 ---
 
-## Code Example Walkthrough
+# Code Example Walkthrough
 
-### Problem statement
+## Problem statement
 
 A stencil operation refers to picking up a window/range of data. The underlying dataset on which the stencil operation was performed is much larger. 
 We intend to find the result of summation of all elements in the center of the window of an odd radius R, and store it at the index of another array corresponding to that center. 
@@ -155,7 +168,7 @@ int main(void) {
 
 
 
-### The shared memory tile
+## The shared memory tile
 ```cpp
 __shared__ int temp[BLOCK_SIZE + 2 * RADIUS];
 ```
@@ -164,9 +177,9 @@ Each block loads:
 - **BLOCK_SIZE** center elements (one per thread)  
 - **2 × RADIUS** halo elements (*ghost cells*) to cover neighbors that cross block boundaries  
 
-➡️ **Total per block tile size** = `BLOCK_SIZE + 2*RADIUS`
+**Total per block tile size** = `BLOCK_SIZE + 2*RADIUS`
 
-### 🧮 Thread Indexing
+## Thread Indexing
 
 ```cpp
 int gindex = threadIdx.x + blockIdx.x * blockDim.x; // global index (0..N-1)
@@ -175,9 +188,9 @@ int lindex = threadIdx.x + RADIUS;                  // local index inside 'temp'
 - **gindex** → the global index of the thread in the input/output arrays  
 - **lindex** → the local index inside the shared memory buffer `temp[]`  
 
-👉 `lindex` is offset by `RADIUS` so the **center of each thread’s window** sits inside the shared tile, leaving space on both sides for the halo elements.
+`lindex` is offset by `RADIUS` so the **center of each thread’s window** sits inside the shared tile, leaving space on both sides for the halo elements.
 
-### 📥 Coalesced Loads into Shared Memory
+### Coalesced Loads into Shared Memory
 
 ```cpp
 temp[lindex] = in[gindex]; // all threads load their own center -> coalesced
@@ -195,18 +208,18 @@ __syncthreads();
 > 💡 **Why not have the last `RADIUS` threads load the right halo?**  
 > This kernel instead lets the **first `RADIUS` threads** load both sides — also valid and simpler.
 
-#### 🔒 Importance of `__syncthreads()`
+### Importance of `__syncthreads()`
 
 All threads in a block share the same **shared memory tile**.  
 When some threads load the *halo* values while others load the *center*, these writes happen in parallel but **not in lockstep**. Without `__syncthreads()`, some threads might start reading from shared memory before their neighbors have finished writing, causing *race conditions* and incorrect results.  
 
 By calling `__syncthreads()`, you create a **barrier**:  
-- 🚦 Every thread must reach this point before *any* can move forward.  
-- ✅ This guarantees that the entire shared tile (center + halos) is fully loaded and visible to all threads.  
-- 🧩 It ensures correctness while still allowing maximum parallelism during the load step.  
+- Every thread must reach this point before *any* can move forward.  
+- This guarantees that the entire shared tile (center + halos) is fully loaded and visible to all threads.  
+- It ensures correctness while still allowing maximum parallelism during the load step.  
 
 
-### 🧾 Compute Using the Shared Tile
+## Compute Using the Shared Tile
 
 ```cpp
 int result = 0;
@@ -250,25 +263,25 @@ are always in-bounds.
 
 ---
 
-## Cache vs Shared Memory
+# Cache vs Shared Memory
 
 
-### What is cache in GPUs? 
+## What is cache in GPUs? 
    Modern GPUs have small hardware-managed caches (L1, L2) that automatically store recently accessed global memory values.  
    - Benefit: hides some global memory latency.  
    - Limitation: not fully under programmer control,  caching is implicit, and performance can be unpredictable.
 
-### Early GPUs had no cache  
+## Early GPUs had no cache  
    The first generations of CUDA-capable GPUs didn’t include cache at all. Every global memory access had to go directly to DRAM, making memory latency a huge bottleneck.
 
-### Why is shared memory powerful?  
+## Why is shared memory powerful?  
    Shared memory is programmer-managed scratchpad memory inside each SM (Streaming Multiprocessor).  
-   - ⚡ **Faster atomics** – atomic operations in shared memory are much faster than in global memory.  
-   - 🏦 **More banks** – it is organized into multiple banks, allowing high-bandwidth parallel access.  
-   - 🎯 **Predictable performance** – since you control what data is loaded and when, shared memory avoids the uncertainty of hardware caching policies.  
+   - **Faster atomics** – atomic operations in shared memory are much faster than in global memory.  
+   - **More banks** – it is organized into multiple banks, allowing high-bandwidth parallel access.  
+   - **Predictable performance** – since you control what data is loaded and when, shared memory avoids the uncertainty of hardware caching policies.  
 
 <details>
-  <summary>🏦 What Are Banks in GPU Shared Memory?</summary>
+  <summary> What Are Banks in GPU Shared Memory?</summary>
   <div style="background-color:#f5f5f5; padding:12px; border-radius:6px; margin-top:8px;">
     <ul>
       <li><b>Shared memory is split into "banks".</b><br>
@@ -316,7 +329,7 @@ flowchart LR
 
 ---
 
-## 💾 DRAM (Global Memory)
+# DRAM (Global Memory)
 
 DRAM (Dynamic Random Access Memory) is the large off-chip global memory of the GPU. It holds most of the data (arrays, tensors, etc.) that kernels work on. It has high capacity but is also the *slowest* memory in the hierarchy.
 
@@ -329,7 +342,7 @@ DRAM (Dynamic Random Access Memory) is the large off-chip global memory of the G
 
 ---
 
-## Conclusion
+# Conclusion
 
 This post is part of my ongoing learning journey through the **[OLCF (Oak Ridge Leadership Computing Facility) CUDA Training Series by NVIDIA](https://www.olcf.ornl.gov/cuda-training-series/)**. Link to the code examples are present on [GitHub](https://github.com/olcf/cuda-training-series/tree/master). 
 
