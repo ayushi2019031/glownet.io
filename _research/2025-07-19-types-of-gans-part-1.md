@@ -219,12 +219,49 @@ The architecture of a **GAN** isn’t just an implementation detail — it defin
 Some networks focus on **fine textures**, others on **global structure**.  
 The **Generator** and **Discriminator** evolve into specialized artists, depending on how their **layers**, **skip connections**, and **patches** are wired together.
 
-|**GAN Variant**                     | **Design Idea**                                                                                                        | **Comments**                                                                                | **Biggest Strength**                                                      | **Limitation**                                                                     |
-| ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| **DCGAN**                           | Replace dense layers with deep convolutional ones and stabilize training using batch normalization and ReLU/LeakyReLU. | The classic “baseline” GAN — simple yet powerful for learning visual features from scratch. | Stable and easy to train on small or medium-scale image datasets.         | Struggles with high-resolution or diverse data; limited architectural flexibility. |
-| **Pix2Pix**                         | Pair a **UNet generator** (with skip connections) and a **PatchGAN discriminator** for image-to-image translation.     | Learns direct mappings between paired domains — e.g., sketches → photos, edges → objects.   | Preserves fine-grained detail; excellent for paired translation tasks.    | Requires paired data, which is often hard to obtain.                               |
-| **CycleGAN**                        | Introduce **two generators** and a **cycle-consistency loss** to translate images without paired data.                 | Enables unpaired translation (e.g., horses ↔ zebras, summer ↔ winter scenes).               | Works even without paired samples while maintaining structural coherence. | Computationally heavier; longer training and potential overfitting.                |
-| **PatchGAN (Discriminator Design)** | Judge realism at the **patch level** rather than on the full image.                                                    | Forces the generator to produce realistic local textures while being lightweight.           | Fast and effective for enforcing texture realism and sharpness.           | May ignore large-scale or global consistency patterns.                             |
+<div style="overflow-x: auto; border-radius: 12px; box-shadow: 0 0 12px rgba(255,255,255,0.08); margin: 1.5rem 0;">
+<table style="min-width: 950px; border-collapse: collapse; width: 100%; font-size: 0.95rem;">
+  <thead style="background: rgba(255,255,255,0.05);">
+    <tr>
+      <th style="text-align:left; padding: 12px;">GAN Variant</th>
+      <th style="text-align:left; padding: 12px;">Design Idea</th>
+      <th style="text-align:left; padding: 12px;">Comments</th>
+      <th style="text-align:left; padding: 12px;">Biggest Strength</th>
+      <th style="text-align:left; padding: 12px;">Limitation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 12px;"><b>DCGAN</b></td>
+      <td style="padding: 12px;">Replace dense layers with deep convolutional ones and stabilize training using batch normalization and ReLU/LeakyReLU.</td>
+      <td style="padding: 12px;">The classic “baseline” GAN — simple yet powerful for learning visual features from scratch.</td>
+      <td style="padding: 12px;">Stable and easy to train on small or medium-scale image datasets.</td>
+      <td style="padding: 12px;">Struggles with high-resolution or diverse data; limited architectural flexibility.</td>
+    </tr>
+    <tr>
+      <td style="padding: 12px;"><b>Pix2Pix</b></td>
+      <td style="padding: 12px;">Pair a <b>UNet generator</b> (with skip connections) and a <b>PatchGAN discriminator</b> for image-to-image translation.</td>
+      <td style="padding: 12px;">Learns direct mappings between paired domains — e.g., sketches → photos, edges → objects.</td>
+      <td style="padding: 12px;">Preserves fine-grained detail; excellent for paired translation tasks.</td>
+      <td style="padding: 12px;">Requires paired data, which is often hard to obtain.</td>
+    </tr>
+    <tr>
+      <td style="padding: 12px;"><b>CycleGAN</b></td>
+      <td style="padding: 12px;">Introduce <b>two generators</b> and a <b>cycle-consistency loss</b> to translate images without paired data.</td>
+      <td style="padding: 12px;">Enables unpaired translation (e.g., horses ↔ zebras, summer ↔ winter scenes).</td>
+      <td style="padding: 12px;">Works even without paired samples while maintaining structural coherence.</td>
+      <td style="padding: 12px;">Computationally heavier; longer training and potential overfitting.</td>
+    </tr>
+    <tr>
+      <td style="padding: 12px;"><b>PatchGAN (Discriminator Design)</b></td>
+      <td style="padding: 12px;">Judge realism at the <b>patch level</b> rather than on the full image.</td>
+      <td style="padding: 12px;">Forces the generator to produce realistic local textures while being lightweight.</td>
+      <td style="padding: 12px;">Fast and effective for enforcing texture realism and sharpness.</td>
+      <td style="padding: 12px;">May ignore large-scale or global consistency patterns.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
 
 > Architectural choices affect the model's capacity and how well it learns structure and detail.
@@ -426,13 +463,60 @@ the internal canvas from which the Generator paints its ideas into reality.
 
 ### GANs Based on Latent Space Design
 
-| **GAN / Technique**      | **Core Idea (The Trick)**                                                              | **What It Enables**                                                                             | **More Details**                                                                                                                                                                                                                                                                                                                                                                                   |
-| ------------------------ | -------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Vanilla GAN**          | Generates images purely from **random noise (`z`)** with no external guidance.         | Baseline generative setup — produces *diverse but uncontrolled* samples.                        | <details>The original GAN formulation. The Generator learns to map random noise vectors to realistic outputs, while the Discriminator distinguishes real from fake. The outputs are varied, but there’s no control over what type of image appears.</details>                                                                                                          |
-| **InfoGAN**              | Maximizes **mutual information** between a structured latent code `c` and the output.  | Enables *semantic control* over features like shape, rotation, or style — without labeled data. | <details>InfoGAN splits the latent input into noise `z` and interpretable code `c`, training the model to maximize the shared information between `c` and generated images. This lets you control meaningful attributes, such as digit thickness or rotation, in an unsupervised way.</details>                                                                        |
-| **StyleGAN**             | Injects **style vectors** at multiple layers through an intermediate latent space `w`. | Allows *fine-grained, hierarchical control* over pose, expression, lighting, and texture.       | <details>StyleGAN introduces a mapping network that converts the latent code `z` into an intermediate space `w`. Style vectors from `w` are applied at different generator layers, giving independent control over coarse structure, mid-level features, and fine details — enabling edits like changing hair color or expression without altering identity.</details> |
-| **BigGAN**               | Combines **class embeddings** with the latent vector for class-conditional generation. | Produces *category-specific* yet diverse, high-resolution images.                               | <details>BigGAN extends the standard GAN by concatenating class label embeddings with the latent vector, making it possible to generate high-quality images for specific categories. Its large batch training and scalable architecture achieve state-of-the-art fidelity on ImageNet.</details>                                                                       |
-| **Latent Interpolation** | Smoothly transitions between **latent vectors** in the input space.                    | Creates *morphing effects* and visualizes learned feature transitions.                          | <details>While not a separate model, latent interpolation explores the structure of the learned space. By interpolating between two latent vectors, the Generator produces smooth transformations — for example, morphing between two faces or gradually changing object attributes.</details>                                                                         |
+<div style="overflow-x: auto; border-radius: 12px; box-shadow: 0 0 12px rgba(255,255,255,0.08); margin: 1.5rem 0;">
+<table style="min-width: 900px; border-collapse: collapse; width: 100%; font-size: 0.95rem;">
+  <thead style="background: rgba(255,255,255,0.05);">
+    <tr>
+      <th style="text-align:left; padding: 12px;">GAN / Technique</th>
+      <th style="text-align:left; padding: 12px;">Core Idea (The Trick)</th>
+      <th style="text-align:left; padding: 12px;">What It Enables</th>
+      <th style="text-align:left; padding: 12px;">More Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 12px;"><b>Vanilla GAN</b></td>
+      <td style="padding: 12px;">Generates images purely from <b>random noise (<code>z</code>)</b> with no external guidance.</td>
+      <td style="padding: 12px;">Baseline generative setup — produces <i>diverse but uncontrolled</i> samples.</td>
+      <td style="padding: 12px;"><details><summary>View more</summary>
+        The original GAN formulation. The Generator learns to map random noise vectors to realistic outputs, while the Discriminator distinguishes real from fake. The outputs are varied, but there’s no control over what type of image appears.
+      </details></td>
+    </tr>
+    <tr>
+      <td style="padding: 12px;"><b>InfoGAN</b></td>
+      <td style="padding: 12px;">Maximizes <b>mutual information</b> between a structured latent code <code>c</code> and the output.</td>
+      <td style="padding: 12px;">Enables <i>semantic control</i> over features like shape, rotation, or style — without labeled data.</td>
+      <td style="padding: 12px;"><details><summary>View more</summary>
+        InfoGAN splits the latent input into noise <code>z</code> and interpretable code <code>c</code>, training the model to maximize the shared information between <code>c</code> and generated images. This lets you control meaningful attributes, such as digit thickness or rotation, in an unsupervised way.
+      </details></td>
+    </tr>
+    <tr>
+      <td style="padding: 12px;"><b>StyleGAN</b></td>
+      <td style="padding: 12px;">Injects <b>style vectors</b> at multiple layers through an intermediate latent space <code>w</code>.</td>
+      <td style="padding: 12px;">Allows <i>fine-grained, hierarchical control</i> over pose, expression, lighting, and texture.</td>
+      <td style="padding: 12px;"><details><summary>View more</summary>
+        StyleGAN introduces a mapping network that converts the latent code <code>z</code> into an intermediate space <code>w</code>. Style vectors from <code>w</code> are applied at different generator layers, giving independent control over coarse structure, mid-level features, and fine details — enabling edits like changing hair color or expression without altering identity.
+      </details></td>
+    </tr>
+    <tr>
+      <td style="padding: 12px;"><b>BigGAN</b></td>
+      <td style="padding: 12px;">Combines <b>class embeddings</b> with the latent vector for class-conditional generation.</td>
+      <td style="padding: 12px;">Produces <i>category-specific</i> yet diverse, high-resolution images.</td>
+      <td style="padding: 12px;"><details><summary>View more</summary>
+        BigGAN extends the standard GAN by concatenating class label embeddings with the latent vector, making it possible to generate high-quality images for specific categories. Its large batch training and scalable architecture achieve state-of-the-art fidelity on ImageNet.
+      </details></td>
+    </tr>
+    <tr>
+      <td style="padding: 12px;"><b>Latent Interpolation</b></td>
+      <td style="padding: 12px;">Smoothly transitions between <b>latent vectors</b> in the input space.</td>
+      <td style="padding: 12px;">Creates <i>morphing effects</i> and visualizes learned feature transitions.</td>
+      <td style="padding: 12px;"><details><summary>View more</summary>
+        While not a separate model, latent interpolation explores the structure of the learned space. By interpolating between two latent vectors, the Generator produces smooth transformations — for example, morphing between two faces or gradually changing object attributes.
+      </details></td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
 
 ---
