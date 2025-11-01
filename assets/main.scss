@@ -51,6 +51,29 @@ body {
   color: #64B5F6 !important;
 }
 
+/* --- Footer Styling --- */
+.site-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff !important;
+}
+
+.site-footer a,
+.site-footer a:visited {
+  color: #64B5F6 !important;
+}
+
+.site-footer a:hover {
+  color: #ffffff !important;
+}
+
+.footer-col-wrapper {
+  color: #ffffff !important;
+}
+
+.footer-heading {
+  color: #ffffff !important;
+}
+
 /* --- Global Readability Tweaks --- */
 body {
   line-height: 1.6; // good for readability
