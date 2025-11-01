@@ -164,7 +164,7 @@ permalink: /about/
 
 <img src="../images/profile.webp" alt="Ayushi Jain" style="width:150px; float:right; margin:0 0 1rem 1rem; border-radius: 50%;">
 
-Hi, I'm **Ayushi Jain**, a Software Engineer at **Microsoft** with a curious mind and a passion for building intelligent systems that learn, reason, and collaborate.
+Hi, I'm **Ayushi Jain**, a Software Engineer at **Microsoft** with a curious mind and a passion for building highly scalable, intelligent systems that learn, reason, and collaborate adhering to principles of high reliability and security.
 
 <div class="section-header">
   <h2>🔗 Connect With Me</h2>
@@ -202,11 +202,11 @@ Hi, I'm **Ayushi Jain**, a Software Engineer at **Microsoft** with a curious min
 
 ---
 
-At **Azure**, I work on **Agentic AI systems** that bring multi-agent Copilot experiences to life. My work spans across **A2A and MCP protocol integrations**, large-scale cloud automation across 20+ regions, and secure B2B authentication flows. Along the way, I continue to strengthen my **core software engineering skills** in distributed systems, backend architecture, and DevOps.
+At **Azure**, my work spans across **A2A and MCP protocol integrations**, large-scale cloud automation across 20+ regions, and secure B2B authentication flows. Along the way, I continue to strengthen my **core software engineering skills** in distributed systems, backend architecture, and DevOps.
 
-I began my journey at Microsoft as an intern, where I built distributed ML pipelines using **PySpark** and **Databricks**, and since then, my curiosity for scalable and intelligent systems has only grown stronger.
+I began my journey at Microsoft as an intern, where I optimized machine learning libraries on single machine, and built PoCs for distributed ML using **PySpark** and **Databricks**, and since then, my curiosity for scalable and intelligent systems has only grown stronger.
 
-Before joining Microsoft, I earned my **B.Tech. in Computer Science** from **IIIT Delhi** (CGPA: 8.34), where I developed a deep interest in **distributed systems**, **machine learning**, and **deep learning**. I continue to explore these areas through courses like **Stanford's CS234 (Reinforcement Learning)** and **XCS236 (Deep Generative Models)**, Azure certifications, and independent research.
+Before joining Microsoft, I earned my **B.Tech. in Computer Science Engineering** from **IIIT Delhi** (CGPA: 8.34), where I developed a deep interest in **distributed systems**, **machine learning**, and **deep learning**. I continue to explore these areas through courses like **Stanford's CS234 (Reinforcement Learning)** and **XCS236 (Deep Generative Models)**, **Azure certifications**, **Kaggle competitions** and **independent exploration**.
 
 Outside of work, I enjoy reading fiction and non-fiction, and experimenting with side projects that combine **AI, systems design, and creativity**.  
 This blog is my space to document what I learn and build, not just as a record of progress but as a way to make **AI and engineering more approachable** for others.
@@ -217,29 +217,30 @@ This site is powered by curiosity, continuous learning, and the belief that **kn
 
 ## 🎯 Professional Milestones
 
-- **SWE @ Microsoft (L59 → L60)** — *Microsoft Azure, 2021 - Present*  
-  Working in Azure Specialized org building Agentic AI systems
+- **SWE @ Microsoft (L59 → L60)** — *2023 - Present*   
+Working in Azure Specialized org building Agentic AI systems
 
-- **Microsoft Azure Certifications** — *Microsoft, 2022 - 2024*
-  - **[Azure Administrator Associate (AZ-104)](https://learn.microsoft.com/en-us/credentials/certifications/azure-administrator/)** (*2022*) — Skilled in managing Azure identities, governance, storage, and compute resources across distributed cloud environments.
-  - **[Azure Solutions Architect Expert (AZ-201)](https://learn.microsoft.com/en-us/credentials/certifications/azure-solutions-architect/)** (*2023*) — Experienced in designing scalable, secure, and resilient Azure architectures for enterprise workloads.
-  - **[Azure AI Engineer Associate (AI-102)](https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-engineer/)** (*2023*) — Proficient in building, deploying, and integrating AI services, including NLP, vision, and conversational AI models on Azure.
-  - **[Cosmos DB Developer Specialty (DP-420)](https://learn.microsoft.com/en-us/credentials/certifications/azure-cosmos-db-developer-specialty/)** (*2024*) — Specialized in building globally distributed, high-performance applications using Azure Cosmos DB and multi-region data replication.
+- **Microsoft Azure Certifications** — 2024
+  - **[Azure Administrator Associate (AZ-104)](https://learn.microsoft.com/en-us/credentials/certifications/azure-administrator/?practice-assessment-type=certification)** — Skilled in managing Azure identities, governance, storage, and compute resources across distributed cloud environments.
+  - **[Azure Developer Associate (AZ-201)](https://learn.microsoft.com/en-us/credentials/certifications/azure-developer/?practice-assessment-type=certification)** — Experienced in designing scalable, secure, and resilient Azure architectures for enterprise workloads.
+  - **[Azure AI Engineer Associate (AI-102)](https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-engineer/)** — Proficient in building, deploying, and integrating AI services, including NLP, vision, and conversational AI models on Azure.
+  - **[Cosmos DB Developer Specialty (DP-420)](https://learn.microsoft.com/en-us/credentials/certifications/azure-cosmos-db-developer-specialty/)** — Specialized in building globally distributed, high-performance applications using Azure Cosmos DB and multi-region data replication.  
 
-- **Stanford University (Advanced AI Courses)** — *Stanford Online, 2023 - 2024*
+
+- **Stanford University (Advanced AI Courses)** — *Stanford Online, 2024*
   - **[CS234: Reinforcement Learning](https://digitalcredential.stanford.edu/check/3EA90D2274EE4BB33FFFBB2C93091C16880FBA58DF11119933D828B32AF3868DVzFTOEJtVitJN2ROWlZqS3RXeit6V0FVeDltUWFselVQUTI1UjNWNHllSDdrbTQv)** (*Winter 2024*) — Covered foundational and advanced RL techniques including policy gradients, Q-learning, and bandit algorithms, with a focus on sequential decision-making under uncertainty.
-  - **[CS236: Deep Generative Models](https://online.stanford.edu/courses/xcs236-deep-generative-models)** (*Fall 2023*) — Explored generative modeling techniques such as VAEs, GANs, Normalizing Flows, and Diffusion Models, emphasizing both theory and implementation.
+  - **[CS236: Deep Generative Models](https://digitalcredential.stanford.edu/check/A94BC56E7F6F1330A926CCD1833998FCEE640CCC8DF13D041DF7A1AC42E69AEDLzk3aWt0b0tUNy9HdmJ3aDE4ejNZS0IyUHF5ZHVVQW5DRzRtTjI0cjR0R0lHcXIz)** (*Summer 2024*) — Explored generative modeling techniques such as VAEs, GANs, Normalizing Flows, and Diffusion Models, emphasizing both theory and implementation.
 
-- **SWE Intern @Microsoft** — *Microsoft, Summer 2020*
-  - **[Optimization of Microsoft's internal Machine learning library]**: written using deep learning libraries and algorithms in python based on paper written by MSFT Research leading to reduction in memory usage by 75% on 100+ GB datasets using time profiling, vectorization and reduction in logging.
+- **SWE Intern @Microsoft** — *Microsoft, Summer 2022*
+  - **Optimization of Microsoft's internal Machine learning library**: written using deep learning libraries and algorithms in python based on paper written by MSFT Research leading to reduction in memory usage by 75% on 100+ GB datasets using time profiling, vectorization and reduction in logging.
   - Built a **distributed ML PoC using PySpark and Databricks** demonstrating scalable pre-processing and training on large-scale datasets.
   - Secured a return offer from Microsoft 😊
 
-- **Dean's Award for Excellence in Teaching Assistantship** — *IIIT Delhi, 2019*
+- **Dean's Award for Excellence in Teaching Assistantship** — *IIIT Delhi, 2022*
   - Received appreciation for mentoring 400+ students of junior batches in IIIT Delhi in DSA
   - As a part of TAship, prepared assignments, took tutorials and office hours for students.
 
-- **Machine Learning Engineer** — *Wunderman Thompson Salmon, 2019*
+- **Machine Learning Engineer** — *Wunderman Thompson Salmon, 2021*
   - Implemented a recommendation system to predict customers' next baskets based on the paper using PyTorch.
 
 - **Research Publication** — *ACM Hypertext Conference, 2022*
@@ -250,32 +251,45 @@ This site is powered by curiosity, continuous learning, and the belief that **kn
 ## 🛠️ Technical Skills
 
 **Languages & Frameworks**  
-Python • C# • .NET • JavaScript • SQL • Bash • PowerShell
+Python • C# • .NET • JavaScript • Java • KQL • C++ • ReactJS 
 
 **AI & Machine Learning**  
 PyTorch • TensorFlow • Scikit-learn • LangChain • Semantic Kernel • Azure AI Foundry • OpenAI APIs • RAG Systems • Agent Architectures • Reinforcement Learning
 
 **Cloud & Infrastructure**  
-Azure (Cosmos DB, Azure Functions, App Services, AKS, Azure ML) • Docker • Kubernetes • Terraform • CI/CD (GitHub Actions, Azure DevOps)
-
-**Data & Analytics**  
-PySpark • Databricks • Apache Kafka • Azure Data Factory • SQL Server • PostgreSQL
+Azure (Cosmos DB, Azure Functions, App Services, Authentication, Azure ML) • Docker • Kubernetes • CI/CD (GitHub Actions, Azure DevOps)
 
 **Tools & Platforms**  
-Git • VS Code • Jupyter • MLflow • Grafana • Prometheus • CUDA
+Git • VS Code • Jupyter • 
 
 ---
 
 ## 🎓 Academic Background
 
-**IIIT Delhi** | B.Tech. in Computer Science | 2016 - 2020  
+**IIIT Delhi** | B.Tech. in Computer Science Engineering | 2019 - 2023  
+*Courses: Machine learning, Natural Language Processing, Collaborative Filtering, Distributed Systems,  Theory of Computation, Advanced Data Structures and Algorithms, Computer Networks, Operating Systems*  
 CGPA: **8.34/10**
 
-**Class 12 (CBSE)** | DPS Indirapuram, Ghaziabad | 2016  
-Percentage: **96.4%**
+**Class 12 (CBSE)** | DAV Public School, Shreshtha Vihar, Delhi  | 2019  
+*Subjects: Physics, Chemistry, Mathematics, English, Physical Education*  
+Percentage: **95.4%**
 
-**Class 10 (CBSE)** | DPS Indirapuram, Ghaziabad | 2014  
+**NTSE Scholar (National Talent Scholar Examination - Class 10th)** | 2017  
+*About the exam: It is conducted by the National Council of Educational Research and Training (NCERT) under the Government of India. It is designed for students in Class 10 (or equivalent) in India. The exam is taken in two stages - at state and national level. There are three papers at every stage: Mat (Mental Aptitude Test), English Language Test, SAT (Scholastic Aptitude Test) - covering topics ranging from logical reasoning, physical and social sciences.*   
+Among **top 750 students in India** in class 10th to clear the exam.  
+
+**Class 10 (CBSE)** | Cambridge School, Indirapuram | 2014  
 CGPA: **10/10**
+
+## Test Scores
+
+**JEE Advanced** | Joint Engineering Entrance (Advanced) Exam | 2019  
+*Top 0.3 percentile amongst 100k applicants*  
+AIR: **11404**  
+
+**JEE Mains** | Joint Engineering Entrance Exam | 2019    
+*Top 0.27 percentile amongst a million applicants*  
+AIR: **3366**
 
 ---
 
