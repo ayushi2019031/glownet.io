@@ -2,7 +2,7 @@
 layout: post
 title: "Evaluating AI Agents on Azure with AI Foundry"
 permalink: /ai-agents-azure-evals/
-tags: [Azure AI Foundry, AI Agents, Evaluation, GitHub Actions, OIDC Auth]
+tags: [Azure AI Foundry, Agentic AI, Azure, CI/CD, Authentication Techniques, Safety]
 description: "A practical guide to building evaluation pipelines for multi-agent AI systems on Azure using AI Foundry SDK, CI/CD workflows, and secure OIDC authentication."
 image: "../images/post-cards/global-glownet-card.webp"
 excerpt: "Learn how to evaluate AI agents on Azure using AI Foundry SDK with GitHub Actions and OIDC authentication."
@@ -168,7 +168,6 @@ This phase is responsible for *generating and running conversations* between sim
 </style>
 
 </details>
-
 
 <details> <summary><strong>Indirect (Supply-Chain) Prompt Injection</strong></summary>
 

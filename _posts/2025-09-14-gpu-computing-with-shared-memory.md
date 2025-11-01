@@ -6,17 +6,8 @@ description: "Learn about GPU computing with CUDA, focusing on how shared memory
 excerpt: "Understand CUDA shared memory, synchronization, and caching with a 1D stencil example to optimize GPU performance and thread coordination."
 tags: [CUDA,
   GPU Computing,
-  Shared Memory,
   Parallel Programming,
-  NVIDIA,
-  GPU Architecture,
-  CUDA Memory Hierarchy,
-  Stencil Computation,
-  High Performance Computing,
-  CUDA Optimization,
-  Thread Synchronization,
-  Bank Conflicts,
-  GPGPU]
+  NVIDIA]
 image: "../images/post-cards/global-glownet-card.webp"
 ---
 

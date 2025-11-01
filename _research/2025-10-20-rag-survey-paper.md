@@ -6,11 +6,8 @@ tags: [
   RAG,
   LLMs,
   Knowledge Retrieval,
-  Information Retrieval,
   Hallucination Mitigation,
-  Survey Paper,
-  Deep Learning,
-  NLP
+  Survey Paper
 ]
 image: "../images/post-cards/global-glownet-card.webp"
 description: "A deep-dive into the 2023 Retrieval-Augmented Generation (RAG) survey paper exploring how LLMs combine retrieval and generation to reduce hallucinations, improve factual grounding, and evolve toward modular, multi-modal intelligence."

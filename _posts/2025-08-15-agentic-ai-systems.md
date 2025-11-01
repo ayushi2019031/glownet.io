@@ -2,7 +2,7 @@
 layout: post
 title: "AI Agents Explained: Smarter, Faster, and More Independent Than Ever"
 permalink: /ai-agents-explained/
-tags: [Agentic AI, Multi-Agentic AI flows, Production Systems]
+tags: [Agentic AI]
 image: "../images/post-cards/global-glownet-card.webp"
 description: "A complete guide to AI agents — how they work, their evolution, architecture, and design in production systems using orchestrators, memory, tools, and multi-agent coordination."
 excerpt: "Understand how modern AI agents reason, plan, and act from architecture to real-world deployment."

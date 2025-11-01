@@ -7,15 +7,7 @@ tags: [
   CUDA,
   GPU Computing,
   Parallel Programming,
-  NVIDIA,
-  Heterogeneous Computing,
-  GPU Architecture,
-  CUDA Kernels,
-  GPU Threads and Blocks,
-  nvcc Compiler,
-  Vector Addition,
-  High Performance Computing,
-  CUDA Basics
+  NVIDIA
 ]
 
 image: "../images/post-cards/global-glownet-card.webp"
