@@ -26,7 +26,7 @@
   --header-text: #ffffff;
   --footer-text: #ffffff;
   --input-bg: #fff;
-  --code-bg: #f5f5f5;
+  --code-bg: #f8f8f8;
 }
 
 html[data-theme="dark"] {
@@ -546,16 +546,24 @@ hr.fancy {
   color: var(--text-primary);
   border-color: var(--border-color);
   transition: all 0.3s ease;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.9em;
 }
 
 .post-content pre {
   background: var(--code-bg);
   border-color: var(--border-color);
   transition: all 0.3s ease;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
 }
 
 .post-content pre code {
-  color: var(--text-primary);
+  background: transparent;
+  border: none;
+  padding: 0;
 }
 
 .post-content table {
@@ -642,6 +650,21 @@ hr.fancy {
   text-align: center;
   margin-top: 0.5rem;
   transition: color 0.3s ease;
+}
+
+/* --- Light Mode Syntax Highlighting --- */
+.highlight {
+  background: #f8f8f8;
+  
+  .highlighter-rouge & {
+    background: #f8f8f8;
+  }
+}
+
+.highlight pre,
+.highlight code {
+  background: #f8f8f8;
+  color: #24292e;
 }
 
 /* --- Dark Mode Syntax Highlighting --- */
