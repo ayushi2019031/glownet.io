@@ -171,46 +171,92 @@ hr.fancy {
 
 /* --- Tag Filter Section --- */
 .tag-filter-section {
-  margin: 2rem 0 3rem 0;
+  margin: 1.5rem 0 2rem 0;
 }
 
 .filter-heading {
   font-size: 1.75rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   font-weight: 600;
   color: #333;
 }
 
-.tag-filters {
+.tag-multiselect-wrapper {
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
   gap: 0.75rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
-.tag-button {
+.tag-multiselect-wrapper label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #555;
+}
+
+.tag-multiselect-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.tag-multiselect-button {
   padding: 0.5rem 1rem;
   border: 2px solid #e0e0e0;
   background: #fff;
-  border-radius: 20px;
+  border-radius: 8px;
   cursor: pointer;
   font-size: 0.9rem;
   font-weight: 500;
   color: #555;
   transition: all 0.3s ease;
   font-family: inherit;
+  min-width: 200px;
+  text-align: left;
 }
 
-.tag-button:hover {
+.tag-multiselect-button:hover {
   border-color: #3851cf;
+}
+
+.tag-multiselect-options {
+  display: none;
+  position: absolute;
+  background: #fff;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  margin-top: 0.25rem;
+  min-width: 200px;
+  max-height: 300px;
+  overflow-y: auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+}
+
+.tag-multiselect-options.show {
+  display: block;
+}
+
+.tag-option {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-size: 0.9rem;
+}
+
+.tag-option:hover {
   background: #f0f7ff;
-  color: #3851cf;
 }
 
-.tag-button.active {
-  background: #3851cf;
-  border-color: #3851cf;
-  color: #fff;
+.tag-option input[type="checkbox"] {
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+.tag-option span {
+  color: #555;
+  user-select: none;
 }
 
 /* --- Blog Grid Layout --- */
