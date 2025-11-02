@@ -283,30 +283,58 @@ Here are the main strategies I explored (and struggled with) during the competit
   margin: 20px 0;
 }
 .tech-card {
-  background: #fff;
+  background: var(--tile-bg);
   border-radius: 12px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border-color);
   padding: 16px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  box-shadow: 0 4px 16px var(--tile-hover-shadow);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
-.tech-card h3 { margin: 0; font-size: 1.2rem; color: #1e3a8a; }
-.tech-card .subtitle { margin: 4px 0 8px; color: #6b7280; font-size: 0.9rem; }
-.tech-card .summary { margin: 0 0 12px; font-size: 0.95rem; }
+.tech-card h3 { 
+  margin: 0; 
+  font-size: 1.2rem; 
+  color: var(--accent-color);
+  transition: color 0.3s ease;
+}
+.tech-card .subtitle { 
+  margin: 4px 0 8px; 
+  color: var(--text-light); 
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+.tech-card .summary { 
+  margin: 0 0 12px; 
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
 .tech-card .pros, .tech-card .cons { margin-bottom: 10px; }
-.tech-card .pros strong { color: #047857; }
-.tech-card .cons strong { color: #b91c1c; }
-.tech-card ul { margin: 4px 0; padding-left: 18px; font-size: 0.9rem; }
+.tech-card .pros strong { color: #10b981; }
+.tech-card .cons strong { color: #ef4444; }
+html[data-theme="dark"] .tech-card .pros strong { color: #34d399; }
+html[data-theme="dark"] .tech-card .cons strong { color: #f87171; }
+.tech-card ul { 
+  margin: 4px 0; 
+  padding-left: 18px; 
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
 .tech-card .link {
   margin-top: auto;
   align-self: flex-start;
-  color: #2563eb;
+  color: var(--accent-color);
   font-weight: 500;
   text-decoration: none;
+  transition: color 0.3s ease;
 }
-.tech-card .link:hover { text-decoration: underline; }
+.tech-card .link:hover { 
+  text-decoration: underline;
+  color: var(--accent-hover);
+}
 </style>
 
 
