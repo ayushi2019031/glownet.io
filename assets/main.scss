@@ -267,7 +267,7 @@ hr.fancy {
   justify-content: center;
   gap: 1rem;
   padding: 1rem;
-  background: var(--content-bg);
+  background: transparent;
   border-bottom: 2px solid var(--border-color);
   margin: 0 -2rem 2rem -2rem;
   backdrop-filter: blur(10px);
@@ -276,7 +276,7 @@ hr.fancy {
 
 .nav-pill {
   padding: 0.6rem 1.5rem;
-  background: transparent;
+  background: var(--tile-bg);
   color: var(--text-muted);
   border: 2px solid var(--border-color);
   border-radius: 25px;
@@ -290,7 +290,7 @@ hr.fancy {
 .nav-pill:hover {
   border-color: var(--accent-color);
   color: var(--accent-color);
-  background: var(--tag-bg);
+  background: var(--tile-bg);
 }
 
 .nav-pill.active {
