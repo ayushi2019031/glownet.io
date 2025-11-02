@@ -11,8 +11,14 @@ layout: default
 
   {%- if site.posts.size > 0 -%}
     
+    <!-- Sticky Section Navigation -->
+    <div class="sticky-nav" id="stickyNav">
+      <a href="#explorations" class="nav-pill active" data-section="explorations">Explorations</a>
+      <a href="#thinking-in-papers" class="nav-pill" data-section="papers">Thinking in Papers</a>
+    </div>
+
     <!-- Tag Filter Section -->
-    <div class="tag-filter-section">
+    <div class="tag-filter-section" id="explorations">
       <h2 class="filter-heading">{{ page.list_title | default: "Explorations and Concept Breakdowns" }}</h2>
       <div class="tag-multiselect-wrapper">
         <label>Filter by topics:</label>
@@ -83,8 +89,13 @@ layout: default
 
   {%- if site.research.size > 0 -%}
     
+    <!-- Jump Back to Explorations -->
+    <div class="section-nav">
+      <a href="#explorations" class="jump-link">↑ Back to Explorations</a>
+    </div>
+
     <!-- Research Tag Filter Section -->
-    <div class="tag-filter-section">
+    <div class="tag-filter-section" id="thinking-in-papers">
       <h2 class="filter-heading">Thinking in Papers</h2>
       <div class="tag-multiselect-wrapper">
         <label>Filter by topics:</label>
@@ -244,5 +255,33 @@ layout: default
         });
       });
     }
+    
+    // Sticky nav active state tracking
+    const navPills = document.querySelectorAll('.nav-pill');
+    const sections = {
+      'explorations': document.getElementById('explorations'),
+      'papers': document.getElementById('thinking-in-papers')
+    };
+    
+    // Update active state on scroll
+    window.addEventListener('scroll', function() {
+      let current = '';
+      
+      Object.entries(sections).forEach(([key, section]) => {
+        if (section) {
+          const sectionTop = section.offsetTop - 150;
+          if (pageYOffset >= sectionTop) {
+            current = key;
+          }
+        }
+      });
+      
+      navPills.forEach(pill => {
+        pill.classList.remove('active');
+        if (pill.getAttribute('data-section') === current) {
+          pill.classList.add('active');
+        }
+      });
+    });
   });
 </script>
