@@ -275,7 +275,7 @@ CGPA: **8.34/10**
 Percentage: **95.4%**
 
 **NTSE Scholar (National Talent Scholar Examination - Class 10th)** | 2017  
-*About the exam: It is conducted by the National Council of Educational Research and Training (NCERT) under the Government of India. It is designed for students in Class 10 (or equivalent) in India. The exam is taken in two stages - at state and national level. There are three papers at every stage: Mat (Mental Aptitude Test), English Language Test, SAT (Scholastic Aptitude Test) - covering topics ranging from logical reasoning, physical and social sciences.*   
+*About the exam: It is conducted by the National Council of Educational Research and Training (NCERT) with the Government of India. The exam is taken in two stages - at state and national level. There are three papers at every stage: MAT (Mental Aptitude Test), English Language Test, SAT (Scholastic Aptitude Test) - covering topics ranging from logical reasoning, physical and social sciences.*   
 Among **top 750 students in India** in class 10th to clear the exam.  
 
 **Class 10 (CBSE)** | Cambridge School, Indirapuram | 2014  
@@ -307,6 +307,6 @@ AIR: **3366**
 
 ---
 
-*Thanks for stopping by — and if you’re building something cool in AI, I’d love to hear from you! Please feel free to reach out at [atallakshaya@gmail.com](atallakshaya@gmail.com)*  
+*Thanks for stopping by — and if you’re building something cool in AI, I’d love to hear from you! Please feel free to reach out at [atallakshaya@gmail.com](mailto:atallakshaya@gmail.com)*  
 *This is my personal website, and all thoughts posted here are only mine and not linked to the workplace I am at.*
 
