@@ -150,14 +150,58 @@ permalink: /about/
   .hero-section {
     flex-direction: column;
     text-align: center;
+    padding: 1.5rem 1rem;
+    gap: 1.5rem;
   }
   
   .hero-content h1 {
     font-size: 1.5rem;
   }
   
+  .hero-tagline {
+    font-size: 1rem;
+  }
+  
+  .hero-image img {
+    width: 140px;
+    height: 140px;
+  }
+  
   .stats-grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .stat-card {
+    padding: 1rem;
+  }
+  
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .skill-category {
+    padding: 1rem;
+  }
+  
+  .books-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .section-header {
+    margin-top: 2rem;
+  }
+  
+  .section-header h2 {
+    font-size: 1.5rem;
+  }
+  
+  /* Make floating profile image stack better on mobile */
+  img[style*="float:right"] {
+    float: none !important;
+    margin: 0 auto 1rem auto !important;
+    display: block !important;
   }
 }
 </style>
