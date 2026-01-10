@@ -52,11 +52,6 @@ layout: default
       {%- for post in site.posts -%}
         <article class="blog-tile" data-tags="{{ post.tags | join: ',' }}">
           <div class="tile-content">
-            {%- if post.image -%}
-              <div class="tile-image">
-                <img src="{{ post.image | relative_url }}" alt="{{ post.title | escape }}">
-              </div>
-            {%- endif -%}
             <div class="tile-body">
               <h3 class="tile-title">
                 <a href="{{ post.url | relative_url }}">
