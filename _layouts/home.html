@@ -125,11 +125,6 @@ layout: default
       {%- for paper in sorted_research -%}
         <article class="blog-tile research-tile" data-tags="{{ paper.tags | join: ',' }}">
           <div class="tile-content">
-            {%- if paper.image -%}
-              <div class="tile-image">
-                <img src="{{ paper.image | relative_url }}" alt="{{ paper.title | escape }}">
-              </div>
-            {%- endif -%}
             <div class="tile-body">
               <h3 class="tile-title">
                 <a href="{{ paper.url | relative_url }}">
