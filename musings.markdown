@@ -1,6 +1,7 @@
 ---
 layout: page
 title: "An Overly Quixotic View"
+tab_title: "Musings"
 permalink: /musings/
 ---
 
