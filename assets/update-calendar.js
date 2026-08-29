@@ -7,7 +7,7 @@
   var MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June',
     'July', 'August', 'September', 'October', 'November', 'December'];
 
-  // Newest first. `month` is 1-indexed for readability.
+  // All logged under one date for now. `month` is 1-indexed for readability.
   var updates = [
     {
       year: 2026, month: 8, day: 29,
@@ -16,19 +16,19 @@
       geo: 'Geo aside: Chile stretches over 2,600 miles north to south but is rarely wider than 110 miles — the long way to learn geometry.'
     },
     {
-      year: 2026, month: 5, day: 4,
+      year: 2026, month: 8, day: 29,
       title: 'Stanford AI Technical Professional certificate',
       meta: 'Done — Deep RL course wrapped, Bellman equations and all.',
       geo: 'Geo aside: Point Nemo, in the South Pacific, is the spot on Earth farthest from any land — about 2,700 km from the nearest coastline in any direction. It’s so remote that when the ISS passes overhead at roughly 400 km up, the closest humans to that patch of ocean are often the astronauts, not anyone on a ship. It’s also where space agencies deliberately crash decommissioned satellites and stations, since there’s nothing down there to hit — Russia’s Mir went in there in 2001, and the ISS is expected to follow around 2031.'
     },
     {
-      year: 2026, month: 2, day: 12,
+      year: 2026, month: 8, day: 29,
       title: 'Rebuilt college-level ODEs from scratch',
       meta: 'Done — purely for fun, believe it or not.',
       geo: 'Geo aside: Montana’s Roe River was once certified the world’s shortest river — about 200 feet, shorter than most hiking trailheads.'
     },
     {
-      year: 2025, month: 11, day: 3,
+      year: 2026, month: 8, day: 29,
       title: 'Building AI agents and Azure Portal blades at Microsoft',
       meta: 'Ongoing — the kind of work where "it’s just a UI tweak" is never actually true, and an agent doing the wrong thing at 2am is now officially my problem.',
       geo: 'Geo aside: Russia spans 11 time zones — more than any other country, and reportedly more than most on-call rotations can survive.'
@@ -78,6 +78,25 @@
     });
   }
 
+  function sameDate(a, b) {
+    return a.year === b.year && a.month === b.month && a.day === b.day;
+  }
+
+  // Skip past entries sharing the current date, so the arrows only ever
+  // land on a month/day that actually looks different in the grid.
+  function findOlderIndex() {
+    for (var i = index + 1; i < updates.length; i++) {
+      if (!sameDate(updates[i], updates[index])) return i;
+    }
+    return -1;
+  }
+  function findNewerIndex() {
+    for (var i = index - 1; i >= 0; i--) {
+      if (!sameDate(updates[i], updates[index])) return i;
+    }
+    return -1;
+  }
+
   function render() {
     var u = updates[index];
     var y = u.year, m = u.month - 1;
@@ -99,8 +118,8 @@
 
     geoEl.textContent = u.geo;
 
-    prevBtn.disabled = index >= updates.length - 1;
-    nextBtn.disabled = index <= 0;
+    prevBtn.disabled = findOlderIndex() === -1;
+    nextBtn.disabled = findNewerIndex() === -1;
 
     listItems.forEach(function (li, i) {
       li.classList.toggle('update-list__item--active', i === index);
@@ -108,10 +127,12 @@
   }
 
   prevBtn.addEventListener('click', function () {
-    if (index < updates.length - 1) { index++; render(); }
+    var target = findOlderIndex();
+    if (target !== -1) { index = target; render(); }
   });
   nextBtn.addEventListener('click', function () {
-    if (index > 0) { index--; render(); }
+    var target = findNewerIndex();
+    if (target !== -1) { index = target; render(); }
   });
 
   render();
