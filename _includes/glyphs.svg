@@ -8,18 +8,6 @@
           stroke="var(--ink)" stroke-width="1.6" stroke-linecap="round"/>
   </symbol>
 
-  <symbol id="g-lamp-hero" viewBox="0 0 160 145">
-    <path d="M46 60 L114 60 L96 128 L64 128 Z" fill="var(--tile)" opacity="0.55"/>
-    <path d="M40 58 L120 58 L104 30 L56 30 Z" fill="var(--filament)"/>
-    <circle cx="80" cy="62" r="6" fill="var(--ink)"/>
-    <path d="M80 30 L80 14 M80 14 L108 14"
-          stroke="var(--ink-soft)" stroke-width="3" stroke-linecap="round" fill="none"/>
-    <path d="M30 44 A28 28 0 0 1 44 22 M124 22 A28 28 0 0 1 136 44"
-          stroke="var(--ink-soft)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-    <rect x="52" y="122" width="56" height="7" rx="2" fill="var(--ink-body)"/>
-    <rect x="58" y="114" width="44" height="8" rx="2" fill="var(--ink-soft)"/>
-  </symbol>
-
   <symbol id="g-agents" viewBox="0 0 40 40">
     <circle cx="20" cy="10" r="5" fill="var(--ink)"/>
     <circle cx="10" cy="29" r="5" fill="var(--ink-soft)"/>

@@ -13,8 +13,23 @@ layout: default
       <a class="pill" href="mailto:{{ site.email }}">Email</a>
     </div>
   </div>
-  <svg class="hero__lamp" viewBox="0 0 160 145" aria-hidden="true"><use href="#g-lamp-hero"></use></svg>
+  <svg class="hero__rl" viewBox="0 0 210 214" aria-hidden="true" id="rl-widget">
+    <g id="rl-grid"></g>
+    <g id="rl-trail"></g>
+    <g id="rl-agent" class="rl-agent"></g>
+    <g class="rl-legend">
+      <rect x="25" y="176" width="9" height="9" rx="1.5" class="rl-legend__swatch rl-legend__swatch--start"/>
+      <text x="38" y="184" class="rl-legend__text">start</text>
+      <rect x="79" y="176" width="9" height="9" rx="1.5" class="rl-legend__swatch rl-legend__swatch--goal"/>
+      <text x="92" y="184" class="rl-legend__text">coffee</text>
+      <rect x="133" y="176" width="9" height="9" rx="1.5" class="rl-legend__swatch rl-legend__swatch--trap"/>
+      <text x="146" y="184" class="rl-legend__text">trap</text>
+    </g>
+    <text id="rl-label" x="25" y="205" class="rl-episode-label">Q-learning · ep 0/40</text>
+  </svg>
 </section>
+
+<script defer src="{{ "/assets/gridworld.js" | relative_url }}"></script>
 
 {{ content }}
 

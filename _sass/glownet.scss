@@ -153,11 +153,42 @@ a:hover { color: var(--ink); }
 .pill:hover { background: var(--tile); color: var(--ink); }
 .pill--filled { background: var(--tile); color: var(--ink); border-color: var(--tile); }
 
-.hero__lamp { width: 150px; height: 140px; flex-shrink: 0; }
+.hero__rl { width: 290px; height: 295px; flex-shrink: 0; }
+
+.rl-cell { fill: var(--paper-raised); stroke: var(--ink-soft); stroke-width: 0.75; stroke-opacity: 0.35; }
+.rl-cell--goal { fill: var(--filament); }
+.rl-cell--trap { fill: var(--ember); }
+.rl-cell--start { stroke: var(--ink-soft); stroke-width: 1.2; stroke-opacity: 0.9; stroke-dasharray: 2 1.6; }
+.rl-cell--flash-goal { animation: rl-pulse-goal 480ms ease-out; }
+.rl-cell--flash-trap { animation: rl-pulse-trap 480ms ease-out; }
+
+#rl-agent { transition: transform 160ms linear; }
+.rl-trail-dot { fill: var(--filament); }
+
+.rl-legend__swatch--start { fill: var(--paper-raised); stroke: var(--ink-soft); stroke-width: 1; stroke-dasharray: 2 1.4; }
+.rl-legend__swatch--goal { fill: var(--filament); }
+.rl-legend__swatch--trap { fill: var(--ember); }
+.rl-legend__text, .rl-episode-label { font-family: var(--body); font-size: 10px; fill: var(--ink-soft); }
+
+@keyframes rl-pulse-goal {
+  0% { fill: var(--filament); }
+  40% { fill: var(--ink); }
+  100% { fill: var(--filament); }
+}
+@keyframes rl-pulse-trap {
+  0% { fill: var(--ember); }
+  40% { fill: var(--ink); }
+  100% { fill: var(--ember); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #rl-agent { transition: none; }
+  .rl-cell--flash-goal, .rl-cell--flash-trap { animation: none; }
+}
 
 @media (max-width: 720px) {
   .hero { flex-direction: column-reverse; align-items: flex-start; gap: 1rem; }
-  .hero__lamp { width: 110px; height: 102px; }
+  .hero__rl { width: 230px; height: 235px; }
 }
 
 // ---------------------------------------------------------------- post list
