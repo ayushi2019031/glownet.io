@@ -503,6 +503,50 @@ a:hover { color: var(--ink); }
   .update-list { width: 100%; max-height: 260px; }
 }
 
+.notebook-wrap {
+  position: relative;
+  margin: 2.1rem 0 2.5rem;
+}
+
+.notebook__tape {
+  position: absolute;
+  top: -11px;
+  left: 34px;
+  width: 74px;
+  height: 24px;
+  background: var(--tile);
+  border: 1px solid var(--filament);
+  opacity: 0.7;
+  box-shadow: 0 2px 5px rgba(65, 36, 2, 0.12);
+  transform: rotate(-7deg);
+  z-index: 2;
+}
+
+.notebook {
+  position: relative;
+  padding: 1.5rem 1.6rem 1.5rem 2.75rem;
+  background: var(--paper-raised);
+  border: 1px solid var(--filament);
+  border-radius: 12px;
+  overflow: hidden;
+  transform: rotate(-1.2deg);
+  box-shadow: 0 3px 8px rgba(65, 36, 2, 0.08);
+}
+.notebook::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 26px;
+  background-image: radial-gradient(circle, var(--paper) 0 3.5px, var(--ink-soft) 3.5px 4px, transparent 4px);
+  background-size: 26px 24px;
+  background-position: center 10px;
+  background-repeat: repeat-y;
+  opacity: 0.85;
+}
+.notebook p { margin: 0; }
+
 // ---------------------------------------------------------------- a11y
 
 @media (prefers-reduced-motion: reduce) {

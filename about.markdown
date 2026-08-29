@@ -48,7 +48,12 @@ permalink: /about/
 
 ## A personal note
 
+<div class="notebook-wrap">
+  <span class="notebook__tape" aria-hidden="true"></span>
+  <div class="notebook" markdown="1">
 At my core, I'm just a learner — always up for collaborations, new areas of work, and experiences I haven't had yet, with a soft spot for anything that makes the world a little better along the way. Outside of work I read a lot of fiction — most recently *The Silent Patient*, *All the Light We Cannot See*, and the *Morisaki Bookshop* books — and tinker with side projects at the intersection of AI, systems, and creativity. This site exists because I think knowledge grows best when it's shared.
+  </div>
+</div>
 
 ---
 

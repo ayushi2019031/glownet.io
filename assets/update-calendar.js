@@ -11,6 +11,12 @@
   var updates = [
     {
       year: 2026, month: 8, day: 29,
+      title: 'Building AI agents and Azure Portal blades at Microsoft',
+      meta: 'Ongoing — the kind of work where "it’s just a UI tweak" is never actually true, and an agent doing the wrong thing at 2am is now officially my problem.',
+      geo: 'Geo aside: Russia spans 11 time zones — more than any other country, and reportedly more than most on-call rotations can survive.'
+    },
+    {
+      year: 2026, month: 8, day: 29,
       title: 'M.Tech this term — Deep RL, ACI, Computer Vision, PGM',
       meta: 'You are here — the most fun I’ve had with coursework in years. Next up: 3D geometry.',
       geo: 'Geo aside: Chile stretches over 2,600 miles north to south but is rarely wider than 110 miles — the long way to learn geometry.'
@@ -18,7 +24,7 @@
     {
       year: 2026, month: 8, day: 29,
       title: 'Stanford AI Technical Professional certificate',
-      meta: 'Done — Deep RL course wrapped, Bellman equations and all.',
+      meta: 'Done — Prof. Chelsea Finn’s XCS224R Deep Reinforcement Learning course. The research-first approach was what made it fun, Bellman equations and all.',
       geo: 'Geo aside: Point Nemo, in the South Pacific, is the spot on Earth farthest from any land — about 2,700 km from the nearest coastline in any direction. It’s so remote that when the ISS passes overhead at roughly 400 km up, the closest humans to that patch of ocean are often the astronauts, not anyone on a ship. It’s also where space agencies deliberately crash decommissioned satellites and stations, since there’s nothing down there to hit — Russia’s Mir went in there in 2001, and the ISS is expected to follow around 2031.'
     },
     {
@@ -26,12 +32,6 @@
       title: 'Rebuilt college-level ODEs from scratch',
       meta: 'Done — purely for fun, believe it or not.',
       geo: 'Geo aside: Montana’s Roe River was once certified the world’s shortest river — about 200 feet, shorter than most hiking trailheads.'
-    },
-    {
-      year: 2026, month: 8, day: 29,
-      title: 'Building AI agents and Azure Portal blades at Microsoft',
-      meta: 'Ongoing — the kind of work where "it’s just a UI tweak" is never actually true, and an agent doing the wrong thing at 2am is now officially my problem.',
-      geo: 'Geo aside: Russia spans 11 time zones — more than any other country, and reportedly more than most on-call rotations can survive.'
     }
   ];
 
