@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <style>
+    .bg   { fill: #FAC775; }
+    .arm  { stroke: #412402; }
+    .base { fill: #412402; }
+    @media (prefers-color-scheme: dark) {
+      .bg   { fill: #5A3608; }
+      .arm  { stroke: #FAEEDA; }
+      .base { fill: #FAEEDA; }
+    }
+  </style>
+  <rect class="bg" width="32" height="32" rx="7"/>
+  <path d="M10 9 L22 9 L19 15 L13 15 Z" fill="#EF9F27"/>
+  <path class="arm" d="M16 15 L16 21" stroke-width="2" stroke-linecap="round"/>
+  <rect class="base" x="11" y="22" width="10" height="2.4" rx="1.2"/>
+</svg>
