@@ -514,9 +514,9 @@ model_config = AzureOpenAIModelConfiguration(
 )
 # Needed to use content safety evaluators
 azure_ai_project={
-    "subscription_id": "49d64d54-e966-4c46-a868-1999802b762c",
-          "project_name": "padmajat-agenticai-hackathon25",
-          "resource_group_name": "rg-padmajat-2824",
+    "subscription_id": "<your-subscription-id>",
+    "project_name": "<your-project-name>",
+    "resource_group_name": "<your-resource-group-name>",
 }
 
 tool_call_accuracy = ToolCallAccuracyEvaluator(model_config=model_config)
@@ -569,9 +569,9 @@ response = evaluate(
         "protected_material": protected_material
     },
     azure_ai_project={
-        "subscription_id": "49d64d54-e966-4c46-a868-1999802b762c",
-          "project_name": "padmajat-agenticai-hackathon25",
-          "resource_group_name": "rg-padmajat-2824",
+        "subscription_id": "<your-subscription-id>",
+        "project_name": "<your-project-name>",
+        "resource_group_name": "<your-resource-group-name>",
     }
 )
 from pprint import pprint

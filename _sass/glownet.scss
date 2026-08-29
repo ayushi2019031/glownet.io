@@ -259,6 +259,12 @@ a:hover { color: var(--ink); }
 .post-content code { padding: 1px 5px; }
 .post-content pre code { border: 0; padding: 0; }
 
+.comments {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--filament);
+}
+
 // ---------------------------------------------------------------- footer
 
 .site-footer {

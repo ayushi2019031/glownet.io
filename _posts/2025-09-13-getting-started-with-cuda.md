@@ -4,12 +4,7 @@ title: "Introduction to GPU Computing with CUDA"
 permalink: /getting-started-with-cuda/
 glyph: cuda
 description: "This blog gives an introduction to GPU computing with CUDA, NVIDIA's programming framework. We learn about blocks, threads, and how they map to array indices, along with a walkthrough of a basic code end to end. "
-tags: [
-  CUDA,
-  GPU Computing,
-  Parallel Programming,
-  NVIDIA
-]
+tags: [CUDA, GPU Fundamentals]
 
 image: "../images/post-cards/global-glownet-card.webp"
 excerpt: "A beginner’s guide to GPU computing with CUDA to learn about threads, blocks, memory management, and vector addition with clear code examples."
