@@ -2,6 +2,7 @@
 layout: post
 title: "Building AI Agents on Azure with AI Foundry"
 permalink: /ai-agents-on-azure/
+glyph: cloud
 tags: [Azure AI Foundry, Agentic AI, Azure, CI/CD, Authentication Techniques]
 description: "Learn how to build, deploy, and evaluate AI Agents on Azure using Azure AI Foundry, Copilot Studio, and the Microsoft 365 Agents SDK. This guide explains agent architecture, threads, runs, deployment, and evaluation best practices for creating secure, scalable, multi-agent systems."
 excerpt: "A practical guide to building and scaling AI Agents on Azure using AI Foundry, while briefly touching upon Copilot Studio."

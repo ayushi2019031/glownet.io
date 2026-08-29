@@ -2,6 +2,7 @@
 layout: post
 title: "AI Agents Explained: Smarter, Faster, and More Independent Than Ever"
 permalink: /ai-agents-explained/
+glyph: agents
 tags: [Agentic AI]
 image: "../images/post-cards/global-glownet-card.webp"
 description: "A complete guide to AI agents — how they work, their evolution, architecture, and design in production systems using orchestrators, memory, tools, and multi-agent coordination."

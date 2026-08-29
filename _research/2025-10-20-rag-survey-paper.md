@@ -2,6 +2,7 @@
 layout: post
 title: "Thinking Through RAG: My Notes on the Retrieval-Augmented Generation Survey"
 permalink: /rag-survey-research-paper-review/
+glyph: paper
 tags: [
   RAG,
   LLMs,

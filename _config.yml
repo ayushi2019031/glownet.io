@@ -19,7 +19,7 @@
 # in the templates via {{ site.myvariable }}.
 
 title: Glownet 💡
-email: atallakshaya@gmail.com
+email: ayushij2704@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Glownet is a collection of technical explorations in machine learning, grounded in real-world projects and Kaggle competitions. Each article breaks down model architectures, training strategies, and experimental results with clarity and depth — making advanced AI concepts more accessible and transparent. Glownet aims to shed light on the process behind building, understanding, and improving modern AI systems.
 baseurl: "" # the subpath of your site, e.g. /blog
@@ -45,11 +45,14 @@ collections:
   research:
     output: true
     permalink: /research/:name/
+  musings:
+    output: true
+    permalink: /musings/:name/
 
 # optional, to make Minima show excerpts when you ask it to
 show_excerpts: true
 
-# defaults so your research entries render like posts (or use a custom layout)
+# defaults so your research/musings entries render like posts (or use a custom layout)
 defaults:
   - scope:
       path: ""
@@ -57,6 +60,12 @@ defaults:
     values:
       layout: post   # or "research" if you make a custom layout
       excerpt_separator: "<!--more-->"  # optional for manual excerpts
+  - scope:
+      path: ""
+      type: musings
+    values:
+      layout: post
+      excerpt_separator: "<!--more-->"
 
 future: true
 

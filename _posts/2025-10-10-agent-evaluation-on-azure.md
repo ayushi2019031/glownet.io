@@ -2,6 +2,7 @@
 layout: post
 title: "Evaluating AI Agents on Azure with AI Foundry"
 permalink: /ai-agents-azure-evals/
+glyph: auth
 tags: [Azure AI Foundry, Agentic AI, Azure, CI/CD, Authentication Techniques, Safety]
 description: "A practical guide to building evaluation pipelines for multi-agent AI systems on Azure using AI Foundry SDK, CI/CD workflows, and secure OIDC authentication."
 image: "../images/post-cards/global-glownet-card.webp"
@@ -778,5 +779,5 @@ jobs:
 **Note:** *Evaluation in Azure AI Foundry is currently in Public Preview* — which means more features, refinements, and capabilities are on the way. As the platform evolves, I’ll continue sharing new experiments, insights, and implementation learnings here on **glownet.io**.
 
 If you’ve been building your own evaluation workflows or experimenting with AI Foundry, I’d love to hear from you!  
-Feel free to share your thoughts or experiences at **atallakshaya@gmail.com**.
+Feel free to share your thoughts or experiences at **ayushij2704@gmail.com**.
 

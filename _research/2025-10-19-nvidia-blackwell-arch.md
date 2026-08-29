@@ -2,6 +2,7 @@
 layout: post
 title: "NVIDIA Blackwell GPU Technical Whitepaper Brief"
 permalink: /nvidia-blackwell-capabilities/
+glyph: cuda
 tags: [NVIDIA Blackwell, GPU Computing, CUDA, NVIDIA]
 image: "../images/post-cards/global-glownet-card.webp"
 description: "A deep technical dive into NVIDIA’s Blackwell GPU architecture, exploring how FP4 precision, NVLink 5.0, dual-die NV-HBI links, and the new Transformer Engine redefine inference, scaling, and distributed reasoning for trillion-parameter models."
