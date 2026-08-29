@@ -24,12 +24,43 @@ permalink: /about/
   <a class="pill" href="mailto:{{ site.email }}">Email</a>
 </div>
 
-## Keeping the lamp lit
+<div class="section-heading-row">
+  <h2>Keeping the lamp lit</h2>
+  <span class="updated-tag">Updated · August 2026</span>
+</div>
 
-- **Building AI agents and Azure Portal blades at Microsoft** — the kind of work where "it's just a UI tweak" is never actually true, and an agent doing the wrong thing at 2am is now officially my problem.
-- **Chipping away at an M.Tech on the side** — this term's lineup is Deep RL, ACI, Computer Vision, and Probabilistic Graphical Models, and it's honestly the most fun I've had with coursework in years.
-- **Earned the Stanford AI Technical Professional certificate** — including the Deep RL course, now fully wrapped up, Bellman equations and all.
-- **Rebuilt my college math from scratch, purely for fun** — ODEs are done, and I've moved on to 3D geometry, which is somehow both nostalgic and humbling.
+<p>Currently building AI agents and Azure Portal blades at Microsoft — the kind of work where "it's just a UI tweak" is never actually true, and an agent doing the wrong thing at 2am is now officially my problem. Outside of that, here's the trail I'm on:</p>
+
+<ol class="learning-trail">
+  <li class="learning-trail__node learning-trail__node--done">
+    <span class="learning-trail__marker" aria-hidden="true"></span>
+    <div class="learning-trail__body">
+      <p class="learning-trail__title">Stanford AI Technical Professional certificate</p>
+      <p class="learning-trail__meta">Done — Deep RL course wrapped, Bellman equations and all.</p>
+    </div>
+  </li>
+  <li class="learning-trail__node learning-trail__node--done">
+    <span class="learning-trail__marker" aria-hidden="true"></span>
+    <div class="learning-trail__body">
+      <p class="learning-trail__title">Rebuilt college-level ODEs from scratch</p>
+      <p class="learning-trail__meta">Done — purely for fun, believe it or not.</p>
+    </div>
+  </li>
+  <li class="learning-trail__node learning-trail__node--current">
+    <span class="learning-trail__marker" aria-hidden="true"></span>
+    <div class="learning-trail__body">
+      <p class="learning-trail__title">M.Tech this term — Deep RL, ACI, Computer Vision, Probabilistic Graphical Models</p>
+      <p class="learning-trail__meta">You are here — the most fun I've had with coursework in years.</p>
+    </div>
+  </li>
+  <li class="learning-trail__node learning-trail__node--next">
+    <span class="learning-trail__marker" aria-hidden="true"></span>
+    <div class="learning-trail__body">
+      <p class="learning-trail__title">3D geometry</p>
+      <p class="learning-trail__meta">Up next — somehow both nostalgic and humbling.</p>
+    </div>
+  </li>
+</ol>
 
 ## A personal note
 
