@@ -2,6 +2,7 @@
 layout: post
 title: "Finetuning LLMS for classification"
 permalink: /llm-finetuning-classification/
+glyph: generative
 tags: [LLMs, Fine-tuning, Kaggle]
 image: "../images/post-cards/global-glownet-card.webp"
 description: "Practical guide to finetuning LLMs for classification: compare encoder, decoder, and encoder-decoder models, use LoRA/QLoRA and instruction tuning, add retrieval, and apply Kaggle-tested tips."

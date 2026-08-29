@@ -2,6 +2,7 @@
 layout: post
 title: "GPU Computing with CUDA: Shared memory"
 permalink: /cuda-shared-memory/
+glyph: cuda
 description: "Learn about GPU computing with CUDA, focusing on how shared memory enables fast inter-thread communication and performance optimization. This post explains the CUDA memory hierarchy, walks through a 1D stencil example, and covers concepts like synchronization, caching, and bank conflicts. "
 excerpt: "Understand CUDA shared memory, synchronization, and caching with a 1D stencil example to optimize GPU performance and thread coordination."
 tags: [CUDA,
