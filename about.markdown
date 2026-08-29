@@ -26,14 +26,34 @@ permalink: /about/
 
 ## Keeping the lamp lit
 
-- **Building AI agents and Azure Portal blades at Microsoft** — the kind of work where "it's just a UI tweak" is never actually true, and an agent doing the wrong thing at 2am is now officially my problem.
-- **Chipping away at an M.Tech on the side** — this term's lineup is Deep RL, ACI, Computer Vision, and Probabilistic Graphical Models, and it's honestly the most fun I've had with coursework in years.
-- **Earned the Stanford AI Technical Professional certificate** — including the Deep RL course, now fully wrapped up, Bellman equations and all.
-- **Rebuilt my college math from scratch, purely for fun** — ODEs are done, and I've moved on to 3D geometry, which is somehow both nostalgic and humbling.
+<div class="update-log">
+  <div class="update-calendar" id="update-calendar">
+    <div class="update-calendar__header">
+      <button type="button" class="update-calendar__nav" id="cal-prev" aria-label="Previous update">‹</button>
+      <span class="update-calendar__month" id="cal-month"></span>
+      <button type="button" class="update-calendar__nav" id="cal-next" aria-label="Next update">›</button>
+    </div>
+    <div class="update-calendar__weekdays">
+      <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+    </div>
+    <div class="update-calendar__grid" id="cal-grid"></div>
+    <div class="update-calendar__entry">
+      <p class="update-calendar__entry-geo" id="cal-entry-geo"></p>
+    </div>
+  </div>
+  <ul class="update-list" id="update-list"></ul>
+</div>
+
+<script defer src="{{ "/assets/update-calendar.js" | relative_url }}"></script>
 
 ## A personal note
 
+<div class="notebook-wrap">
+  <span class="notebook__tape" aria-hidden="true"></span>
+  <div class="notebook" markdown="1">
 At my core, I'm just a learner — always up for collaborations, new areas of work, and experiences I haven't had yet, with a soft spot for anything that makes the world a little better along the way. Outside of work I read a lot of fiction — most recently *The Silent Patient*, *All the Light We Cannot See*, and the *Morisaki Bookshop* books — and tinker with side projects at the intersection of AI, systems, and creativity. This site exists because I think knowledge grows best when it's shared.
+  </div>
+</div>
 
 ---
 
