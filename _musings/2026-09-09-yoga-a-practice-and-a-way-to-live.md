@@ -23,10 +23,12 @@ I still had stiff hamstrings, not much strength but exercising for an hour felt 
 
 And yet, I felt I want more. So I switched my instructor, and have been learning with her for more than an year.
 
-She was quite strict, to the extent I suspected that she found my struggle amusing. But my gut told me to trust her and I just followed her cue.
+She was quite strict, to the extent I suspected that she found my struggle amusing. But my gut told me to trust her and I just followed her cue. She would make me hold stretches for 30 second stretches, asking me to breathe in and out and mentally reassure myself that this is normal.
+It was actually a live experience of mind-body connection for me. 
 
-And, now, an year after - I could touch the floor with my knees straight, palms fully resting on the ground, increased my time for plank holds from 30 seconds, to 2 minutes. Started from not being able to do a single squat well, to doing 50 in a row.
-My weight has still not decreased but my strength and flexibility has increased. There are days when I don't feel like taking the session, but I go for it anyways, and surprise myself by how much I can do, much more than what my mind had anticipated.
+And, now, an year after - I can touch the floor with my knees straight, palms fully resting on the ground, increased my time for plank holds from 30 seconds, to 2 minutes. Started from not being able to do a single squat well, to doing 50 in a row. I recently did the forward split :). 
+
+My weight has still not decreased but my strength and flexibility has improved. There are days when I don't feel like taking the session, but I go for it anyways, and surprise myself by how much I can do, much more than what my mind had anticipated.
 
 I don't see the weighing scale much now - but I love my body much more than before, for I appreciate how much it has helped me achieve.
 
@@ -35,7 +37,7 @@ But, showing up to sessions whether you feel like it or not, surprising yourself
 
 I see I have a lot to learn in this field. From learning new poses, to holding a single pose for longer amounts of time, there is no limit to what one can achieve.
 I was a person who always studied for competitive exams, aimed for getting the best grade in the current college semester.
-I learnt how to enjoy the journey with excitement to know more with aiming for perfection through consistency, with an open heart only for myself.
+I learnt how to enjoy the journey, aiming for perfection through consistency, with an open heart only for myself.
 
 Taking your leave with the quote:
 
