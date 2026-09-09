@@ -7,9 +7,10 @@ permalink: /musings/
 
 *Notes on the delightful, hopeful, and occasionally absurd side of things — this corner is non-technical, on purpose.*
 
-{%- assign sorted_musings = site.musings | sort: "date" | reverse -%}
-{%- if sorted_musings.size > 0 -%}
-{%- for musing in sorted_musings -%}
+{% assign sorted_musings = site.musings | sort: "date" | reverse %}
+{% if sorted_musings.size > 0 %}
+{% for musing in sorted_musings %}
+
 <article class="entry">
   <div class="entry__tile">
     <svg viewBox="0 0 40 40"><use href="#g-{{ musing.glyph | default: 'paper' }}"></use></svg>
@@ -28,5 +29,6 @@ permalink: /musings/
     {%- endif -%}
   </div>
 </article>
-{%- endfor -%}
-{%- endif -%}
+
+{% endfor %}
+{% endif %}
