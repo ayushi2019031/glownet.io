@@ -7,9 +7,9 @@ tags: [yoga, wellness, self-growth]
 excerpt: "What started as a doctor's prescription for better health turned into a year-long lesson in consistency, patience, and loving the process."
 ---
 
-When I started yoga, the intent was to improve my health. The doctor's prescription clearly said - eat a lot of healthy food and exercise a lot!! I asked him - if I eat a lot of food, then won't I gain weight? And his answer - "The body adapts best to how you treat it."
 
-And so I decided to go with his advice for once, and hired a trainer. She would come daily at 8 am.
+I was scrolling through Instagram one day, and saw a friend posted herself touching the floor with her palms flat. 
+I have been doing yoga for quite some time, but I could barely touch the floor. So I thought, why not take proper training, maybe I would learn something new. And I hired a trainer the next day. 
 
 At the beginning - god would I feel exhausted! I had to sleep much more than usual, and the exercises felt quite tiring.
 I would check the weighing scale daily - not much difference. After 3 weeks I still found most exercises difficult.
